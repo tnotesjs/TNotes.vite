@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vite-mock-demo</title>
+  </head>
+  <body>
+    <h1>测试 mock</h1>
+    <h2>请求到的数据：<span id="mock-data"></span></h2>
+    <script>
+      fetch('/api/user')
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data)
+          document.getElementById('mock-data').textContent =
+            JSON.stringify(data)
+        })
+    </script>
+  </body>
+</html>
