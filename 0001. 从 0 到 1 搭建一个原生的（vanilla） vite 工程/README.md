@@ -17,17 +17,17 @@
 - https://cn.vitejs.dev/guide/features.html#typescript
   - Vite，指引 - 功能 - TypeScript。查看 Vite 对 TS 的支持的详情。
 
-## � notes - vite 是比 webpack 更上层的工具链
+## 📒 notes - vite 是比 webpack 更上层的工具链
 
 vite 是一个上层的工具链，它帮我们预先配置好的很多东西，你只需要安装 vite 就可以实现 dev server、build 等操作。而且 build 出来的产物，也是自带文件指纹的。从开箱即用的角度来对比，vite 比 webpack 做得更加全面，你只需要一两分钟，就能搭建好一个原生的 vite-demo 了，并且还带有 TypeScript 支持。
 
-## � notes - 单词 vanilla
+## 📒 notes - 单词 vanilla
 
 - vanilla - “纯粹”
 - 发音：`/vəˈnɪlə/`
 - “Vanilla” 代表的是 **纯粹**、简单和直接的编程方式，强调不依赖额外的框架或库，而是直接使用 **原生** 的语言和技术。
 
-## � notes - 官方提供的 vanilla-ts 模板
+## 📒 notes - 官方提供的 vanilla-ts 模板
 
 - ![](md-imgs/2024-10-16-22-42-22.png)
 - 通过本节示例最终搭建出来的 demo 效果和官网提供的 vanilla-ts 的示例是非常类似的，主要区别在于我们的 demo 缺少了一些 ts 配置信息。我们可以在写完之后去到官方文档中对比一下看看。
@@ -39,7 +39,7 @@ vite 是一个上层的工具链，它帮我们预先配置好的很多东西，
 $ npm create vite@latest my-vanilla-ts -- --template vanilla-ts
 ```
 
-## � notes - Vite 对 TS 的支持
+## 📒 notes - Vite 对 TS 的支持
 
 - Vite 天然支持引入 .ts 文件。注意，Vite 仅执行 .ts 文件的转译工作，并 **不执行** 任何类型检查。
 
