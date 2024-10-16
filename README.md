@@ -1,5 +1,10 @@
 # vite
 
+## ⏰ todos
+
+- [TODO](./TODO.md)，记录了 vite 的相关知识点及这些知识点对应的目录编号。
+- 搬运 yuque 上的内容，搬运完之后将 yuque 上的文档给删掉。
+
 ## 📝 summary
 
 vite 学习笔记。

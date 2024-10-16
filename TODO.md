@@ -1,5 +1,7 @@
 - 快速入门
-  - [ ] [0001. 从 0 到 1 搭建一个原生的（vanilla） vite 工程 ● ](./0001.%20%E4%BB%8E%200%20%E5%88%B0%201%20%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%8E%9F%E7%94%9F%E7%9A%84%EF%BC%88vanilla%EF%BC%89%20vite%20%E5%B7%A5%E7%A8%8B%20%E2%97%8F%20/README.md)
+  - [ ] [0001. 从 0 到 1 搭建一个原生的（vanilla） vite 工程](./0001.%20%E4%BB%8E%200%20%E5%88%B0%201%20%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%8E%9F%E7%94%9F%E7%9A%84%EF%BC%88vanilla%EF%BC%89%20vite%20%E5%B7%A5%E7%A8%8B/README.md)
+    - [ ] 按照文档指示，从 0 到 1 创建一个 demo 工程。
+    - [ ] 可以顺带把视频给录了。
 - Vite 常见配置--路径
   - [ ] [0005. Vite 路径别名](./0005.%20Vite%20%E8%B7%AF%E5%BE%84%E5%88%AB%E5%90%8D/README.md)
 - Features
