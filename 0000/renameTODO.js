@@ -10,10 +10,10 @@ console.log(BASE_DIR);
 
 const DIR_MAP = {};
 
-// 用于跟踪 TODO.md 中出现的4位数字
+// 用于跟踪 TODO.md 中出现的 4 位数字
 const todoNumbers = new Set();
 
-// 用于跟踪 DIR_MAP 中未被匹配到的4位数字
+// 用于跟踪 DIR_MAP 中未被匹配到的 4 位数字
 const unmatchedDirNumbers = new Set();
 
 function getDirList(base_path) {
@@ -60,7 +60,7 @@ for (const key in DIR_MAP) {
   });
 }
 
-// 记录 TODO.md 中存在的4位数字
+// 记录 TODO.md 中存在的 4 位数字
 todo_lines.forEach(line => {
   const match = line.match(/(\s*-\s*\[\s*x?\s*\]\s*)(\d{4})(.*)/);
   if (match) {

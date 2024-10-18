@@ -1,6 +1,11 @@
 # 0003. vite-plugin-mock 的基本使用
 
-## 📝 summary
+## markmap
+
+![](md-imgs/markmap.png)
+
+
+## 📝 summary <!-- markmap: foldAll -->
 
 - 本节内容：vite-plugin-mock 的基本使用。
 - 在 Vite 中使用 mock 数据是一个非常实用的功能，如果跟负责写后端的朋友接口还没写好，前端可以自行根据接口文档的要求来 mock 数据。做法很简单，在下面的 demo 中记录基本流程。
