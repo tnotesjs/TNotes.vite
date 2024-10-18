@@ -1,10 +1,5 @@
 # 0006. UnoCSS 学习资源
 
-## markmap
-
-![](md-imgs/markmap.png)
-
-
 ## 📝 summary
 
 - 本文记录和 UnoCSS 相关的一些链接

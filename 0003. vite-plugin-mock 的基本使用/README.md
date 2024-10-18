@@ -1,10 +1,5 @@
 # 0003. vite-plugin-mock 的基本使用
 
-## markmap
-
-![](md-imgs/markmap.png)
-
-
 ## 📝 summary <!-- markmap: foldAll -->
 
 - 本节内容：vite-plugin-mock 的基本使用。

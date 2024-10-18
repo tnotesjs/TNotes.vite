@@ -89,26 +89,28 @@ body,
     headless: true,  // 明确指定无头模式
   };
 
-  const image = await nodeHtmlToImage({
-    html,
-    puppeteer: {
-      launch: (opts) => puppeteerLaunch({ ...opts, ...puppeteerLaunchOptions })
-    },
-  });
+  await writeFile(outFile, html);
+  // const image = await nodeHtmlToImage({
+  //   html,
+  //   puppeteer: {
+  //     launch: (opts) => puppeteerLaunch({ ...opts, ...puppeteerLaunchOptions })
+  //   },
+  // });
 
-  await writeFile(outFile, image);
-  await writeFile('markmap.html', html);
+  // await writeFile(outFile, image);
 }
 
 async function processDirectories(dirMap) {
   for (const [dirNum, dirPath] of Object.entries(dirMap)) {
     const readmePath = join(dirPath, 'README.md');
     const mdImgsPath = join(dirPath, 'md-imgs');
-    const outputPath = join(mdImgsPath, 'markmap.png');
+    const outputImgPath = join(mdImgsPath, 'markmap.png');
+    const outputHtmlPath = join(mdImgsPath, 'markmap.html');
 
     try {
       const markdown = await readFile(readmePath, 'utf-8');
-      await renderMarkmap(markdown, outputPath);
+      // await renderMarkmap(markdown, outputImgPath);
+      await renderMarkmap(markdown, outputHtmlPath);
       console.log(`Generated markmap for: ${dirPath}`);
     } catch (err) {
       if (err.code === 'ENOENT') {

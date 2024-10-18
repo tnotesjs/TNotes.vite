@@ -1,10 +1,5 @@
 # 0007. unocss 究竟比 tailwindcss 快多少
 
-## markmap
-
-![](md-imgs/markmap.png)
-
-
 ## 📝 summary
 
 ## 🔗 links
