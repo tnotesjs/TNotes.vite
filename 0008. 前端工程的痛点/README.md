@@ -1,19 +1,5 @@
 # 0008. 前端工程的痛点
 
-
-<body style="margin: 0;padding: 0;max-width: 800px;max-height: 600px;margin: 0 auto;">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11.8.0/styles/default.min.css">
-<svg id="mindmap" style="display: block;max-width: 800px;max-height: 600px;margin: 0 auto;"></svg>
-<script src="https://cdn.jsdelivr.net/npm/d3@7.8.5/dist/d3.min.js"></script><script src="https://cdn.jsdelivr.net/npm/markmap-view@0.17.2/dist/browser/index.js"></script><script>((getMarkmap, getOptions, root2, jsonOptions) => {
-              const markmap = getMarkmap();
-              window.mm = markmap.Markmap.create(
-                "svg#mindmap",
-                (getOptions || markmap.deriveOptions)(jsonOptions),
-                root2
-              );
-            })(() => window.markmap,null,{"content":"0008. 前端工程的痛点","children":[{"content":"markmap","children":[{"content":"<img src=\"md-imgs/markmap.png\" alt=\"\">","children":[]}],"payload":{"lines":"2,3"}},{"content":"📝 summary","children":[],"payload":{"lines":"7,8"}},{"content":"🔗 links","children":[],"payload":{"lines":"11,12"}},{"content":"📒 notes","children":[],"payload":{"lines":"15,16"}},{"content":"💻 demo","children":[{"content":"<pre><code data-lines=\"21,24\">\n</code></pre>","children":[],"payload":{"lines":"21,24"}}],"payload":{"lines":"19,20"}}],"payload":{"lines":"0,1"}},{"maxWidth":400,"colorFreezeLevel":2,"duration":0,"spacingVertical":20})</script>
-</body>
-
 ## 📝 summary
 
 
