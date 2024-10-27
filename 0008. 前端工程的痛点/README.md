@@ -17,7 +17,7 @@
 
 ```
 
-## 🤖 ai - github 仓库中的 html 如何预览呢？可以在 markdown 中预览吗？
+## 🤖 AI - github 仓库中的 html 如何预览呢？可以在 markdown 中预览吗？
 
 在 GitHub 仓库中，直接预览 HTML 文件并不是非常直观，因为 GitHub 默认不会渲染和显示 HTML 文件的内容。不过，有几种方法可以让你在 GitHub 上预览 HTML 文件或在 Markdown 中嵌入 HTML 内容。
 
