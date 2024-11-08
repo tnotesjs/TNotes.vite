@@ -1,4 +1,4 @@
-# 0006. UnoCSS 学习资源
+# [0006. UnoCSS 学习资源](https://github.com/Tdahuyou/vite/tree/main/0006.%20UnoCSS%20%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90)
 
 ## 📝 summary
 

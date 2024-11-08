@@ -1,4 +1,4 @@
-# 0005. Vite 路径别名
+# [0005. Vite 路径别名](https://github.com/Tdahuyou/vite/tree/main/0005.%20Vite%20%E8%B7%AF%E5%BE%84%E5%88%AB%E5%90%8D)
 
 - [x] 视频
 
