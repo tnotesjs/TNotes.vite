@@ -18,9 +18,9 @@
     "icon": {
       "src": "https://cdn.jsdelivr.net/gh/Tdahuyou/imgs@main/assets/icon--vite.svg"
     },
-    "title": "Vite 笔记",
+    "title": "vite",
     "completed_notes_count": 0,
-    "details": "待搬运语雀上的笔记。",
+    "details": "Vite 笔记",
     "link": "https://tdahuyou.github.io/TNotes.vite/"
   },
   "port": 9379,
