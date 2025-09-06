@@ -1,4 +1,4 @@
-# [0001. 从 0 到 1 搭建一个原生的（vanilla） vite 工程](https://github.com/Tdahuyou/TNotes.vite/tree/main/notes/0001.%20%E4%BB%8E%200%20%E5%88%B0%201%20%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%8E%9F%E7%94%9F%E7%9A%84%EF%BC%88vanilla%EF%BC%89%20vite%20%E5%B7%A5%E7%A8%8B)
+# [0001. 从 0 到 1 搭建一个原生的（vanilla） vite 工程](https://github.com/tnotesjs/TNotes.vite/tree/main/notes/0001.%20%E4%BB%8E%200%20%E5%88%B0%201%20%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%8E%9F%E7%94%9F%E7%9A%84%EF%BC%88vanilla%EF%BC%89%20vite%20%E5%B7%A5%E7%A8%8B)
 
 <!-- region:toc -->
 

@@ -1,4 +1,4 @@
-# [0004. 开始使用 unocss](https://github.com/Tdahuyou/TNotes.vite/tree/main/notes/0004.%20%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8%20unocss)
+# [0004. 开始使用 unocss](https://github.com/tnotesjs/TNotes.vite/tree/main/notes/0004.%20%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8%20unocss)
 
 <!-- region:toc -->
 

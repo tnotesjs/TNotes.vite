@@ -1,4 +1,4 @@
-# [0013. 了解 Rollup](https://github.com/Tdahuyou/TNotes.vite/tree/main/notes/0013.%20%E4%BA%86%E8%A7%A3%20Rollup)
+# [0013. 了解 Rollup](https://github.com/tnotesjs/TNotes.vite/tree/main/notes/0013.%20%E4%BA%86%E8%A7%A3%20Rollup)
 
 <!-- region:toc -->
 <!-- endregion:toc -->

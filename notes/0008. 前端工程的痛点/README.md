@@ -1,4 +1,4 @@
-# [0008. 前端工程的痛点](https://github.com/Tdahuyou/TNotes.vite/tree/main/notes/0008.%20%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E7%9A%84%E7%97%9B%E7%82%B9)
+# [0008. 前端工程的痛点](https://github.com/tnotesjs/TNotes.vite/tree/main/notes/0008.%20%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E7%9A%84%E7%97%9B%E7%82%B9)
 
 <!-- region:toc -->
 
