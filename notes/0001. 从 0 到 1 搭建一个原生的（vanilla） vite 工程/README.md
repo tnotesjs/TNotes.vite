@@ -2,143 +2,151 @@
 
 <!-- region:toc -->
 
-- [1. 📝 概述](#1--概述)
-- [2. 🔗 References](#2--references)
-- [3. 📒 vite 是比 webpack 更上层的工具链](#3--vite-是比-webpack-更上层的工具链)
-- [4. 📒 单词 vanilla](#4--单词-vanilla)
-- [5. 📒 官方提供的 vanilla-ts 模板](#5--官方提供的-vanilla-ts-模板)
-- [6. 📒 Vite 对 TS 的支持](#6--vite-对-ts-的支持)
-- [7. 💻 demos.1 - xxx](#7--demos1---xxx)
+- [1. 🎯 本节内容](#1--本节内容)
+- [2. 🫧 评价](#2--评价)
+- [3. 🤔 “vanilla” 是什么意思？](#3--vanilla-是什么意思)
+- [4. 🔍 查看官方提供的 vanilla-ts 模板](#4--查看官方提供的-vanilla-ts-模板)
+- [5. 🤔 Vite 支持 TS 吗？](#5--vite-支持-ts-吗)
+- [6. 💻 demos.1 - 从 0 到 1 搭建一个 `vite-vanilla-ts` 工程](#6--demos1---从-0-到-1-搭建一个-vite-vanilla-ts-工程)
+- [7. 🔗 引用](#7--引用)
 
 <!-- endregion:toc -->
 
-## 1. 📝 概述
+## 1. 🎯 本节内容
 
 - 从 0 到 1 搭建一个 vite 的原生 demo
 
-## 2. 🔗 References
+## 2. 🫧 评价
 
-::: details
+- 基于 vite 从 0 到 1 搭建一个 `vite-vanilla-ts` 工程，实现最基础的：
+  - dev
+  - build
+  - preview
+- vite 是比 webpack 更上层的工具链
+  - vite 是一个上层的工具链，它帮我们预先配置好的很多东西，你只需要安装 vite 就可以实现 dev server、build 等操作。
+  - build 出来的产物，也是自带文件指纹的。
+  - 从开箱即用的角度来对比，vite 比 webpack 做得更加全面，你只需要 `1～2min`，就能搭建好一个纯粹的 vite-demo 了，并且还带有 TypeScript 支持。
 
-- https://github.com/vitejs/vite/tree/main/packages/create-vite/template-vanilla-ts
-  - github -- vite -- template-vanilla-ts
-  - 本节要从 0 到 1 搭建的 demo 的效果，其实跟这个官方提供的 vanilla-ts 的模板基本一致。
-  - 单词：vanilla 表示存粹的意思。
-- https://cn.vitejs.dev/guide/#trying-vite-online
-  - vite -- vanilla-ts
-  - 官方提供的 vanilla-ts 模板
-    - ![](assets/2024-10-16-22-42-22.png)
-- https://cn.vitejs.dev/guide/features.html#typescript
-  - Vite，指引 - 功能 - TypeScript。查看 Vite 对 TS 的支持的详情。
+## 3. 🤔 “vanilla” 是什么意思？
 
-:::
-
-## 3. 📒 vite 是比 webpack 更上层的工具链
-
-vite 是一个上层的工具链，它帮我们预先配置好的很多东西，你只需要安装 vite 就可以实现 dev server、build 等操作。而且 build 出来的产物，也是自带文件指纹的。从开箱即用的角度来对比，vite 比 webpack 做得更加全面，你只需要一两分钟，就能搭建好一个原生的 vite-demo 了，并且还带有 TypeScript 支持。
-
-## 4. 📒 单词 vanilla
-
-- vanilla - “纯粹”
-- 发音：`/vəˈnɪlə/`
+- vanilla - “纯粹” -> 发音：`/vəˈnɪlə/`
 - “Vanilla” 代表的是 **纯粹**、简单和直接的编程方式，强调不依赖额外的框架或库，而是直接使用 **原生** 的语言和技术。
 
-## 5. 📒 官方提供的 vanilla-ts 模板
+## 4. 🔍 查看官方提供的 vanilla-ts 模板
 
-- ![](assets/2024-10-16-22-42-22.png)
-- 通过本节示例最终搭建出来的 demo 效果和官网提供的 vanilla-ts 的示例是非常类似的，主要区别在于我们的 demo 缺少了一些 ts 配置信息。我们可以在写完之后去到官方文档中对比一下看看。
-- 可以点进去，通过 StackBlitz 在线查看 vanilla-ts 的模板源码。
-- ![](assets/2024-10-16-22-43-36.png)
+- [vite -- vanilla-ts][2]
+  - ![图 0](https://cdn.jsdelivr.net/gh/tnotesjs/imgs@main/2025-10-04-19-38-31.png)
+  - 通过本节示例最终搭建出来的 demo 效果和官网提供的这个 `vanilla-ts` 示例是非常类似的，主要区别在于我们的 demo 缺少了一些 ts 配置信息。
+  - 可以在写完之后去到官方文档中对比一下看看。
+  - 可以点进去，通过 StackBlitz 在线查看 `vanilla-ts` 的模板源码。
+  - ![图 1](https://cdn.jsdelivr.net/gh/tnotesjs/imgs@main/2025-10-04-19-38-44.png)
 - 也可以通过以下命令在本地创建
 
 ```bash
 $ npm create vite@latest my-vanilla-ts -- --template vanilla-ts
+# https://github.com/vitejs/vite/tree/main/packages/create-vite/template-vanilla-ts
+# 相当于直接从 vite 仓库中拉取这个模板中的内容
 ```
 
-## 6. 📒 Vite 对 TS 的支持
+## 5. 🤔 Vite 支持 TS 吗？
 
-- Vite 天然支持引入 .ts 文件。注意，Vite 仅执行 .ts 文件的转译工作，并 **不执行** 任何类型检查。
+- Vite 天然支持引入 .ts 文件。
+- 注意，Vite 仅执行 .ts 文件的转译工作，并 **不执行** 任何类型检查。如果有类型检查的需求，可以通过 `tsc` 来实现。
 
-## 7. 💻 demos.1 - xxx
+## 6. 💻 demos.1 - 从 0 到 1 搭建一个 `vite-vanilla-ts` 工程
 
 ::: code-group
 
-```bash [init]
+```bash [核心流程]
 # 创建 vite-demo 目录
 $ mkdir vite-demo
 # 进入 vite-demo
 $ cd vite-demo
-# 安装 vite
-$ pnpm add vite -D
-# 安装 TypeScript（建议装）
-$ pnpm add typescript -D
-# 新建入口文件 index.html
-# doc：https://cn.vitejs.dev/guide/#index-html-and-project-root
-$ touch index.html
+# 初始化包
+$ pnpm init
+# 安装 vite、TypeScript
+$ pnpm add vite typescript -D
+
+# 创建必要的文件
+# index.html - doc：https://cn.vitejs.dev/guide/#index-html-and-project-root
+# 编写测试脚本：src/index.ts、src/counter.ts
+
+# 往 package.json 中插入以下 scripts 脚本：
+# "dev": "vite",
+# "build": "vite build",
+# "preview": "vite preview"
 ```
 
-```html [index.html]
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <div id="app"></div>
-  </body>
-  <script type="module" src="./src/index.ts"></script>
-</html>
-```
+<<< ./demos/1/vite-demo/index.html
 
-```ts [src/index.ts]
-import { setupCounter } from './counter'
+<<< ./demos/1/vite-demo/src/index.ts
 
-document.querySelector('#app')!.innerHTML = `
-  <div>
-    <button id="counter" type="button"></button>
-  </div>
-`
-setupCounter(document.querySelector('#counter') as HTMLButtonElement)
-```
+<<< ./demos/1/vite-demo/src/counter.ts
 
-```ts [src/counter.ts]
-export function setupCounter(element: HTMLButtonElement) {
-  let counter = 0
-  const setCounter = (count: number) => {
-    counter = count
-    element.innerHTML = `Counter: ${counter}`
-  }
-  setCounter(0)
-  element.addEventListener('click', () => setCounter(counter + 1))
-}
-```
-
-```json [package.json]
-{
-  "name": "vite-demo",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "typescript": "^5.2.2",
-    "vite": "^4.4.9"
-  },
-  "packageManager": "pnpm@9.0.4+sha512.c374b52de3de88c58fd8333df664a737279cdb0e1344ba4054d3b1fffa9a1a3670854f755dca4f16adea3f14be9896a7fcaf167409fe0c1ad60475271dafe81a"
-}
-```
+<<< ./demos/1/vite-demo/package.json
 
 :::
 
 - 无需任何其它的配置，现在已经可以正常完成以下操作：
-- 【开发环境】启动开发服务器，执行命令 `npm run dev`
-- 【生产环境】出包，执行命令 `npm run build`，预览构建产物，执行命令 `npm run preview`
+- 【开发环境】启动开发服务器，执行命令 `pnpm dev`
+- 【生产环境】出包，执行命令 `pnpm build`，预览构建产物，执行命令 `pnpm preview`
+
+```bash
+$ pnpm dev
+
+# > vite-demo@1.0.0 dev .../demos/1/vite-demo
+# > vite
+
+
+#   VITE v7.1.9  ready in 410 ms
+
+#   ➜  Local:   http://localhost:5173/
+#   ➜  Network: use --host to expose
+#   ➜  press h + enter to show help
+
+$ pnpm build
+
+# > vite-demo@1.0.0 build .../demos/1/vite-demo
+# > vite build
+
+# vite v7.1.9 building for production...
+# ✓ 4 modules transformed.
+# dist/index.html                0.32 kB │ gzip: 0.24 kB
+# dist/assets/index-CgkQmZVT.js  0.97 kB │ gzip: 0.53 kB
+# ✓ built in 51ms
+
+$ pnpm preview
+
+# > vite-demo@1.0.0 preview .../demos/1/vite-demo
+# > vite preview
+
+#   ➜  Local:   http://localhost:4173/
+#   ➜  Network: use --host to expose
+#   ➜  press h + enter to show help
+```
+
+::: swiper
+
+![dev](https://cdn.jsdelivr.net/gh/tnotesjs/imgs@main/2025-10-04-19-51-01.png)
+
+![open-dev](https://cdn.jsdelivr.net/gh/tnotesjs/imgs@main/2025-10-04-19-51-18.png)
+
+![build](https://cdn.jsdelivr.net/gh/tnotesjs/imgs@main/2025-10-04-19-53-42.png)
+
+![preview](https://cdn.jsdelivr.net/gh/tnotesjs/imgs@main/2025-10-04-19-52-21.png)
+
+:::
+
+- 至此，最基础的开发环境启动、生产环境的打包预览功能都已经完成了。
+
+## 7. 🔗 引用
+
+- vite -> vanilla-ts
+  - [vanilla-ts 模板源码][1]
+  - [官方提供的 vanilla-ts 模板][2]
+- [Vite，指引 - 功能 - TypeScript][3]
+  - 查看 Vite 对 TS 的支持的详情。
+
+[1]: https://github.com/vitejs/vite/tree/main/packages/create-vite/template-vanilla-ts
+[2]: https://cn.vitejs.dev/guide/#trying-vite-online
+[3]: https://cn.vitejs.dev/guide/features.html#typescript

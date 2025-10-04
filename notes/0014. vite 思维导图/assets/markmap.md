@@ -1,0 +1,249 @@
+- Vite
+  - 核心特性
+    - 极速冷启动（基于原生 ES 模块）
+    - 按需编译（仅编译当前请求的文件）
+    - 热更新（HMR）速度快且精准
+    - 开箱即用的 TypeScript、JSX、CSS 等支持
+    - 内置开发服务器（基于 esbuild + Koa）
+    - 支持多种前端框架（Vue、React、Svelte、Lit 等）
+    - 支持 SSR（服务端渲染）和 SSG（静态站点生成）
+  - 架构原理
+    - 开发阶段
+      - no-bundle 无需打包
+      - 利用浏览器原生 ES 模块（ESM）能力
+      - 拦截模块请求，动态转换（如 .vue、.ts、.jsx 等）
+      - 使用 esbuild 预构建依赖（提升冷启动速度）
+        - 将 CommonJS / UMD 依赖转为 ESM
+        - 创建 \_vite/dep 优化缓存
+      - 按需编译：仅编译当前访问的模块
+      - HMR 实现
+        - 基于 WebSocket 通信
+        - 精确更新模块及其依赖
+        - 框架特定 HMR 插件（如 Vue、React）
+      - 静态资源处理
+        - 导入静态资源返回解析后 URL
+        - 支持 JSON、Web Worker、WASM 等
+        - 内联资源（base64）或作为独立文件
+        - 资源引用自动加入 hash（构建时）
+      - CSS 处理
+        - 原生支持 CSS Modules
+        - 支持 PostCSS（自动加载 postcss.config.js）
+        - 内置 CSS 预处理器支持（Sass、Less、Stylus）
+        - @import 内联与重写
+        - CSS 代码分割（构建时）
+      - 构建优化
+        - 代码分割（Code Splitting）
+        - 动态导入（Dynamic Import）
+        - 资源内联与外部化（assetsInlineLimit、external）
+        - Terser 压缩（可选）
+        - 生成 sourcemap
+    - 构建阶段
+      - 使用 Rollup 进行生产构建
+      - 支持代码分割、Tree-shaking、压缩等
+      - 输出静态资源（HTML、JS、CSS、图片等）
+      - 支持多页面应用（MPA）和单页应用（SPA）
+    - 双引擎架构
+      - Esbuild
+        - 依赖预构建
+          - 作为 Bundle 工具
+        - 单文件编译
+          - 作为 TS 和 JSX 编译工具
+        - 代码压缩
+          - 作为压缩工具
+      - Rollup
+        - 生产环境 Bundle
+          - CSS 代码分割
+          - 预加载指令生成
+          - 异步 Chunk 加载优化
+        - 插件兼容机制
+          - Plugin Container
+  - 前端工程的痛点
+    - 模块化需求
+      - ESM
+      - CommonJS
+      - AMD
+      - CMD
+      - 等多种模块化规范不统一的问题
+    - 浏览器兼容性
+      - 编译高级语法 ts、jsx
+    - 开发阶段
+      - 开发体验问题
+    - 生产阶段
+      - 代码质量问题
+    - ……
+    - 构建工具的核心作用就是为了解决这些痛点问题而出现的。
+  - 构建工具对比
+    - Vite vs. Webpack
+      - 两者定位不一样
+        - webpack core 是一个纯的打包工具
+        - Vite 是一个更上层的工具链方案
+        - vite ≈ webpack + 针对 web 开发常用的配置 + webpack-dev-server
+      - 预设场景不一样
+        - webpack core 只针对打包，而不预设场景，所以设计得极其灵活。
+        - vite 压缩预设场景来降低复杂度，只预设了 web 的场景。
+      - loader/插件机制不一致
+        - webpack 的本质就是先打包，再加载
+          - webpack 的一个软肋是 loader/插件机制跟打包的这个设计前提耦合过深
+        - Vite 的插件机制是基于 Rollup 实现的
+          - 单个模块的 resolve/load/transform 跟打包环节完全解耦
+    - vite 的性能优势
+      - 相比 Webpack：启动快 10–100 倍
+      - 相比 Parcel：更轻量、更聚焦现代浏览器
+      - 相比 Snowpack：更活跃的生态与插件支持
+  - 命令
+    - vite
+    - vite build
+    - vite preview
+    - vite optimize
+    - 默认入口文件: index.html
+      - 开发服务器
+      - 生产构建
+  - 执行环境（nodejs 环境和浏览器环境）
+    - nodejs 环境下的 ESM 支持
+      - 方式 1：后缀名设置为 .mjs 即可
+        - 如果将文件后缀设置为 .cjs，意味着使用 commonjs 规范
+      - 方式 2：修改 package.json 文件，配置 type: module
+    - 文件执行环境的问题
+      - 比如 vite.config.ts 的执行环境是 nodejs 环境
+      - 比如 index.html 引入的一系列文件的执行环境是浏览器环境
+    - 模块解析机制问题（模块路径查找的问题 ）
+      - bare Import（裸导入）
+        - nodejs 默认支持
+        - 浏览器环境下的 ESM 默认不支持
+        - vite 借助第三方库提供了支持
+  - 配置系统
+    - [doc - 配置 Vite](https://cn.vitejs.dev/config/)
+    - 配置文件（vite.config.js / vite.config.ts）
+    - 智能提示
+      - 方式 1：jsdoc
+        - ![图 0](https://cdn.jsdelivr.net/gh/tnotesjs/imgs@main/2025-10-04-17-09-41.png)
+      - 方式 2：defineConfig
+        - ![图 1](https://cdn.jsdelivr.net/gh/tnotesjs/imgs@main/2025-10-04-17-09-53.png)
+      - [doc](https://cn.vite.dev/config/#config-intellisense)
+        - ![图 2](https://cdn.jsdelivr.net/gh/tnotesjs/imgs@main/2025-10-04-17-12-29.png)
+    - 情景配置
+      - 可以导出一个函数，返回值类型为 UserConfig。
+        - 如果配置文件需要基于（serve 或 build）命令或者不同的 模式 来决定选项，亦或者是一个 SSR 构建（isSsrBuild）、一个正在预览的构建产物（isPreview），则可以选择导出这样一个函数：
+          - ![图 3](https://cdn.jsdelivr.net/gh/tnotesjs/imgs@main/2025-10-04-18-02-49.png)
+        - vite 会为该函数注入一个 ConfigEnv 类型的参数对象
+          - ![图 4](https://cdn.jsdelivr.net/gh/tnotesjs/imgs@main/2025-10-04-18-05-51.png)
+          - command
+          - mode
+          - isSsrBuild
+          - isPreview
+      - 直接执行 `vite` 命令，相当于执行 `vite serve --mode development`
+        - ![图 5](https://cdn.jsdelivr.net/gh/tnotesjs/imgs@main/2025-10-04-18-10-10.png)
+    - 导出的对象
+      - UserConfig
+        - 源码
+          - [vite/packages/vite/src/node/config.ts#L309-L470](https://github.com/vitejs/vite/blob/d3e7eeefa91e1992f47694d16fe4dbe708c4d80e/packages/vite/src/node/config.ts#L309-L470)
+        - 配置项
+          - root
+          - base
+          - publicDir
+          - cacheDir
+          - mode
+          - plugins
+          - html
+          - css
+          - json
+          - esbuild
+          - assetsInclude
+          - builder
+          - server
+          - preview
+          - experimental
+          - future
+          - legacy
+          - logLevel
+          - customLogger
+          - clearScreen
+          - envDir
+          - envPrefix
+          - worker
+            - format
+            - plugins
+            - rollupOPtions
+          - optimizeDeps
+          - ssr
+          - environments
+          - appType
+    - 环境变量配置（.env 文件）
+      - .env、.env.local、.env.[mode] 等
+      - 模式（mode）与环境变量区分
+      - 不同类型的配置文件有不同的覆盖优先级
+    - loadEnv
+      - 加载 envDir 中的 .env 文件。默认情况下只有前缀为 VITE\_ 会被加载，除非更改了 prefixes 配置。
+      - process.env
+        - 默认只有 node 相关的环境变量，而不含 `VITE_` 环境变量。
+        - 必要的话，可以将通过 loadEnv 读取到的 Vite 的一些环境变量注入到 process.env 中。
+    - 预设配置项
+      - root、base、publicDir
+      - build、server、preview
+      - resolve、css、assetsInclude
+      - plugins、define、optimizeDeps
+  - 开发服务器（Dev Server）
+    - 基于 Koa 的中间件架构
+    - 支持代理（proxy）、CORS、HTTPS
+    - 支持自定义中间件
+    - 文件监听与自动重启
+  - SSR 支持
+    - 提供 createServer API
+    - 支持框架级 SSR（如 Vue SSR、React Server Components）
+    - 客户端与服务端共享代码
+    - 构建分为 client 和 server 两个 bundle
+  - 工具链集成
+    - 与 TypeScript 深度集成（无需额外配置）
+    - 支持 JSX（通过 Babel 或 esbuild）
+    - 支持 WebAssembly（.wasm 文件导入）
+    - 支持 Web Workers（new Worker() 语法）
+  - 生态与社区
+    - 官方脚手架（create-vite）
+    - 与 Vitest（测试框架）深度集成
+    - 与 UnoCSS、Windi CSS 等原子化 CSS 框架兼容
+    - 支持 PWA（通过插件如 @vite-pwa/plugin）
+    - 与现代构建工具（如 Turborepo、Nx）集成良好
+  - 限制与注意事项
+    - 依赖浏览器 ESM 支持（不支持 IE11）
+    - 构建仍依赖 Rollup（学习成本）
+    - 某些复杂场景需自定义插件
+    - 预构建可能在大型项目中首次启动较慢
+  - 集成框架
+  - 依赖预构建
+  - CSS 工程化
+  - 静态资源
+  - HMR
+  - Plugin
+  - 依赖预构建（Dependency Pre-bundling）
+    - 使用 esbuild 快速打包 node_modules
+    - 解决 CJS/UMD 与 ESM 兼容问题
+    - 减少浏览器请求数量（合并依赖）
+    - 自动检测新依赖并重新预构建
+  - code splitting
+  - 性能优化
+  - 插件系统
+    - 基于 Rollup 插件接口（兼容大多数 Rollup 插件）
+    - Vite 特有钩子（如 configureServer、transformIndexHtml）
+    - 官方插件
+      - @vitejs/plugin-vue
+      - @vitejs/plugin-react
+      - @vitejs/plugin-legacy（兼容旧浏览器）
+    - 社区插件生态丰富
+    - 插件执行顺序与生命周期
+  - 静态资源处理
+    - 导入静态资源返回解析后 URL
+    - 支持 JSON、Web Worker、WASM 等
+    - 内联资源（base64）或作为独立文件
+    - 资源引用自动加入 hash（构建时）
+  - CSS 处理
+    - 原生支持 CSS Modules
+    - 支持 PostCSS（自动加载 postcss.config.js）
+    - 内置 CSS 预处理器支持（Sass、Less、Stylus）
+    - @import 内联与重写
+    - CSS 代码分割（构建时）
+  - 构建优化
+    - 代码分割（Code Splitting）
+    - 动态导入（Dynamic Import）
+    - 资源内联与外部化（assetsInlineLimit、external）
+    - Terser 压缩（可选）
+    - 生成 sourcemap
