@@ -5,7 +5,9 @@
 - [vite](#vite)
   - [1. 学习资料](#1-学习资料)
   - [2. 初始 Vite](#2-初始-vite)
-  - [3. ⏰ pending](#3--pending)
+  - [3. Vite 命令](#3-vite-命令)
+  - [4. Vite 配置](#4-vite-配置)
+  - [5. ⏰ pending](#5--pending)
 
 <!-- endregion:toc -->
 
@@ -20,8 +22,17 @@
 - [x] [0016. vite 简介](https://github.com/tnotesjs/TNotes.vite/tree/main/notes/0016.%20vite%20%E7%AE%80%E4%BB%8B/README.md)
 - [x] [0015. vite 核心特性](https://github.com/tnotesjs/TNotes.vite/tree/main/notes/0015.%20vite%20%E6%A0%B8%E5%BF%83%E7%89%B9%E6%80%A7/README.md)
 - [x] [0001. 从 0 到 1 搭建一个原生的（vanilla） vite 工程](https://github.com/tnotesjs/TNotes.vite/tree/main/notes/0001.%20%E4%BB%8E%200%20%E5%88%B0%201%20%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%8E%9F%E7%94%9F%E7%9A%84%EF%BC%88vanilla%EF%BC%89%20vite%20%E5%B7%A5%E7%A8%8B/README.md)
+- [x] [0009. vite vs. webpack](https://github.com/tnotesjs/TNotes.vite/tree/main/notes/0009.%20vite%20vs.%20webpack/README.md)
 
-## 3. ⏰ pending
+## 3. Vite 命令
+
+- [x] [0010. vite cli](https://github.com/tnotesjs/TNotes.vite/tree/main/notes/0010.%20vite%20cli/README.md)
+
+## 4. Vite 配置
+
+- [ ] [0018. vite 配置文件 - vite.config.js](https://github.com/tnotesjs/TNotes.vite/tree/main/notes/0018.%20vite%20%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%20-%20vite.config.js/README.md)
+
+## 5. ⏰ pending
 
 - [ ] [0014. vite 思维导图](https://github.com/tnotesjs/TNotes.vite/tree/main/notes/0014.%20vite%20%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/README.md)
 - [ ] [0002. 一次性导入所有模块](https://github.com/tnotesjs/TNotes.vite/tree/main/notes/0002.%20%E4%B8%80%E6%AC%A1%E6%80%A7%E5%AF%BC%E5%85%A5%E6%89%80%E6%9C%89%E6%A8%A1%E5%9D%97/README.md)
