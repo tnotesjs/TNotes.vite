@@ -30,7 +30,7 @@
 
 ## 4. Vite 配置
 
-- [ ] [0018. vite 配置文件 - vite.config.js](https://github.com/tnotesjs/TNotes.vite/tree/main/notes/0018.%20vite%20%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%20-%20vite.config.js/README.md)
+- [x] [0018. vite 配置文件 - vite.config.js](https://github.com/tnotesjs/TNotes.vite/tree/main/notes/0018.%20vite%20%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%20-%20vite.config.js/README.md)
 
 ## 5. ⏰ pending
 
