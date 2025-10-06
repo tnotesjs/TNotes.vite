@@ -49,6 +49,11 @@ jobs:
         run: pnpm tn:update
       - name: Build with VitePress
         run: pnpm tn:build
+      - name: Debug - List files after build
+        run: |
+          ls -la
+          ls -la .vitepress/
+          ls -la .vitepress/dist || echo ".vitepress/dist does not exist!"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
