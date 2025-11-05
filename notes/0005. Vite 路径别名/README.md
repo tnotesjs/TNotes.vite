@@ -9,10 +9,10 @@
 - [3. 💻 demo](#3--demo)
   - [3.1. 最终效果](#31-最终效果)
   - [3.2. 实现步骤](#32-实现步骤)
-    - [3.2.1. 配置 vite.config.ts 的 alias](#321-配置-viteconfigts-的-alias)
-    - [3.2.2. 配置 tsconfig.app.json 的](#322-配置-tsconfigappjson-的)
-    - [3.2.3. 注意缓存问题](#323-注意缓存问题)
-    - [3.2.4. 测试](#324-测试)
+    - [配置 vite.config.ts 的 alias](#配置-viteconfigts-的-alias)
+    - [配置 tsconfig.app.json 的](#配置-tsconfigappjson-的)
+    - [注意缓存问题](#注意缓存问题)
+    - [测试](#测试)
 
 <!-- endregion:toc -->
 
@@ -94,7 +94,7 @@ import HelloWorld from './components/HelloWorld.vue'
 
 ### 3.2. 实现步骤
 
-#### 3.2.1. 配置 vite.config.ts 的 alias
+#### 配置 vite.config.ts 的 alias
 
 在 vite 配置文件中，指定俩路径别名 `@/`、`#/`，分别映射到根目录下的 src 目录和 types 目录。我们可以通过配置 `alias` 字段来指定路径别名的映射规则，其中 find 字段配置的是路径别名，replacement 用于指定对应的目标位置。
 
@@ -130,7 +130,7 @@ export default defineConfig({
 })
 ```
 
-#### 3.2.2. 配置 tsconfig.app.json 的
+#### 配置 tsconfig.app.json 的
 
 `paths` 字段在 TypeScript 配置文件中用于配置模块的路径映射。
 
@@ -150,11 +150,11 @@ export default defineConfig({
 
 这段配置告诉 TypeScript 编译器如何解析以 `@/`、`#/` 开头的路径，否则在工程中使用以 `@/`、`#/` 开头的路径时，VS Code 会报错，提示模块找不到。
 
-#### 3.2.3. 注意缓存问题
+#### 注意缓存问题
 
 如果配置完成后，还是存在找不到模块的报错，可能是因为缓存问题，可以将 VS Code 给退出重新进入试试看。
 
-#### 3.2.4. 测试
+#### 测试
 
 我们可以随便准备点儿模块来测试一下。
 
