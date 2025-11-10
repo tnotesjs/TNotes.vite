@@ -2,11 +2,11 @@
 
 <!-- region:toc -->
 
-  - [1. 学习资料](#1-学习资料)
-  - [2. 初始 Vite](#2-初始-vite)
-  - [3. Vite 命令](#3-vite-命令)
-  - [4. Vite 配置](#4-vite-配置)
-  - [5. ⏰ pending](#5--pending)
+- [1. 学习资料](#1-学习资料)
+- [2. 初始 Vite](#2-初始-vite)
+- [3. Vite 命令](#3-vite-命令)
+- [4. Vite 配置](#4-vite-配置)
+- [5. ⏰ pending](#5--pending)
 
 <!-- endregion:toc -->
 
