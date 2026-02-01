@@ -32,12 +32,13 @@
       "25.10": 9,
       "25.11": 9,
       "25.12": 9,
-      "26.01": 9
+      "26.01": 9,
+      "26.02": 9
     },
     "details": "Vite 笔记",
     "link": "https://tnotesjs.github.io/TNotes.vite/",
     "created_at": 1727046902000,
-    "updated_at": 1767227734681,
+    "updated_at": 1769948373438,
     "days_since_birth": 9219
   },
   "port": 9379,
