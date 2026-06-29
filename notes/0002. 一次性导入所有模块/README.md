@@ -2,21 +2,21 @@
 
 <!-- region:toc -->
 
-- [1. 📝 概述](#1--概述)
-- [2. 🔗 References](#2--references)
-- [3. 📒 `import.meta.glob` 的一些常见用法](#3--importmetaglob-的一些常见用法)
-- [4. 📒 理解语法糖 `import.meta.glob` 的基本原理](#4--理解语法糖-importmetaglob-的基本原理)
-- [5. 💻 demo1 - 导入 modules 中的所有 .ts 文件](#5--demo1---导入-modules-中的所有-ts-文件)
-- [6. 💻 demo2 - 导入 modules-1 和 modules-2 中的所有 .ts 文件](#6--demo2---导入-modules-1-和-modules-2-中的所有-ts-文件)
-- [7. 💻 demo3 - 递归导入](#7--demo3---递归导入)
+- [1. 概述](#1-概述)
+- [2. References](#2-references)
+- [3. `import.meta.glob` 的一些常见用法](#3-importmetaglob-的一些常见用法)
+- [4. 理解语法糖 `import.meta.glob` 的基本原理](#4-理解语法糖-importmetaglob-的基本原理)
+- [5. demo1 - 导入 modules 中的所有 .ts 文件](#5-demo1---导入-modules-中的所有-ts-文件)
+- [6. demo2 - 导入 modules-1 和 modules-2 中的所有 .ts 文件](#6-demo2---导入-modules-1-和-modules-2-中的所有-ts-文件)
+- [7. demo3 - 递归导入](#7-demo3---递归导入)
 
 <!-- endregion:toc -->
 
-## 1. 📝 概述
+## 1. 概述
 
 - 本文内容：介绍 `import.meta.glob` 的基本使用
 
-## 2. 🔗 References
+## 2. References
 
 ::: details
 
@@ -25,7 +25,7 @@
 
 :::
 
-## 3. 📒 `import.meta.glob` 的一些常见用法
+## 3. `import.meta.glob` 的一些常见用法
 
 - 从 **指定单一目录** 中导入满足要求的所有模块。
 
@@ -61,7 +61,7 @@ const modules = import.meta.glob(['./modules-1/**/*.ts', './modules-2/*.ts'], {
 ```ts
 const modules = import.meta.glob(
   ['./modules-1/**/*.{json,ts,js}', './modules-2/*.ts'],
-  { eager: true }
+  { eager: true },
 )
 // './modules-1/**/*.{json,ts,js}'
 // 导入 modules-1 目录下的所有模块
@@ -69,7 +69,7 @@ const modules = import.meta.glob(
 // 这些模块以 json 或 ts 或 js 为后缀
 ```
 
-## 4. 📒 理解语法糖 `import.meta.glob` 的基本原理
+## 4. 理解语法糖 `import.meta.glob` 的基本原理
 
 - 问：语法糖 `import.meta.glob(..., { eager: true })` 的等效写法（编译结果）是什么？
 
@@ -103,7 +103,7 @@ const modules = Object.assign({
 // 形成一个对象返回
 ```
 
-## 5. 💻 demo1 - 导入 modules 中的所有 .ts 文件
+## 5. demo1 - 导入 modules 中的所有 .ts 文件
 
 - src 目录结构
 
@@ -254,7 +254,7 @@ const _hoisted_1 = /* @__PURE__ */ _createElementVNode(
   'h1',
   null,
   'modules',
-  -1
+  -1,
   /* HOISTED */
 )
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -267,7 +267,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         _hoisted_1,
         _createElementVNode('h2', null, _toDisplayString($setup.myModules)),
       ],
-      64
+      64,
       /* STABLE_FRAGMENT */
     )
   )
@@ -293,7 +293,7 @@ export default /* @__PURE__ */ _export_sfc(_sfc_main, [
 //# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJtYXBwaW5ncyI6Ijs7Ozs7QUFDQSxVQUFNLFVBQVUsWUFBWSxLQUFLLGtCQUFrQixFQUFFLE9BQU8sS0FBSyxDQUFDO0FBQ2xFLFlBQVEsSUFBSSxPQUFPO0FBZ0JuQixVQUFNLFlBQW1CLENBQUM7QUFDMUIsV0FBTyxLQUFLLE9BQU8sRUFBRSxRQUFRLENBQUMsUUFBUTtBQUNwQyxjQUFRLElBQUksR0FBRztBQUtmLGdCQUFVLEtBQUssUUFBUSxHQUFHLEVBQUUsT0FBTztBQUFBLElBQ3JDLENBQUM7Ozs7Ozs7bUJBSUM7QUFBQSxFQUFnQjtBQUFBO0FBQUEsRUFBWjtBQUFBLEVBQU87QUFBQTtBQUFBOzt1QkE5QmI7QUFBQTtBQUFBO0FBQUE7QUFBQSxNQThCRTtBQUFBLE1BQ0Esb0JBQXdCLDZCQUFqQixnQkFBUztBQUFBIiwibmFtZXMiOltdLCJpZ25vcmVMaXN0IjpbXSwic291cmNlcyI6WyJBcHAudnVlIl0sInNvdXJjZXNDb250ZW50IjpbIjxzY3JpcHQgc2V0dXAgbGFuZz1cInRzXCI+XG5jb25zdCBtb2R1bGVzID0gaW1wb3J0Lm1ldGEuZ2xvYignLi9tb2R1bGVzLyoudHMnLCB7IGVhZ2VyOiB0cnVlIH0pIGFzIFJlY29yZDxzdHJpbmcsIGFueT5cbmNvbnNvbGUubG9nKG1vZHVsZXMpXG4vLyB7XG4vLyAgICAgXCIuL21vZHVsZXMvMS50c1wiOiB7XG4vLyAgICAgICAgIFwiYVwiOiAxLFxuLy8gICAgICAgICBcImRlZmF1bHRcIjogMVxuLy8gICAgIH0sXG4vLyAgICAgXCIuL21vZHVsZXMvMi50c1wiOiB7XG4vLyAgICAgICAgIFwiYlwiOiAxLFxuLy8gICAgICAgICBcImRlZmF1bHRcIjogMlxuLy8gICAgIH0sXG4vLyAgICAgXCIuL21vZHVsZXMvMy50c1wiOiB7XG4vLyAgICAgICAgIFwiY1wiOiAzLFxuLy8gICAgICAgICBcImRlZmF1bHRcIjogM1xuLy8gICAgIH1cbi8vIH1cblxuY29uc3QgbXlNb2R1bGVzOiBhbnlbXSA9IFtdXG5PYmplY3Qua2V5cyhtb2R1bGVzKS5mb3JFYWNoKChrZXkpID0+IHtcbiAgY29uc29sZS5sb2coa2V5KVxuICAvLyAuL21vZHVsZXMvMS50c1xuICAvLyAuL21vZHVsZXMvMi50c1xuICAvLyAuL21vZHVsZXMvMy50c1xuXG4gIG15TW9kdWxlcy5wdXNoKG1vZHVsZXNba2V5XS5kZWZhdWx0KVxufSlcbjwvc2NyaXB0PlxuXG48dGVtcGxhdGU+XG4gIDxoMT5tb2R1bGVzPC9oMT5cbiAgPGgyPnt7IG15TW9kdWxlcyB9fTwvaDI+XG48L3RlbXBsYXRlPlxuIl0sImZpbGUiOiIvVXNlcnMvaHV5b3VkYS9EZXNrdG9wL3ZpdGUtcHJvamVjdC9zcmMvQXBwLnZ1ZSJ9
 ```
 
-## 6. 💻 demo2 - 导入 modules-1 和 modules-2 中的所有 .ts 文件
+## 6. demo2 - 导入 modules-1 和 modules-2 中的所有 .ts 文件
 
 - src 目录结构
 
@@ -377,7 +377,7 @@ Object.keys(modules).forEach((key) => {
 - 编译结果
   - ![](assets/2024-10-16-23-06-24.png)
 
-## 7. 💻 demo3 - 递归导入
+## 7. demo3 - 递归导入
 
 - src 目录结构
 

@@ -2,21 +2,21 @@
 
 <!-- region:toc -->
 
-- [1. 📝 概述](#1--概述)
-- [2. 🔗 References - UnoCSS 官方内容](#2--references---unocss-官方内容)
-- [3. 🔗 References - 掘金小册](#3--references---掘金小册)
-- [4. 🔗 References - VSCode 插件](#4--references---vscode-插件)
-- [5. 🔗 References - 其他原子 CSS 引擎 - tailwindcss](#5--references---其他原子-css-引擎---tailwindcss)
-- [6. 🔗 References - 其他原子 CSS 引擎 - windicss](#6--references---其他原子-css-引擎---windicss)
-- [7. 🔗 References - 掘金文章](#7--references---掘金文章)
+- [1. 概述](#1-概述)
+- [2. References - UnoCSS 官方内容](#2-references---unocss-官方内容)
+- [3. References - 掘金小册](#3-references---掘金小册)
+- [4. References - VSCode 插件](#4-references---vscode-插件)
+- [5. References - 其他原子 CSS 引擎 - tailwindcss](#5-references---其他原子-css-引擎---tailwindcss)
+- [6. References - 其他原子 CSS 引擎 - windicss](#6-references---其他原子-css-引擎---windicss)
+- [7. References - 掘金文章](#7-references---掘金文章)
 
 <!-- endregion:toc -->
 
-## 1. 📝 概述
+## 1. 概述
 
 - 本文记录和 UnoCSS 相关的一些链接
 
-## 2. 🔗 References - UnoCSS 官方内容
+## 2. References - UnoCSS 官方内容
 
 ::: details
 
@@ -27,7 +27,7 @@
 
 :::
 
-## 3. 🔗 References - 掘金小册
+## 3. References - 掘金小册
 
 ::: details
 
@@ -41,7 +41,7 @@
 
 :::
 
-## 4. 🔗 References - VSCode 插件
+## 4. References - VSCode 插件
 
 ::: details
 
@@ -54,7 +54,7 @@
 
 :::
 
-## 5. 🔗 References - 其他原子 CSS 引擎 - tailwindcss
+## 5. References - 其他原子 CSS 引擎 - tailwindcss
 
 ::: details
 
@@ -65,7 +65,7 @@
 
 :::
 
-## 6. 🔗 References - 其他原子 CSS 引擎 - windicss
+## 6. References - 其他原子 CSS 引擎 - windicss
 
 ::: details
 
@@ -76,7 +76,7 @@
 
 :::
 
-## 7. 🔗 References - 掘金文章
+## 7. References - 掘金文章
 
 ::: details
 

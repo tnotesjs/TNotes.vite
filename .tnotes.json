@@ -32,23 +32,20 @@
       "26.02": 9,
       "26.03": 9,
       "26.04": 9,
+      "26.05": 9,
       "26.06": 9
     },
     "details": "Vite 笔记",
     "link": "https://tnotesjs.github.io/TNotes.vite/",
     "created_at": 1727046902000,
-    "updated_at": 1780377459000,
-    "days_since_birth": 9836
+    "updated_at": 1782718925000,
+    "days_since_birth": 9863
   },
   "port": 9379,
   "menuItems": [
     {
       "text": "🏠 Home",
       "link": "/"
-    },
-    {
-      "text": "⚙️ Settings",
-      "link": "/Settings"
     },
     {
       "text": "📒 TNotes",

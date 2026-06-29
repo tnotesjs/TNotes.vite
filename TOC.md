@@ -1,0 +1,23 @@
+- 学习资料
+  - [x] 0017. vite 菜鸟教程
+  - [x] 0011. 《深入浅出 Vite》（掘金小册）
+  - [x] 0012. 《基于 Vite 的 SSG 框架开发实战》（掘金小册）
+- 初始 Vite
+  - [x] 0016. vite 简介
+  - [x] 0015. vite 核心特性
+  - [x] 0001. 从 0 到 1 搭建一个原生的（vanilla） vite 工程
+  - [x] 0009. vite vs. webpack
+- Vite 命令
+  - [x] 0010. vite cli
+- Vite 配置
+  - [x] 0018. vite 配置文件 - vite.config.js
+- pending
+  - [ ] 0014. vite 思维导图
+  - [ ] 0002. 一次性导入所有模块
+  - [ ] 0003. vite-plugin-mock 的基本使用
+  - [ ] 0004. 开始使用 unocss
+  - [ ] 0005. Vite 路径别名
+  - [ ] 0006. UnoCSS 学习资源
+  - [ ] 0007. unocss 究竟比 tailwindcss 快多少
+  - [ ] 0008. 前端工程的痛点
+  - [ ] 0013. 了解 Rollup

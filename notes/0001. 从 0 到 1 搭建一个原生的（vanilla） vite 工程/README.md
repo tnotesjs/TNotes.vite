@@ -2,21 +2,21 @@
 
 <!-- region:toc -->
 
-- [1. 🎯 本节内容](#1--本节内容)
-- [2. 🫧 评价](#2--评价)
-- [3. 🤔 “vanilla” 是什么意思？](#3--vanilla-是什么意思)
-- [4. 🔍 查看官方提供的 vanilla-ts 模板](#4--查看官方提供的-vanilla-ts-模板)
-- [5. 🤔 Vite 支持 TS 吗？](#5--vite-支持-ts-吗)
-- [6. 💻 demos.1 - 从 0 到 1 搭建一个 `vite-vanilla-ts` 工程](#6--demos1---从-0-到-1-搭建一个-vite-vanilla-ts-工程)
-- [7. 🔗 引用](#7--引用)
+- [1. 本节内容](#1-本节内容)
+- [2. 评价](#2-评价)
+- [3. “vanilla” 是什么意思？](#3-vanilla-是什么意思)
+- [4. 查看官方提供的 vanilla-ts 模板](#4-查看官方提供的-vanilla-ts-模板)
+- [5. Vite 支持 TS 吗？](#5-vite-支持-ts-吗)
+- [6. demos.1 - 从 0 到 1 搭建一个 `vite-vanilla-ts` 工程](#6-demos1---从-0-到-1-搭建一个-vite-vanilla-ts-工程)
+- [7. 引用](#7-引用)
 
 <!-- endregion:toc -->
 
-## 1. 🎯 本节内容
+## 1. 本节内容
 
 - 从 0 到 1 搭建一个 vite 的原生 demo
 
-## 2. 🫧 评价
+## 2. 评价
 
 - 基于 vite 从 0 到 1 搭建一个 `vite-vanilla-ts` 工程，实现最基础的：
   - dev
@@ -27,12 +27,12 @@
   - build 出来的产物，也是自带文件指纹的。
   - 从开箱即用的角度来对比，vite 比 webpack 做得更加全面，你只需要 `1～2min`，就能搭建好一个纯粹的 vite-demo 了，并且还带有 TypeScript 支持。
 
-## 3. 🤔 “vanilla” 是什么意思？
+## 3. “vanilla” 是什么意思？
 
 - vanilla - “纯粹” -> 发音：`/vəˈnɪlə/`
 - “Vanilla” 代表的是 **纯粹**、简单和直接的编程方式，强调不依赖额外的框架或库，而是直接使用 **原生** 的语言和技术。
 
-## 4. 🔍 查看官方提供的 vanilla-ts 模板
+## 4. 查看官方提供的 vanilla-ts 模板
 
 - [vite -- vanilla-ts][2]
   - ![图 0](https://cdn.jsdelivr.net/gh/tnotesjs/imgs@main/2025-10-04-19-38-31.png)
@@ -48,12 +48,12 @@ $ npm create vite@latest my-vanilla-ts -- --template vanilla-ts
 # 相当于直接从 vite 仓库中拉取这个模板中的内容
 ```
 
-## 5. 🤔 Vite 支持 TS 吗？
+## 5. Vite 支持 TS 吗？
 
 - Vite 天然支持引入 .ts 文件。
 - 注意，Vite 仅执行 .ts 文件的转译工作，并 **不执行** 任何类型检查。如果有类型检查的需求，可以通过 `tsc` 来实现。
 
-## 6. 💻 demos.1 - 从 0 到 1 搭建一个 `vite-vanilla-ts` 工程
+## 6. demos.1 - 从 0 到 1 搭建一个 `vite-vanilla-ts` 工程
 
 ::: code-group
 
@@ -139,7 +139,7 @@ $ pnpm preview
 
 - 至此，最基础的开发环境启动、生产环境的打包预览功能都已经完成了。
 
-## 7. 🔗 引用
+## 7. 引用
 
 - vite -> vanilla-ts
   - [vanilla-ts 模板源码][1]

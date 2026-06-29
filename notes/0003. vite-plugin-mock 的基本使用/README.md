@@ -2,18 +2,18 @@
 
 <!-- region:toc -->
 
-- [1. 📝 概述](#1--概述)
-- [2. 🔗 References](#2--references)
-- [3. 💻 demo](#3--demo)
+- [1. 概述](#1-概述)
+- [2. References](#2-references)
+- [3. demo](#3-demo)
 
 <!-- endregion:toc -->
 
-## 1. 📝 概述
+## 1. 概述
 
 - 本节内容：vite-plugin-mock 的基本使用。
 - 在 Vite 中使用 mock 数据是一个非常实用的功能，如果跟负责写后端的朋友接口还没写好，前端可以自行根据接口文档的要求来 mock 数据。做法很简单，在下面的 demo 中记录基本流程。
 
-## 2. 🔗 References
+## 2. References
 
 ::: details
 
@@ -24,7 +24,7 @@
 
 :::
 
-## 3. 💻 demo
+## 3. demo
 
 - 初始化
 

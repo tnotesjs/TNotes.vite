@@ -2,16 +2,16 @@
 
 <!-- region:toc -->
 
-- [1. 📝 概述](#1--概述)
-- [2. 🔗 References](#2--references)
-- [3. 📒 notes](#3--notes)
-- [4. 💻 demo](#4--demo)
+- [1. 概述](#1-概述)
+- [2. References](#2-references)
+- [3. notes](#3-notes)
+- [4. demo](#4-demo)
 
 <!-- endregion:toc -->
 
-## 1. 📝 概述
+## 1. 概述
 
-## 2. 🔗 References
+## 2. References
 
 ::: details
 
@@ -21,9 +21,9 @@
 
 :::
 
-## 3. 📒 notes
+## 3. notes
 
-## 4. 💻 demo
+## 4. demo
 
 ```
 
