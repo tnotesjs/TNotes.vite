@@ -14,32 +14,132 @@
 
 ## 1. 本节内容
 
-- todo
+- 了解 Vite 的 CSS 相关配置选项
+- 掌握 CSS Modules、预处理器、PostCSS 的配置方式
+- 理解 CSS source map 和压缩器的选择
 
 ## 2. 评价
 
-- todo
+- Vite 对 CSS 的支持非常完善，大部分场景零配置即可使用
+- CSS 预处理器只需安装对应的 npm 包，无需额外配置
+- `css.modules` 和 `css.postcss` 在需要精细控制时使用
 
 ## 3. `css.modules`
 
-- todo
+- 配置 CSS Modules 的行为
+- 常用选项：
 
+```ts
+export default defineConfig({
+  css: {
+    modules: {
+      // 类名生成规则
+      localsConvention: 'camelCaseOnly', // 将 kebab-case 转为 camelCase
+      // 自定义作用域名称
+      generateScopedName: '[name]__[local]___[hash:base64:5]',
+    },
+  },
+})
+```
+
+- `localsConvention` 可选值：
+  - `'camelCase'`：同时保留原始类名和 camelCase 版本
+  - `'camelCaseOnly'`：只导出 camelCase 版本
+  - `'dashes'`：将 dashes 转为 camelCase
+  - `'dashesOnly'`：只导出 dashes 的 camelCase 版本
+- `generateScopedName`：自定义生成的类名格式，支持占位符 `[name]`、`[local]`、`[hash]` 等
 
 ## 4. `css.preprocessorOptions`
 
-- todo
+- 传递选项给 CSS 预处理器（Sass、Less、Stylus）
+- Sass 配置示例：
 
+```ts
+export default defineConfig({
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "@/styles/variables.scss";`,
+        // API 版本选择（新版 sass 推荐 modern API）
+        api: 'modern-compiler',
+      },
+    },
+  },
+})
+```
+
+- Less 配置示例：
+
+```ts
+css: {
+  preprocessorOptions: {
+    less: {
+      modifyVars: { 'primary-color': '#1890ff' },
+      javascriptEnabled: true,
+    },
+  },
+}
+```
+
+- `additionalData` 是最常用的选项，用于全局注入变量、mixin 等
 
 ## 5. `css.postcss`
 
-- todo
+- 配置 PostCSS 选项或指定 PostCSS 配置文件路径
+- 方式一：通过配置对象直接设置
 
+```ts
+export default defineConfig({
+  css: {
+    postcss: {
+      plugins: [autoprefixer(), cssnano()],
+    },
+  },
+})
+```
+
+- 方式二：指定 PostCSS 配置文件路径
+
+```ts
+css: {
+  postcss: './postcss.config.js',
+}
+```
+
+- 注意：如果项目根目录存在 `postcss.config.js`，Vite 会自动加载，无需在此配置
+- 优先级：`css.postcss` > 项目根目录的 `postcss.config.js`
 
 ## 6. `css.devSourcemap`
 
-- todo
+- 是否在开发模式下生成 CSS 的 source map，默认为 `false`
+- 设为 `true` 后，浏览器 DevTools 中可以定位到 CSS 源文件的具体行号
+- 开启后对调试有帮助，但会略微影响开发环境的性能
 
+```ts
+export default defineConfig({
+  css: {
+    devSourcemap: true,
+  },
+})
+```
 
 ## 7. `css.transformer`
 
-- todo
+- 指定 CSS 的压缩工具，默认为 `'postcss'`
+- 可选值：
+  - `'postcss'`：使用 PostCSS 进行 CSS 转换和压缩（默认）
+  - `'lightningcss'`：使用 Lightning CSS（Rust 实现，速度极快）
+- Lightning CSS 的优势：
+  - 压缩速度比 PostCSS + cssnano 快 10-100 倍
+  - 支持 CSS 嵌套语法、CSS Layers 等现代特性
+  - 自动添加浏览器前缀
+
+```ts
+export default defineConfig({
+  css: {
+    transformer: 'lightningcss',
+  },
+})
+```
+
+- 使用 Lightning CSS 需要安装 `lightningcss` 依赖
