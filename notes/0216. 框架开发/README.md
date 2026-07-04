@@ -14,28 +14,36 @@
 
 ## 1. 本节内容
 
-- todo
+- 使用 Vite 进行框架开发的速查清单
+- 覆盖 Vue/React 集成、路由、状态管理、样式方案、静态资源
 
 ## 2. 评价
 
-- todo
+- 框架开发是 Vite 最常见的使用场景
 
 ## 3. Vue / React 与 Vite 集成
 
-- todo
+- Vue：`@vitejs/plugin-vue` + `@vitejs/plugin-vue-jsx`（可选）
+- React：`@vitejs/plugin-react-swc`（推荐）或 `@vitejs/plugin-react`
 
 ## 4. 路由
 
-- todo
+- Vue Router：`createRouter` + `createWebHistory`，路由懒加载 `() => import()`
+- React Router：`BrowserRouter` + `Routes`，`React.lazy()` 懒加载
 
 ## 5. 状态管理
 
-- todo
+- Vue：Pinia（推荐）或 Vuex
+- React：Zustand（轻量）、Redux Toolkit（大型项目）、Jotai（原子化）
 
 ## 6. 样式方案
 
-- todo
+- CSS Modules（`.module.css`）：推荐的样式隔离方案
+- Tailwind CSS / UnoCSS：原子化 CSS
+- Sass/Less：预处理器（安装即可使用）
 
 ## 7. 静态资源处理
 
-- todo
+- `import img from './img.png'`：返回带哈希的 URL
+- `import text from './file?raw'`：返回原始字符串
+- `import url from './file?url'`：返回文件 URL

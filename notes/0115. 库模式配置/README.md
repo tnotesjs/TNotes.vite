@@ -14,32 +14,81 @@
 
 ## 1. 本节内容
 
-- todo
+- 掌握 Vite 库模式的各项配置选项
+- 了解 `build.lib` 下各配置项的作用
 
 ## 2. 评价
 
-- todo
+- 库模式配置简洁明了，几个核心选项即可覆盖大部分场景
 
 ## 3. `build.lib`
 
-- todo
+- 启用库模式的顶层配置：
 
+```ts
+export default defineConfig({
+  build: {
+    lib: {
+      entry: 'src/index.ts',
+      name: 'MyLib',
+      formats: ['es', 'umd'],
+      fileName: (format) => `my-lib.${format}.js`,
+    },
+  },
+})
+```
 
 ## 4. `entry`
 
-- todo
+- 库的入口文件，可以是 JS/TS 文件
+- 通常为 `src/index.ts`，导出库的公共 API
 
+```ts
+lib: {
+  entry: 'src/index.ts',
+}
+```
 
 ## 5. `name`
 
-- todo
+- UMD 格式下的全局变量名
+- 当通过 `<script>` 标签引入时，可以通过此名称访问库
 
+```ts
+lib: {
+  name: 'MyLib',
+}
+```
+
+```html
+<script src="https://cdn.example.com/my-lib.umd.js"></script>
+<script>
+  console.log(window.MyLib) // 访问库
+</script>
+```
 
 ## 6. `formats`
 
-- todo
+- 指定输出格式，可选值：`'es'`、`'cjs'`、`'umd'`、`'iife'`
 
+```ts
+lib: {
+  formats: ['es', 'umd'],
+}
+```
+
+- 推荐至少输出 `es` 和 `umd` 两种格式
 
 ## 7. `fileName`
 
-- todo
+- 自定义输出文件名，可以是字符串或函数
+
+```ts
+lib: {
+  // 固定文件名
+  fileName: 'my-lib',
+
+  // 按格式区分文件名（推荐）
+  fileName: (format) => `my-lib.${format}.js`,
+}
+```

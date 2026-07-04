@@ -14,32 +14,93 @@
 
 ## 1. 本节内容
 
-- todo
+- 了解 Vue 和 React 组件的测试方案
+- 掌握 Vue Test Utils 和 React Testing Library 的使用
+- 理解 jsdom 和 happy-dom 的区别
 
 ## 2. 评价
 
-- todo
+- 组件测试是保障 UI 行为正确性的重要手段
+- Testing Library 的理念是"像用户一样测试组件"，推荐使用
 
 ## 3. Vue Test Utils
 
-- todo
+- Vue 官方的组件测试工具库：
 
+```bash
+npm install -D @vue/test-utils
+```
+
+```ts
+import { mount } from '@vue/test-utils'
+import Counter from './Counter.vue'
+
+describe('Counter', () => {
+  it('increments count', async () => {
+    const wrapper = mount(Counter)
+    await wrapper.find('button').trigger('click')
+    expect(wrapper.find('.count').text()).toBe('1')
+  })
+})
+```
 
 ## 4. React Testing Library
 
-- todo
+- React 社区推荐的组件测试库：
 
+```bash
+npm install -D @testing-library/react @testing-library/jest-dom
+```
+
+```tsx
+import { render, screen, fireEvent } from '@testing-library/react'
+import Counter from './Counter'
+
+describe('Counter', () => {
+  it('increments count', () => {
+    render(<Counter />)
+    fireEvent.click(screen.getByRole('button'))
+    expect(screen.getByText('1')).toBeInTheDocument()
+  })
+})
+```
 
 ## 5. Testing Library
 
-- todo
-
+- Testing Library 是一套测试工具集，支持 Vue、React、Svelte 等多个框架
+- 核心理念：测试应该关注用户行为，而非组件内部实现
+- 不鼓励测试组件的内部状态，而是测试用户看到的内容和交互
 
 ## 6. jsdom
 
-- todo
+- jsdom 是 Node.js 中的 DOM 实现，用于模拟浏览器环境
+- Vitest 默认使用 jsdom 作为测试环境
 
+```ts
+// vitest.config.ts
+export default defineConfig({
+  test: {
+    environment: 'jsdom',
+  },
+})
+```
+
+- 优点：兼容性好，支持大部分 DOM API
+- 缺点：性能一般，不支持布局相关的 API（如 `getBoundingClientRect`）
 
 ## 7. happy-dom
 
-- todo
+- happy-dom 是 jsdom 的替代品，速度更快：
+
+```ts
+// vitest.config.ts
+export default defineConfig({
+  test: {
+    environment: 'happy-dom',
+  },
+})
+```
+
+- 优势：速度比 jsdom 快 2-3 倍
+- 缺点：DOM API 覆盖不如 jsdom 完整
+- 选择建议：大部分项目使用 happy-dom 即可，遇到兼容问题时切换到 jsdom

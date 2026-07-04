@@ -14,32 +14,69 @@
 
 ## 1. 本节内容
 
-- todo
+- 了解 Vite 中使用 Web Worker 的方式
+- 掌握 `new Worker` 和 `?worker` 后缀的用法
+- 了解 Worker 的类型声明和打包配置
 
 ## 2. 评价
 
-- todo
+- Vite 对 Web Worker 有良好的原生支持，无需额外配置
+- `new Worker(new URL(...))` 是推荐的方式，兼容性最好
 
 ## 3. `new Worker`
 
-- todo
+- 使用 `new Worker(new URL(...))` 语法创建 Worker：
 
+```ts
+const worker = new Worker(new URL('./worker.ts', import.meta.url))
+```
+
+- Vite 会自动处理 Worker 文件的打包
+- 开发环境和生产环境都能正确工作
 
 ## 4. `?worker`
 
-- todo
+- 使用 `?worker` 后缀将文件作为 Worker 导入：
 
+```ts
+import MyWorker from './worker?worker'
+
+const worker = new MyWorker()
+worker.postMessage('hello')
+```
+
+- 也可以使用 `?worker&inline` 将 Worker 代码内联为 Blob URL
 
 ## 5. `?sharedworker`
 
-- todo
+- 使用 `?sharedworker` 后缀创建 SharedWorker：
 
+```ts
+import SharedWorker from './shared-worker?sharedworker'
+
+const worker = new SharedWorker()
+worker.port.onmessage = (e) => console.log(e.data)
+```
 
 ## 6. Worker 类型声明
 
-- todo
+- 为 Worker 文件添加 TypeScript 类型声明：
 
+```ts
+// src/env.d.ts
+declare module '*?worker' {
+  const WorkerFactory: { new (): Worker }
+  export default WorkerFactory
+}
+
+declare module '*?sharedworker' {
+  const SharedWorkerFactory: { new (): SharedWorker }
+  export default SharedWorkerFactory
+}
+```
 
 ## 7. Worker 打包
 
-- todo
+- Vite 在构建时自动打包 Worker 文件
+- Worker 文件会被单独打包为独立的 chunk
+- 可以在 Worker 中使用 `import`、TypeScript 等特性，Vite 会自动处理

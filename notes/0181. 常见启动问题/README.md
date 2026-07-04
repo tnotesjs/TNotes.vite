@@ -13,27 +13,43 @@
 
 ## 1. 本节内容
 
-- todo
+- 了解 Vite 开发服务器启动时的常见问题
+- 掌握端口占用、Node 版本、依赖安装、ESM/CJS 冲突的排查方法
 
 ## 2. 评价
 
-- todo
+- 大部分启动问题都有明确的错误信息，仔细阅读即可定位
 
 ## 3. 端口占用
 
-- todo
-
+- 问题：`Port 5173 is already in use`
+- 解决：
+  - 换一个端口：`vite --port 3000`
+  - 杀掉占用端口的进程：`npx kill-port 5173`
+  - 或让 Vite 自动尝试下一个端口（默认行为）
 
 ## 4. Node 版本不兼容
 
-- todo
-
+- 问题：`Vite requires Node.js version X or higher`
+- 解决：
+  - 检查当前版本：`node -v`
+  - 升级 Node.js 到要求的版本
+  - 使用 nvm 切换版本：`nvm use 20`
 
 ## 5. 依赖安装失败
 
-- todo
-
+- 问题：`npm install` 或 `pnpm install` 失败
+- 常见原因：
+  - 网络问题：配置镜像源（`npm config set registry https://registry.npmmirror.com`）
+  - Node 版本不兼容：某些依赖需要特定的 Node 版本
+  - 权限问题：使用 `--unsafe-perm` 或修复目录权限
+  - 缓存损坏：清除缓存 `npm cache clean --force`
 
 ## 6. ESM / CJS 冲突
 
-- todo
+- 问题：`require is not defined in ES module scope` 或 `Cannot use import statement outside a module`
+- 原因：`package.json` 的 `type` 字段与文件扩展名不匹配
+- 解决：
+  - 如果使用 ESM：`"type": "module"`，配置文件用 `.mjs` 或 `.ts`
+  - 如果使用 CJS：不设置 `type`，配置文件用 `.cjs`
+  - Vite 配置文件推荐使用 `vite.config.ts`（自动处理）

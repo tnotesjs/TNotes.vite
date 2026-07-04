@@ -13,27 +13,71 @@
 
 ## 1. 本节内容
 
-- todo
+- 了解主流包管理工具的 Monorepo 支持
+- 掌握 pnpm workspace、npm workspace、yarn workspace 的配置方式
 
 ## 2. 评价
 
-- todo
+- pnpm workspace 是 Monorepo 的首选包管理工具
+- 硬链接机制节省磁盘空间，严格依赖隔离避免幽灵依赖
 
 ## 3. pnpm workspace
 
-- todo
+- pnpm 的 Monorepo 支持：
 
+```yaml
+# pnpm-workspace.yaml
+packages:
+  - 'packages/*'
+  - 'apps/*'
+```
+
+- 命令：
+  - `pnpm install`：安装所有包的依赖
+  - `pnpm -F @my/lib add lodash`：为指定包安装依赖
+  - `pnpm -r run build`：递归执行所有包的 build 脚本
+  - `pnpm --filter ./apps/* run dev`：只对 apps 下的包执行命令
+- 优势：磁盘占用少、依赖隔离严格、速度快
 
 ## 4. npm workspace
 
-- todo
+- npm 7+ 支持 workspace：
 
+```json
+{
+  "workspaces": ["packages/*", "apps/*"]
+}
+```
+
+- 命令：
+  - `npm install`：安装所有依赖
+  - `npm run build -w packages/shared`：在指定 workspace 中执行命令
+- 缺点：性能不如 pnpm，依赖隔离不如 pnpm 严格
 
 ## 5. yarn workspace
 
-- todo
+- Yarn 的 Monorepo 支持：
 
+```json
+{
+  "workspaces": ["packages/*", "apps/*"]
+}
+```
+
+- Yarn Berry（v4+）支持 Plug'n'Play（PnP），无需 `node_modules`
+- 命令：
+  - `yarn install`：安装所有依赖
+  - `yarn workspace @my/lib add lodash`：为指定包安装依赖
+  - `yarn workspaces foreach run build`：遍历执行所有包的命令
 
 ## 6. bun workspace
 
-- todo
+- Bun 也支持 workspace：
+
+```json
+{
+  "workspaces": ["packages/*", "apps/*"]
+}
+```
+
+- 安装速度极快，但生态兼容性仍在完善中

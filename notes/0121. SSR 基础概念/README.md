@@ -13,27 +13,49 @@
 
 ## 1. 本节内容
 
-- todo
+- 了解 SSR 的基本概念和工作原理
+- 理解 CSR、SSR、SSG、ISR 的区别
+- 掌握 Hydration 和同构应用的概念
 
 ## 2. 评价
 
-- todo
+- SSR 是进阶主题，理解基本概念后再进入实践
+- 大部分项目应优先考虑使用 Nuxt/Next.js 等框架，而非手动搭建
 
 ## 3. 什么是 SSR
 
-- todo
-
+- SSR（Server-Side Rendering）：在服务端将组件渲染为 HTML 字符串，发送给浏览器
+- 工作流程：
+  1. 用户请求页面
+  2. 服务端执行组件代码，生成完整 HTML
+  3. HTML 发送到浏览器，用户立即看到内容
+  4. 浏览器下载并执行 JS，页面变为可交互（Hydration）
+- 优势：更快的首屏加载、更好的 SEO
 
 ## 4. CSR、SSR、SSG、ISR 的区别
 
-- todo
-
+| 模式 | 全称 | 渲染时机 | 适用场景 |
+| --- | --- | --- | --- |
+| CSR | Client-Side Rendering | 浏览器端渲染 | 后台管理系统、SPA |
+| SSR | Server-Side Rendering | 每次请求时服务端渲染 | 需要 SEO 的动态页面 |
+| SSG | Static Site Generation | 构建时生成静态 HTML | 博客、文档、营销页 |
+| ISR | Incremental Static Regeneration | 按需重新生成静态页面 | 内容偶尔变化的页面 |
 
 ## 5. Hydration
 
-- todo
-
+- Hydration（水合/激活）是 SSR 的核心概念
+- 服务端渲染的 HTML 是静态的，不可交互
+- Hydration 过程：Vue/React 在客户端"接管"HTML，绑定事件监听器
+- Hydration 完成前页面只能看不能操作
+- Hydration Mismatch：服务端和客户端渲染结果不一致时的警告
 
 ## 6. 同构应用
 
-- todo
+- 同构应用（Isomorphic App）：同一套代码可以在服务端和客户端同时运行
+- SSR 应用都是同构的：
+  - 服务端：执行组件代码生成 HTML
+  - 客户端：执行同样的组件代码进行 Hydration
+- 需要注意的差异：
+  - 服务端没有 `window`、`document`、`localStorage`
+  - 某些生命周期钩子在服务端不执行（如 `onMounted`）
+  - 需要避免在渲染阶段使用客户端特有的 API

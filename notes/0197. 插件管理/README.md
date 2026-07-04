@@ -13,27 +13,65 @@
 
 ## 1. 本节内容
 
-- todo
+- 了解 Vite 插件的管理方式
+- 掌握插件分组、条件启用、顺序控制和性能评估
 
 ## 2. 评价
 
-- todo
+- 良好的插件管理可以保持配置文件的清晰和可维护性
 
 ## 3. 插件分组
 
-- todo
+- 按功能将插件分组，提升可读性：
 
+```ts
+export default defineConfig({
+  plugins: [
+    // 框架插件
+    vue(),
+    vueJsx(),
+
+    // 自动导入
+    AutoImport({
+      /* ... */
+    }),
+    Components({
+      /* ... */
+    }),
+
+    // 开发工具
+    inspect(),
+    checker({ typescript: true }),
+
+    // 构建优化
+    compression(),
+  ],
+})
+```
 
 ## 4. 条件启用
 
-- todo
+- 根据环境或条件启用插件：
 
+```ts
+export default defineConfig(({ mode }) => ({
+  plugins: [
+    vue(),
+    mode === 'development' && inspect(),
+    mode === 'production' && compression(),
+  ].filter(Boolean),
+}))
+```
 
 ## 5. 插件顺序
 
-- todo
-
+- 使用 `enforce` 控制插件执行顺序：
+  - `enforce: 'pre'`：在核心插件之前
+  - 默认：在核心插件之后
+  - `enforce: 'post'`：在所有插件之后
 
 ## 6. 插件性能评估
 
-- todo
+- 使用 `vite-plugin-inspect` 评估插件的处理耗时
+- 逐个禁用插件，找到影响性能的插件
+- 移除不再使用的插件

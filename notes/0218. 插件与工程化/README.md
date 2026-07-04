@@ -14,28 +14,50 @@
 
 ## 1. 本节内容
 
-- todo
+- Vite 插件与工程化的速查清单
+- 覆盖常用插件、自定义插件、ESLint/Prettier、Vitest、CI/CD
 
 ## 2. 评价
 
-- todo
+- 工程化是保障团队协作效率和代码质量的基石
 
 ## 3. 使用常见插件
 
-- todo
+- `@vitejs/plugin-vue` / `@vitejs/plugin-react-swc`：框架支持
+- `unplugin-auto-import`：API 自动导入
+- `unplugin-vue-components`：组件自动注册
+- `vite-plugin-mock`：Mock 数据
 
 ## 4. 编写简单插件
 
-- todo
+```ts
+function myPlugin() {
+  return {
+    name: 'my-plugin',
+    transform(code, id) {
+      /* 修改代码 */
+    },
+    transformIndexHtml(html) {
+      /* 修改 HTML */
+    },
+  }
+}
+```
 
 ## 5. ESLint / Prettier
 
-- todo
+- ESLint v9+ 使用 Flat Config（`eslint.config.js`）
+- Prettier 配置 `.prettierrc`
+- `eslint-config-prettier` 关闭冲突规则
 
 ## 6. Vitest
 
-- todo
+- `npm install -D vitest`
+- 与 Vite 共享配置，支持 TypeScript、Vue、React
+- `vitest run --coverage` 统计覆盖率
 
 ## 7. CI/CD
 
-- todo
+- GitHub Actions / GitLab CI 自动化构建和部署
+- Husky + lint-staged 在提交前检查代码
+- Changesets 管理版本和发布

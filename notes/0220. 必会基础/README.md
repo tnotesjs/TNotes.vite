@@ -18,44 +18,52 @@
 
 ## 1. 本节内容
 
-- todo
+- Vite 必会基础知识速查
+- 覆盖项目创建、配置文件、代理、别名、环境变量、静态资源、CSS、TypeScript
 
 ## 2. 评价
 
-- todo
+- 这些是 Vite 开发的最低要求，必须熟练掌握
 
 ## 3. `create-vite`
 
-- todo
+- `npm create vite@latest my-app -- --template vue-ts`
 
 ## 4. `vite.config.ts`
 
-- todo
+- 使用 `defineConfig` 获得类型提示
+- 支持对象形式和函数形式
 
 ## 5. `server.proxy`
 
-- todo
+- 开发环境 API 代理：`server: { proxy: { '/api': 'http://localhost:8080' } }`
 
 ## 6. `resolve.alias`
 
-- todo
+- 路径别名：`resolve: { alias: { '@': resolve(__dirname, 'src') } }`
+- 需要同步配置 `tsconfig.json` 的 `paths`
 
 ## 7. `.env`
 
-- todo
+- `.env`（所有环境）、`.env.development`、`.env.production`
+- `.env.local` 加入 `.gitignore`
 
 ## 8. `import.meta.env`
 
-- todo
+- 内置变量：`MODE`、`BASE_URL`、`DEV`、`PROD`、`SSR`
+- 自定义变量以 `VITE_` 开头
 
 ## 9. 静态资源导入
 
-- todo
+- `import img from './img.png'` 返回 URL
+- `import text from './file?raw'` 返回字符串
 
 ## 10. CSS Modules
 
-- todo
+- `.module.css` 后缀自动启用 CSS Modules
+- 支持 `.module.scss`、`.module.less`
 
 ## 11. TypeScript 配置
 
-- todo
+- Vite 使用 Esbuild 转译 TS，只转译不检查
+- 类型检查交给 IDE 和 `tsc --noEmit`

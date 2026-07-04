@@ -13,27 +13,93 @@
 
 ## 1. 本节内容
 
-- todo
+- 了解 Vite 配置文件中 `plugins` 的使用方式
+- 掌握插件数组的组织方式和条件启用插件的技巧
 
 ## 2. 评价
 
-- todo
+- `plugins` 是 `vite.config.ts` 中最核心的配置项
+- 掌握条件启用插件的技巧可以让配置更灵活
 
 ## 3. `plugins`
 
-- todo
+- 在 `vite.config.ts` 中通过 `plugins` 数组配置插件：
 
+```ts
+import vue from '@vitejs/plugin-vue'
+import vueJsx from '@vitejs/plugin-vue-jsx'
+
+export default defineConfig({
+  plugins: [vue(), vueJsx()],
+})
+```
+
+- 插件通过函数调用的方式传入（如 `vue()` 而非 `vue`）
+- 插件函数返回一个包含 `name` 和钩子函数的对象
 
 ## 4. 插件数组
 
-- todo
+- 支持嵌套数组，方便按功能分组：
 
+```ts
+export default defineConfig({
+  plugins: [
+    // 框架插件
+    [vue(), vueJsx()],
+
+    // 自动导入
+    [
+      AutoImport({
+        /* ... */
+      }),
+      Components({
+        /* ... */
+      }),
+    ],
+
+    // 开发工具
+    [eslint(), checker({ typescript: true })],
+  ],
+})
+```
+
+- Vite 会自动展平嵌套数组
+- 支持 `undefined` 和 `false`（条件过滤时有用）
 
 ## 5. 条件启用插件
 
-- todo
+- 使用 `filter(Boolean)` 或 `&&` 条件性地启用插件：
 
+```ts
+export default defineConfig({
+  plugins: [
+    vue(),
+    // 只在开发环境启用 ESLint
+    process.env.NODE_ENV === 'development' && eslint(),
+    // 只在需要时启用
+    needCompression && compression(),
+  ].filter(Boolean),
+})
+```
+
+- 使用 `undefined` 或 `false` 跳过插件，Vite 会自动忽略
 
 ## 6. 根据 mode 启用插件
 
-- todo
+- 使用配置函数根据 `mode` 动态启用插件：
+
+```ts
+export default defineConfig(({ mode }) => ({
+  plugins: [
+    vue(),
+    // staging 环境启用 mock
+    mode === 'staging' && viteMockServe({ mockPath: 'mock' }),
+    // 生产环境启用压缩
+    mode === 'production' && compression(),
+    // 开发环境启用调试工具
+    mode === 'development' && inspect(),
+  ].filter(Boolean),
+}))
+```
+
+- 这种方式比 `process.env.NODE_ENV` 更灵活，支持自定义 mode

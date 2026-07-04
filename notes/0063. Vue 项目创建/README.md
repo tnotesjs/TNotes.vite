@@ -12,22 +12,78 @@
 
 ## 1. 本节内容
 
-- todo
+- 掌握使用 `create-vite` 和 `create-vue` 创建 Vue 项目
+- 了解 TypeScript 模板的选择
+- 理解 JSX/TSX 支持的配置方式
 
 ## 2. 评价
 
-- todo
+- Vue 3 + Vite 是目前 Vue 项目的标准技术栈
+- `create-vue`（Vue 团队维护）比 `create-vite` 的 Vue 模板更完整，推荐使用
 
 ## 3. Vue 3 + Vite
 
-- todo
+- 方式一：使用 `create-vite`（Vite 官方脚手架）
 
+```bash
+npm create vite@latest my-vue-app -- --template vue
+```
+
+- 方式二：使用 `create-vue`（Vue 团队推荐）
+
+```bash
+npm create vue@latest
+```
+
+- `create-vue` 的优势：
+  - 支持选择 Vue Router、Pinia、Vitest、ESLint、Prettier 等
+  - 生成的项目结构更完整，包含路由配置、状态管理等
+  - 由 Vue 核心团队维护，与 Vue 生态的集成更好
+- 两种方式生成的项目都使用 Vite 作为构建工具
 
 ## 4. TypeScript 模板
 
-- todo
+- `create-vite` 的 TypeScript 模板：
 
+```bash
+npm create vite@latest my-vue-app -- --template vue-ts
+```
+
+- `create-vue` 在交互式创建时选择 "Yes" 使用 TypeScript
+- TypeScript 模板相比普通模板多了：
+  - `tsconfig.json` 和 `tsconfig.node.json`
+  - `.vue` 文件中使用 `<script setup lang="ts">`
+  - `env.d.ts` 类型声明文件
+- 推荐所有新项目都使用 TypeScript 模板
 
 ## 5. JSX / TSX 支持
 
-- todo
+- Vue 项目中使用 JSX 需要安装 `@vitejs/plugin-vue-jsx`：
+
+```bash
+npm install -D @vitejs/plugin-vue-jsx
+```
+
+```ts
+// vite.config.ts
+import vueJsx from '@vitejs/plugin-vue-jsx'
+
+export default defineConfig({
+  plugins: [vue(), vueJsx()],
+})
+```
+
+- 使用方式：
+
+```tsx
+// App.tsx
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+  setup() {
+    return () => <div class="app">Hello Vue JSX!</div>
+  },
+})
+```
+
+- `<script setup>` 仍然是 Vue SFC 的推荐写法，JSX 适用于需要更灵活渲染逻辑的场景

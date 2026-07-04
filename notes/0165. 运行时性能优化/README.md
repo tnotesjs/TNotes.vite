@@ -14,32 +14,57 @@
 
 ## 1. 本节内容
 
-- todo
+- 了解 Vite 项目的运行时性能优化策略
+- 掌握首屏加载、懒加载、预加载、预取等优化手段
 
 ## 2. 评价
 
-- todo
+- 运行时性能优化直接影响用户体验，是性能优化的重点
+- 懒加载和预加载是最容易见效的优化手段
 
 ## 3. 首屏加载优化
 
-- todo
-
+- 减少首屏加载的资源：
+  - 路由懒加载：只加载当前路由的代码
+  - 组件懒加载：大型组件按需加载
+  - 图片懒加载：首屏外的图片延迟加载
+  - 第三方库按需引入
+- 内联关键 CSS，异步加载非关键 CSS
 
 ## 4. 懒加载
 
-- todo
-
+- 路由懒加载：`() => import('./pages/Home.vue')`
+- 组件懒加载：`defineAsyncComponent(() => import('./Heavy.vue'))`
+- 图片懒加载：使用 `loading="lazy"` 属性或 Intersection Observer
+- 懒加载可以显著减少首屏加载的 JS 体积
 
 ## 5. 预加载
 
-- todo
+- `<link rel="preload">` 提前加载关键资源：
 
+```html
+<link rel="preload" href="/assets/font.woff2" as="font" crossorigin />
+<link rel="preload" href="/assets/hero.webp" as="image" />
+```
+
+- Vite 自动为入口 chunk 的依赖添加 `<link rel="modulepreload">`
+- 预加载的资源优先级高，会在空闲时提前下载
 
 ## 6. 预取
 
-- todo
+- `<link rel="prefetch">` 在空闲时预取未来可能需要的资源：
 
+```html
+<link rel="prefetch" href="/assets/about-[hash].js" />
+```
+
+- 适合预取其他路由的 chunk（用户可能访问的下一个页面）
+- 预取的资源优先级低，不影响当前页面的加载
 
 ## 7. 减少主线程阻塞
 
-- todo
+- 避免长时间阻塞主线程：
+  - 将复杂计算放到 Web Worker 中
+  - 使用 `requestIdleCallback` 执行低优先级任务
+  - 避免大型同步操作
+  - 使用虚拟列表处理长列表（如 `vue-virtual-scroller`）

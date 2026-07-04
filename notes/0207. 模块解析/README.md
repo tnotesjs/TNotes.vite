@@ -14,32 +14,52 @@
 
 ## 1. 本节内容
 
-- todo
+- 了解 Vite 模块解析的源码流程
+- 理解 Alias 解析、Node 模块解析、条件导出和虚拟模块
 
 ## 2. 评价
 
-- todo
+- 模块解析是 Vite 处理请求的第一步，理解它有助于排查路径解析问题
 
 ## 3. Resolve 流程
 
-- todo
-
+- 模块解析的完整流程：
+  1. 插件 `resolveId` 钩子（可以自定义解析逻辑）
+  2. Alias 解析（`@/` → `src/`）
+  3. 相对路径解析
+  4. 裸模块解析（`vue` → `node_modules/vue`）
+  5. 条件导出解析（`exports` 字段）
+  6. 扩展名补全（`.ts`、`.js` 等）
 
 ## 4. Alias 解析
 
-- todo
-
+- `resolve.alias` 配置在解析流程的早期执行
+- 将别名替换为实际路径后继续后续解析
 
 ## 5. Node 模块解析
 
-- todo
-
+- 遵循 Node.js 的模块解析算法：
+  1. 检查 `node_modules` 目录
+  2. 读取 `package.json` 的 `exports` 字段
+  3. 回退到 `main` / `module` 字段
+  4. 尝试 `index.js` / `index.ts`
 
 ## 6. 条件导出
 
-- todo
+- Vite 使用 `import` 和 `browser` 条件解析 `package.json` 的 `exports`：
 
+```json
+{
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  }
+}
+```
 
 ## 7. 虚拟模块
 
-- todo
+- 虚拟模块以 `\0` 前缀标识
+- 通过 `resolveId` 返回 `\0` 前缀的路径，`load` 返回模块内容

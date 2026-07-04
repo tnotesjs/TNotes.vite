@@ -13,27 +13,60 @@
 
 ## 1. 本节内容
 
-- todo
+- 了解 SPA 部署时的常见问题和解决方案
+- 掌握 History 模式的 fallback 配置
+- 理解 Hash 模式的无需配置优势
 
 ## 2. 评价
 
-- todo
+- SPA 部署的 404 问题是最常见的坑，理解原因后解决方案很简单
 
 ## 3. History 模式刷新 404
 
-- todo
-
+- 使用 History 模式时，刷新页面会出现 404：
+  1. 用户访问 `/about`
+  2. 浏览器向服务器请求 `/about`
+  3. 服务器没有 `/about` 文件，返回 404
+  4. 正确做法：返回 `index.html`，由前端路由处理
 
 ## 4. Nginx fallback
 
-- todo
+- Nginx 配置 SPA fallback：
 
+```nginx
+location / {
+  try_files $uri $uri/ /index.html;
+}
+```
+
+- 所有非文件请求都返回 `index.html`
 
 ## 5. 静态服务器重写
 
-- todo
+- Vercel（`vercel.json`）：
 
+```json
+{ "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }] }
+```
+
+- Netlify（`_redirects`）：
+
+```
+/* /index.html 200
+```
+
+- Apache（`.htaccess`）：
+
+```apache
+RewriteEngine On
+RewriteRule ^index\.html$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule . /index.html [L]
+```
 
 ## 6. Hash 模式
 
-- todo
+- 使用 Hash 模式（`createWebHashHistory`）无需服务器配置
+- URL 格式：`https://example.com/#/about`
+- 浏览器只请求 `https://example.com/`，`#/about` 部分不会发送到服务器
+- 缺点：URL 有 `#`，不太美观

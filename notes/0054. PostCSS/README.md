@@ -14,32 +14,150 @@
 
 ## 1. 本节内容
 
-- todo
+- 了解 Vite 中 PostCSS 的配置方式
+- 掌握 Autoprefixer、postcss-preset-env 等常用插件的使用
+- 理解 CSS 兼容性处理的最佳实践
 
 ## 2. 评价
 
-- todo
+- Vite 内置 PostCSS 支持，项目根目录有 `postcss.config.js` 时自动启用
+- Autoprefixer 是最常用的 PostCSS 插件，几乎所有项目都会使用
+- postcss-preset-env 提供了更全面的现代 CSS 特性支持
 
 ## 3. PostCSS 配置
 
-- todo
+- 在项目根目录创建 `postcss.config.js` 即可自动启用：
 
+```js
+// postcss.config.js
+export default {
+  plugins: {
+    autoprefixer: {},
+    'postcss-preset-env': {},
+  },
+}
+```
+
+- 也可以在 `vite.config.ts` 中配置：
+
+```ts
+export default defineConfig({
+  css: {
+    postcss: {
+      plugins: [autoprefixer(), postcssPresetEnv()],
+    },
+  },
+})
+```
+
+- Vite 会自动查找 `postcss.config.js`、`.postcssrc`、`.postcssrc.json` 等配置文件
 
 ## 4. Autoprefixer
 
-- todo
+- 根据 `browserslist` 配置自动添加 CSS 浏览器前缀
+- 安装：`npm install -D autoprefixer`
+- 配置示例：
 
+```js
+// postcss.config.js
+export default {
+  plugins: {
+    autoprefixer: {
+      // 可选：覆盖 browserslist 配置
+      overrideBrowserslist: ['> 1%', 'last 2 versions'],
+    },
+  },
+}
+```
+
+- 示例转换：
+
+```css
+/* 输入 */
+::placeholder {
+  color: #999;
+}
+
+/* 输出 */
+::-webkit-input-placeholder {
+  color: #999;
+}
+:-ms-input-placeholder {
+  color: #999;
+}
+::placeholder {
+  color: #999;
+}
+```
 
 ## 5. postcss-preset-env
 
-- todo
+- 将现代 CSS 语法转换为兼容旧浏览器的语法
+- 包含 Autoprefixer，无需单独安装
+- 支持的特性：CSS 嵌套、CSS 变量、`:is()` 选择器、`clamp()` 等
+- 安装：`npm install -D postcss-preset-env`
 
+```js
+// postcss.config.js
+export default {
+  plugins: {
+    'postcss-preset-env': {
+      stage: 3, // 只启用 Stage 3+ 的特性（较稳定的规范）
+      features: {
+        'nesting-rules': true, // 启用 CSS 嵌套
+      },
+    },
+  },
+}
+```
 
 ## 6. px 转 rem
 
-- todo
+- 使用 `postcss-pxtorem` 或 `postcss-plugin-px2rem` 实现移动端适配
+- 安装：`npm install -D postcss-pxtorem`
 
+```js
+// postcss.config.js
+export default {
+  plugins: {
+    'postcss-pxtorem': {
+      rootValue: 16, // 根元素字体大小
+      propList: ['*'], // 需要转换的属性，'*' 表示所有
+      selectorBlackList: ['.norem'], // 不转换的选择器
+    },
+  },
+}
+```
+
+- 使用 `norem` 类名排除不需要转换的选择器：`.norem { width: 100px; }`
+- 注意：大屏设备（如平板、桌面）通常不需要 px 转 rem
 
 ## 7. CSS 兼容性处理
 
-- todo
+- 完整的 CSS 兼容性处理方案：
+
+```js
+// postcss.config.js
+export default {
+  plugins: {
+    'postcss-preset-env': {
+      stage: 3,
+      autoprefixer: { grid: 'autoplace' }, // 支持 CSS Grid 的前缀
+    },
+    // 生产环境启用压缩
+    ...(process.env.NODE_ENV === 'production'
+      ? { cssnano: { preset: 'default' } }
+      : {}),
+  },
+}
+```
+
+- `browserslist` 配置（在 `package.json` 中）：
+
+```json
+{
+  "browserslist": ["> 1%", "last 2 versions", "not dead", "not ie 11"]
+}
+```
+
+- `browserslist` 决定了目标浏览器范围，Autoprefixer 和 postcss-preset-env 都会据此调整输出

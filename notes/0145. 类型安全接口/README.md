@@ -14,32 +14,78 @@
 
 ## 1. 本节内容
 
-- todo
+- 了解如何实现类型安全的 API 接口
+- 掌握 OpenAPI/Swagger 自动生成 API Client 的方式
+- 了解 Zod 校验和 TypeScript 类型生成
 
 ## 2. 评价
 
-- todo
+- 类型安全的 API 接口可以大幅减少前后端联调中的类型错误
+- 推荐使用 OpenAPI + 自动生成工具实现端到端的类型安全
 
 ## 3. OpenAPI
 
-- todo
-
+- OpenAPI（原 Swagger）是 RESTful API 的描述规范
+- 后端提供 `openapi.json` 或 `openapi.yaml` 文件，描述所有 API 的路径、参数、响应格式
+- 前端可以基于此文件自动生成类型安全的 API Client
 
 ## 4. Swagger
 
-- todo
-
+- Swagger 是 OpenAPI 的工具集，提供 API 文档界面
+- 后端通常会部署 Swagger UI，方便前端查看 API 文档
+- 访问地址通常为 `http://localhost:8080/swagger-ui/`
 
 ## 5. 自动生成 API Client
 
-- todo
+- 使用 `openapi-typescript` 从 OpenAPI 规范生成 TypeScript 类型：
 
+```bash
+npx openapi-typescript http://localhost:8080/api-docs -o src/api.d.ts
+```
+
+- 使用 `openapi-fetch` 创建类型安全的 Fetch 客户端：
+
+```ts
+import createClient from 'openapi-fetch'
+import type { paths } from './api'
+
+const client = createClient<paths>({ baseUrl: '/api' })
+
+// 完全类型安全
+const { data } = await client.GET('/users/{id}', {
+  params: { path: { id: 1 } },
+})
+```
 
 ## 6. Zod 校验
 
-- todo
+- 使用 Zod 在运行时校验 API 响应的类型：
 
+```ts
+import { z } from 'zod'
+
+const UserSchema = z.object({
+  id: z.number(),
+  name: z.string(),
+  email: z.string().email(),
+})
+
+type User = z.infer<typeof UserSchema>
+
+async function getUser(id: number): Promise<User> {
+  const res = await fetch(`/api/users/${id}`)
+  const json = await res.json()
+  return UserSchema.parse(json) // 运行时校验
+}
+```
 
 ## 7. TypeScript 类型生成
 
-- todo
+- 从 JSON Schema 生成 TypeScript 类型：
+
+```bash
+npx json-schema-to-typescript api-schema.json -o src/api-types.ts
+```
+
+- 从 API 响应样本生成类型（VS Code 中复制 JSON → 粘贴为 TS 类型）
+- 保持类型与后端 API 同步更新

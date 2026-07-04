@@ -13,27 +13,81 @@
 
 ## 1. 本节内容
 
-- todo
+- 了解 SSR 中路由的工作方式
+- 掌握 Vue Router 和 React Router 的 SSR 配置
+- 理解动态路由和 404 处理
 
 ## 2. 评价
 
-- todo
+- SSR 路由的核心是服务端根据请求 URL 匹配路由，客户端 Hydration 时使用同样的路由配置
 
 ## 3. Vue Router SSR
 
-- todo
+- Vue Router 在 SSR 中需要使用 `createMemoryHistory`（服务端）和 `createWebHistory`（客户端）：
 
+```ts
+// 服务端
+import { createRouter, createMemoryHistory } from 'vue-router'
+
+export function createRouter() {
+  return createRouter({
+    history: createMemoryHistory(),
+    routes,
+  })
+}
+```
+
+```ts
+// 客户端
+import { createRouter, createWebHistory } from 'vue-router'
+
+export function createRouter() {
+  return createRouter({
+    history: createWebHistory(),
+    routes,
+  })
+}
+```
 
 ## 4. React Router SSR
 
-- todo
+- React Router 使用 `StaticRouter`（服务端）和 `BrowserRouter`（客户端）：
 
+```tsx
+// 服务端
+import { StaticRouter } from 'react-router-dom/server'
+
+function render(url: string) {
+  return renderToString(
+    <StaticRouter location={url}>
+      <App />
+    </StaticRouter>,
+  )
+}
+```
+
+```tsx
+// 客户端
+import { BrowserRouter } from 'react-router-dom'
+
+hydrateRoot(
+  document.getElementById('root'),
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
+)
+```
 
 ## 5. 动态路由
 
-- todo
-
+- 动态路由（如 `/user/:id`）在 SSR 中需要：
+  1. 服务端根据请求 URL 解析路由参数
+  2. 使用参数预取数据
+  3. 渲染对应的组件
 
 ## 6. 404 与重定向
 
-- todo
+- 服务端需要处理 404 和重定向：
+  - 404：路由匹配失败时返回 404 状态码
+  - 重定向：使用 `res.redirect(301, '/new-url')` 返回 301/302 响应
+- Vue Router 的 `router.afterEach` 可以检测重定向

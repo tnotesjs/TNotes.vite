@@ -14,32 +14,58 @@
 
 ## 1. 本节内容
 
-- todo
+- 了解从 Create React App（CRA）迁移到 Vite 的关键步骤
+- 掌握环境变量前缀、JSX 配置、测试配置的迁移方式
 
 ## 2. 评价
 
-- todo
+- CRA 已停止维护，迁移到 Vite 是必要的
+- React 社区已全面转向 Vite
 
 ## 3. CRA 与 Vite 差异
 
-- todo
-
+| CRA                 | Vite                            |
+| ------------------- | ------------------------------- |
+| 基于 Webpack        | 原生 ESM + Rollup               |
+| `react-scripts`     | `vite` + `@vitejs/plugin-react` |
+| `REACT_APP_` 前缀   | `VITE_` 前缀                    |
+| `public/index.html` | `index.html`（根目录）          |
+| Jest 测试           | Vitest 测试                     |
 
 ## 4. 环境变量前缀
 
-- todo
-
+- `REACT_APP_` 改为 `VITE_`
+- `process.env.REACT_APP_XXX` 改为 `import.meta.env.VITE_XXX`
 
 ## 5. JSX 配置
 
-- todo
+- CRA 使用 Babel 处理 JSX
+- Vite 推荐使用 SWC（`@vitejs/plugin-react-swc`）：
 
+```ts
+import react from '@vitejs/plugin-react-swc'
+
+export default defineConfig({ plugins: [react()] })
+```
 
 ## 6. Testing 配置
 
-- todo
+- 从 Jest 迁移到 Vitest：
 
+```ts
+// vitest.config.ts
+export default defineConfig({
+  test: {
+    environment: 'jsdom',
+    globals: true,
+    setupFiles: './src/setupTests.ts',
+  },
+})
+```
+
+- Vitest 兼容 Jest API，大部分测试代码无需修改
 
 ## 7. PWA 迁移
 
-- todo
+- CRA 的 `service-worker.js` → `vite-plugin-pwa`
+- 配置方式不同，但功能等价

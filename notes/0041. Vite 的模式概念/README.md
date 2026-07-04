@@ -13,27 +13,63 @@
 
 ## 1. 本节内容
 
-- todo
+- 理解 Vite 的 mode 概念及其与 `NODE_ENV` 的区别
+- 了解默认的 `development` 和 `production` 模式
+- 掌握自定义 mode 的使用方式
 
 ## 2. 评价
 
-- todo
+- mode 是 Vite 环境变量体系的核心概念，理解它才能正确使用 `.env.[mode]` 文件
+- 注意区分 `mode` 和 `NODE_ENV`，它们是两个独立的概念
 
 ## 3. `development`
 
-- todo
-
+- `vite` 命令（Dev Server）的默认模式
+- 此模式下：
+  - 加载 `.env` 和 `.env.development` 环境变量文件
+  - `import.meta.env.DEV` 为 `true`，`import.meta.env.PROD` 为 `false`
+  - 不压缩代码，生成详细的 source map
+  - 启用 HMR（热模块替换）
 
 ## 4. `production`
 
-- todo
-
+- `vite build` 命令的默认模式
+- 此模式下：
+  - 加载 `.env` 和 `.env.production` 环境变量文件
+  - `import.meta.env.DEV` 为 `false`，`import.meta.env.PROD` 为 `true`
+  - 启用代码压缩和 Tree Shaking
+  - 输出优化后的静态资源（带内容哈希）
 
 ## 5. 自定义 mode
 
-- todo
+- 可以通过 `--mode` 参数指定自定义模式，例如 `staging`、`test` 等
+- 自定义 mode 会加载对应的 `.env.[mode]` 文件
+- 典型场景：
 
+```
+.env                # 所有模式共享
+.env.staging        # staging 环境专用
+.env.production     # 生产环境专用
+```
+
+- 构建命令：`vite build --mode staging`
+- 注意：自定义 mode 不会自动改变 `NODE_ENV`，需要在 `.env.[mode]` 中手动设置
 
 ## 6. `--mode`
 
-- todo
+- CLI 参数，用于指定构建或开发时的模式
+- 用法：
+  - `vite --mode staging`：以 staging 模式启动开发服务器
+  - `vite build --mode staging`：以 staging 模式执行生产构建
+- 在配置函数中通过 `mode` 参数获取：
+
+```ts
+export default defineConfig(({ mode }) => ({
+  base: mode === 'production' ? '/app/' : '/',
+}))
+```
+
+- `mode` 与环境变量文件的对应关系：
+  - `--mode development` → 加载 `.env.development`
+  - `--mode production` → 加载 `.env.production`
+  - `--mode staging` → 加载 `.env.staging`

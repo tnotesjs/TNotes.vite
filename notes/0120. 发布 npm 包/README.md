@@ -17,47 +17,105 @@
 
 ## 1. 本节内容
 
-- todo
+- 了解发布 npm 包的 `package.json` 配置
+- 掌握 `exports`、`main`、`module`、`types` 等字段的作用
+- 了解版本管理的基本规范
 
 ## 2. 评价
 
-- todo
+- `package.json` 的配置直接影响消费者如何使用你的库
+- `exports` 是现代的模块入口配置方式，推荐优先使用
 
 ## 3. `package.json` 配置
 
-- todo
+- 发布 npm 包需要正确配置以下字段：
 
+```json
+{
+  "name": "my-lib",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/index.es.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.cjs.js"
+    }
+  },
+  "files": ["dist"]
+}
+```
 
 ## 4. `exports`
 
-- todo
+- 现代的模块入口配置，支持条件导出：
 
+```json
+{
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.cjs.js"
+    },
+    "./style": "./dist/style.css"
+  }
+}
+```
+
+- `types` 应放在最前面（TypeScript 解析规则）
+- 支持子路径导出（如 `my-lib/style`）
 
 ## 5. `main`
 
-- todo
-
+- CommonJS 入口，Node.js 和旧版打包工具使用
+- 通常是 UMD 或 CJS 格式的产物
 
 ## 6. `module`
 
-- todo
-
+- ES Module 入口，现代打包工具使用
+- Vite、Webpack 5+ 等会优先读取此字段
 
 ## 7. `types`
 
-- todo
-
+- TypeScript 类型声明的入口文件
+- 确保指向正确的 `.d.ts` 文件
 
 ## 8. `files`
 
-- todo
+- 指定发布到 npm 的文件列表
 
+```json
+{
+  "files": ["dist", "README.md", "LICENSE"]
+}
+```
+
+- 不设置则发布所有文件（除了 `.gitignore` 中的）
+- 推荐明确指定，避免发布不必要的文件
 
 ## 9. `publishConfig`
 
-- todo
+- 发布时的额外配置：
 
+```json
+{
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}
+```
+
+- `access: "public"`：发布为公开包（scoped 包默认是私有的）
 
 ## 10. 版本管理
 
-- todo
+- 遵循语义化版本（SemVer）：
+  - `1.0.0` → `1.0.1`：Bug 修复（patch）
+  - `1.0.0` → `1.1.0`：新功能（minor）
+  - `1.0.0` → `2.0.0`：破坏性变更（major）
+- 使用 `npm version` 命令自动更新版本号和创建 git tag

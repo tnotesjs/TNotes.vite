@@ -15,37 +15,68 @@
 
 ## 1. 本节内容
 
-- todo
+- 了解提升 Vite 构建速度的常用优化手段
+- 掌握缓存、并行处理、依赖优化等技巧
 
 ## 2. 评价
 
-- todo
+- Vite 的构建速度已经很快（Esbuild + Rollup），大部分项目不需要额外优化
+- 当项目规模增大、构建时间明显变长时，可以参考以下优化手段
 
 ## 3. 缓存
 
-- todo
+- 依赖预构建缓存：`node_modules/.vite` 目录自动缓存，删除后会重新构建
+- Rollup 缓存：Vite 内部会缓存 Rollup 的构建结果，增量构建时复用
+- CI 缓存：在 CI/CD 中缓存 `node_modules` 和 `node_modules/.vite` 目录
 
+```yaml
+# GitHub Actions 缓存示例
+- uses: actions/cache@v4
+  with:
+    path: |
+      node_modules
+      node_modules/.vite
+    key: ${{ runner.os }}-deps-${{ hashFiles('pnpm-lock.yaml') }}
+```
 
 ## 4. 并行处理
 
-- todo
-
+- Vite 使用 Esbuild 进行依赖预构建和代码压缩，Esbuild 本身是多线程的
+- 对于大型项目，可以考虑：
+  - 使用 `vite build --mode` 分环境构建，避免一次性构建所有环境
+  - 在 CI 中并行运行类型检查和构建
+  - 使用 Turborepo 等工具并行构建 Monorepo 中的多个包
 
 ## 5. 减少插件数量
 
-- todo
-
+- 每个插件都会在构建流程中添加钩子函数，增加处理时间
+- 优化建议：
+  - 移除不再使用的插件
+  - 合并功能相似的插件
+  - 使用 `enforce: 'pre'` / `enforce: 'post'` 避免不必要的处理顺序
+  - 在插件的 `transform` 钩子中尽早 `return null` 跳过不需要处理的文件
 
 ## 6. 优化依赖
 
-- todo
-
+- 减少 `node_modules` 中的依赖数量和体积：
+  - 使用 Tree Shaking 友好的库（如 `lodash-es` 替代 `lodash`）
+  - 移除未使用的依赖
+  - 使用更轻量的替代品（如 `dayjs` 替代 `moment`）
+- 配置 `optimizeDeps.include` 预构建常用依赖，避免开发时重复构建
 
 ## 7. 减少 Babel 使用
 
-- todo
-
+- Babel 是 JavaScript 编译器中最慢的选择
+- 如果项目使用 `@vitejs/plugin-react`（Babel），考虑切换到 `@vitejs/plugin-react-swc`（SWC）
+- SWC 比 Babel 快 20-70 倍，功能等价
+- 如果必须使用 Babel，减少不必要的插件和预设
 
 ## 8. 使用更快的编译器
 
-- todo
+- Vite 生态中的编译器速度对比：
+  - **Esbuild**（Go）：最快，用于依赖预构建和代码压缩
+  - **SWC**（Rust）：很快，用于 React JSX 转换
+  - **Babel**（JS）：最慢，但插件生态最丰富
+  - **Lightning CSS**（Rust）：CSS 压缩最快
+- 尽量使用 Esbuild 和 SWC 替代 Babel
+- 使用 Lightning CSS 替代 PostCSS + cssnano 进行 CSS 压缩

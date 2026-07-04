@@ -13,27 +13,88 @@
 
 ## 1. 本节内容
 
-- todo
+- 了解测试工程化的最佳实践
+- 掌握测试目录规范、命名规范和覆盖率门禁
 
 ## 2. 评价
 
-- todo
+- 良好的测试工程化可以提升团队的测试效率和代码质量
 
 ## 3. 测试目录规范
 
-- todo
+- 推荐的测试文件组织方式：
 
+```
+src/
+├── components/
+│   ├── Button.vue
+│   └── Button.test.ts      # 与源码同目录
+├── utils/
+│   ├── format.ts
+│   └── format.test.ts
+└── __tests__/               # 或集中存放
+    ├── components/
+    └── utils/
+```
+
+- 两种方式各有优劣：
+  - 同目录：便于查找，修改源码时容易想到更新测试
+  - 集中存放：目录结构更清晰，测试文件不混在源码中
 
 ## 4. 测试命名规范
 
-- todo
+- 测试文件：`*.test.ts` 或 `*.spec.ts`
+- 测试套件（describe）：使用被测试模块的名称
+- 测试用例（it/test）：使用"should + 行为"的格式
 
+```ts
+describe('formatDate', () => {
+  it('should format date to YYYY-MM-DD', () => {
+    /* ... */
+  })
+  it('should handle invalid date', () => {
+    /* ... */
+  })
+  it('should use custom format', () => {
+    /* ... */
+  })
+})
+```
 
 ## 5. 覆盖率门禁
 
-- todo
+- 在 CI 中设置覆盖率最低阈值：
 
+```ts
+// vitest.config.ts
+export default defineConfig({
+  test: {
+    coverage: {
+      provider: 'v8',
+      thresholds: {
+        lines: 80,
+        functions: 80,
+        branches: 80,
+        statements: 80,
+      },
+    },
+  },
+})
+```
+
+- 覆盖率不达标时 CI 构建失败，阻止合并
 
 ## 6. Git Hooks 中运行测试
 
-- todo
+- 使用 Husky + lint-staged 在提交前运行相关测试：
+
+```json
+{
+  "lint-staged": {
+    "*.{ts,vue,tsx}": ["vitest related --run"]
+  }
+}
+```
+
+- `vitest related --run` 只运行与变更文件相关的测试
+- 不建议在 Git Hooks 中运行全部测试（太慢），全部测试应在 CI 中运行

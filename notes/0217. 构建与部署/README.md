@@ -14,28 +14,37 @@
 
 ## 1. 本节内容
 
-- todo
+- Vite 构建与部署的速查清单
+- 覆盖生产构建、代码分割、资源优化、base 配置和部署方式
 
 ## 2. 评价
 
-- todo
+- 构建与部署是项目上线的最后一步，配置正确至关重要
 
 ## 3. 生产构建
 
-- todo
+- `pnpm build`：输出到 `dist/` 目录
+- 默认使用 Esbuild 压缩、Rollup 打包
 
 ## 4. 代码分割
 
-- todo
+- 路由懒加载：`() => import('./pages/Home.vue')`
+- `manualChunks`：手动拆分 vendor chunk
 
 ## 5. 资源优化
 
-- todo
+- 小于 4KB 的资源自动 Base64 内联
+- 使用 `vite-plugin-imagemin` 压缩图片
+- 使用 `vite-plugin-compression` 生成 Gzip/Brotli 文件
 
 ## 6. `base` 配置
 
-- todo
+- 根路径部署：`base: '/'`
+- 子路径部署：`base: '/my-app/'`
+- CDN 部署：`base: 'https://cdn.example.com/'`
 
 ## 7. Nginx / CDN 部署
 
-- todo
+- Nginx：配置 `try_files $uri $uri/ /index.html`（SPA fallback）
+- CDN：静态资源部署到 CDN，HTML 部署在源站
+- Vercel / Netlify：连接 Git 仓库自动部署

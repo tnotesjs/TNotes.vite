@@ -12,22 +12,68 @@
 
 ## 1. 本节内容
 
-- todo
+- 了解 Stylelint 的配置方式
+- 掌握 CSS、SCSS、CSS Modules 的 lint 规则
 
 ## 2. 评价
 
-- todo
+- Stylelint 是 CSS/SCSS 的代码质量工具
+- 项目中使用 CSS 时推荐配置 Stylelint
 
 ## 3. CSS 规范
 
-- todo
+- 安装和配置：
 
+```bash
+npm install -D stylelint stylelint-config-standard
+```
+
+```json
+// .stylelintrc
+{
+  "extends": ["stylelint-config-standard"],
+  "rules": {
+    "color-hex-length": "short",
+    "no-descending-specificity": null,
+    "selector-class-pattern": null
+  }
+}
+```
 
 ## 4. SCSS 规范
 
-- todo
+- SCSS 的 Stylelint 配置：
 
+```bash
+npm install -D stylelint-config-standard-scss stylelint-scss
+```
+
+```json
+{
+  "extends": ["stylelint-config-standard-scss"],
+  "rules": {
+    "scss/operator-no-newline-after": null
+  }
+}
+```
 
 ## 5. CSS Modules 规范
 
-- todo
+- CSS Modules 的类名通常使用 camelCase，需要调整规则：
+
+```json
+{
+  "extends": ["stylelint-config-standard"],
+  "rules": {
+    "selector-class-pattern": "^[a-z][a-zA-Z0-9]+$"
+  },
+  "overrides": [
+    {
+      "files": ["**/*.module.css"],
+      "rules": {
+        "selector-class-pattern": "^[a-zA-Z][a-zA-Z0-9]*$"
+      }
+    }
+  ]
+}
+```

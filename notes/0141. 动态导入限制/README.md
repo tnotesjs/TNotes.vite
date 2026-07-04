@@ -12,22 +12,72 @@
 
 ## 1. 本节内容
 
-- todo
+- 了解动态导入的限制和注意事项
+- 理解静态分析要求和动态路径的处理方式
 
 ## 2. 评价
 
-- todo
+- 理解动态导入的限制有助于避免构建时的常见问题
+- `import.meta.glob` 是处理动态路径的最佳替代方案
 
 ## 3. 静态分析要求
 
-- todo
+- 打包器（Rollup/Webpack）需要在构建时静态分析 `import()` 的路径
+- 以下写法**无法被静态分析**，会导致构建失败：
 
+```ts
+// ❌ 完全动态的路径
+const path = getUserInput()
+const mod = await import(path)
+
+// ❌ 变量拼接
+const name = 'foo'
+const mod = await import('./' + name + '.ts')
+```
+
+- 以下写法**可以被静态分析**：
+
+```ts
+// ✅ 字面量路径
+const mod = await import('./utils/foo.ts')
+
+// ✅ 部分动态（前缀固定）
+const mod = await import(`./utils/${name}.ts`) // Vite 会警告
+```
 
 ## 4. 动态路径限制
 
-- todo
+- `import()` 中的路径必须是可静态分析的字符串字面量
+- 如果需要根据变量动态导入，使用 `import.meta.glob`：
 
+```ts
+// ❌ 无法工作
+const modules = ['foo', 'bar']
+for (const name of modules) {
+  const mod = await import(`./modules/${name}.ts`)
+}
+
+// ✅ 使用 import.meta.glob
+const modules = import.meta.glob('./modules/*.ts')
+const mod = await modules[`./modules/${name}.ts`]()
+```
 
 ## 5. `import.meta.glob` 替代方案
 
-- todo
+- 当 `import()` 无法满足动态导入需求时，使用 `import.meta.glob`：
+
+```ts
+// 预先加载所有可能的模块
+const allModules = import.meta.glob('./modules/*.ts')
+
+// 根据条件选择性加载
+async function loadModule(name: string) {
+  const path = `./modules/${name}.ts`
+  if (allModules[path]) {
+    return await allModules[path]()
+  }
+  throw new Error(`Module ${name} not found`)
+}
+```
+
+- `import.meta.glob` 在构建时就确定了所有可能的模块，满足静态分析要求

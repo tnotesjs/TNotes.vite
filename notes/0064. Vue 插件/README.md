@@ -11,17 +11,89 @@
 
 ## 1. 本节内容
 
-- todo
+- 了解 Vue 项目在 Vite 中使用的核心插件
+- 掌握 `@vitejs/plugin-vue` 和 `@vitejs/plugin-vue-jsx` 的配置方式
+- 理解 Vue 插件提供的编译和 HMR 能力
 
 ## 2. 评价
 
-- todo
+- `@vitejs/plugin-vue` 是 Vue + Vite 项目的必备插件，负责 `.vue` 文件的编译和 HMR
+- `@vitejs/plugin-vue-jsx` 是可选的，只在需要使用 JSX 语法时安装
 
 ## 3. `@vitejs/plugin-vue`
 
-- todo
+- Vue 3 的 Vite 官方插件，负责：
+  - 将 `.vue` 单文件组件编译为 JavaScript
+  - 处理 `<script setup>`、`<style scoped>`、`<style module>` 等语法
+  - 提供组件级 HMR（模板修改、脚本修改、样式修改分别处理）
+  - 支持自定义块（Custom Blocks）
 
+```bash
+npm install -D @vitejs/plugin-vue
+```
+
+```ts
+// vite.config.ts
+import vue from '@vitejs/plugin-vue'
+
+export default defineConfig({
+  plugins: [vue()],
+})
+```
+
+- 常用选项：
+
+```ts
+vue({
+  // 启用响应性语法糖（已废弃，Vue 3.4+ 不再需要）
+  reactivityTransform: false,
+  // 自定义 Vue Compiler 选项
+  template: {
+    compilerOptions: {},
+  },
+  // 包含/排除文件
+  include: [/\.vue$/],
+})
+```
 
 ## 4. `@vitejs/plugin-vue-jsx`
 
-- todo
+- 提供 Vue 项目中的 JSX/TSX 支持
+
+```bash
+npm install -D @vitejs/plugin-vue-jsx
+```
+
+```ts
+// vite.config.ts
+import vueJsx from '@vitejs/plugin-vue-jsx'
+
+export default defineConfig({
+  plugins: [vue(), vueJsx()],
+})
+```
+
+- 功能：
+  - 将 JSX/TSX 语法编译为 Vue 的 `h()` 函数调用
+  - 支持 Vue 特有的 JSX 指令（如 `v-model`、`v-show`）
+  - 提供 JSX 文件的 HMR
+
+- 使用示例：
+
+```tsx
+import { defineComponent, ref } from 'vue'
+
+export default defineComponent({
+  setup() {
+    const count = ref(0)
+    return () => (
+      <div>
+        <p>Count: {count.value}</p>
+        <button onClick={() => count.value++}>+1</button>
+      </div>
+    )
+  },
+})
+```
+
+- 注意：大多数 Vue 项目使用 `<script setup>` 即可，JSX 适用于需要更灵活渲染逻辑的场景（如动态组件、递归渲染等）

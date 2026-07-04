@@ -14,32 +14,52 @@
 
 ## 1. 本节内容
 
-- todo
+- 了解 Vite 源码仓库的目录结构
+- 了解核心包、插件包、文档和测试用例的组织方式
 
 ## 2. 评价
 
-- todo
+- 了解 Vite 仓库结构有助于深入理解 Vite 的架构和贡献源码
 
 ## 3. 核心包
 
-- todo
+- Vite 的核心包位于 `packages/` 目录：
 
+```
+packages/
+├── vite/           # Vite 核心（开发服务器、构建、HMR）
+├── plugin-vue/     # Vue 插件
+├── plugin-react/   # React 插件（Babel）
+├── plugin-react-swc/ # React 插件（SWC）
+└── create-vite/    # 项目脚手架
+```
+
+- `packages/vite/src/` 包含核心逻辑：
+  - `server/`：开发服务器
+  - `client/`：客户端 HMR 运行时
+  - `node/`：Node.js 端的构建逻辑
+  - `plugins/`：内置插件
 
 ## 4. 插件包
 
-- todo
-
+- 官方插件以 `@vitejs/` 前缀发布
+- 每个插件有独立的目录和构建配置
+- 插件遵循 Vite 的插件接口（Rollup 兼容）
 
 ## 5. 文档
 
-- todo
-
+- Vite 的文档位于 `docs/` 目录
+- 使用 VitePress 构建
+- 包含指南、配置参考、插件 API 等
 
 ## 6. 测试用例
 
-- todo
-
+- 测试位于 `packages/vite/src/node/__tests__/`
+- 使用 Vitest 运行
+- 包含单元测试和集成测试
 
 ## 7. 示例项目
 
-- todo
+- `playground/` 目录包含各种示例项目
+- 用于测试 Vite 的各种功能
+- 可以作为学习 Vite 的参考

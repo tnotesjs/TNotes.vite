@@ -14,32 +14,105 @@
 
 ## 1. 本节内容
 
-- todo
+- 了解 Vite 中 HTML 转换的方式
+- 掌握 `transformIndexHtml` 钩子的使用
+- 了解注入脚本、样式和环境变量的方法
 
 ## 2. 评价
 
-- todo
+- `transformIndexHtml` 是 Vite 插件中最常用的钩子之一
+- 适合在构建时动态注入分析脚本、meta 标签等
 
 ## 3. `transformIndexHtml`
 
-- todo
+- Vite 提供的插件钩子，用于转换 `index.html` 的内容
 
+```ts
+function htmlPlugin() {
+  return {
+    name: 'html-transform',
+    transformIndexHtml(html) {
+      return html.replace('<head>', '<head><meta name="version" content="1.0">')
+    },
+  }
+}
+```
+
+- 也可以返回操作数组（结构化方式）：
+
+```ts
+transformIndexHtml() {
+  return [
+    {
+      tag: 'meta',
+      attrs: { name: 'description', content: 'My App' },
+      injectTo: 'head',
+    },
+  ]
+}
+```
 
 ## 4. 注入脚本
 
-- todo
+- 通过 `transformIndexHtml` 注入外部脚本：
 
+```ts
+transformIndexHtml() {
+  return [
+    {
+      tag: 'script',
+      attrs: { src: 'https://cdn.example.com/analytics.js', defer: true },
+      injectTo: 'head',
+    },
+  ]
+}
+```
+
+- 典型用途：注入统计分析脚本、广告代码、第三方 SDK
 
 ## 5. 注入样式
 
-- todo
+- 注入外部样式表：
 
+```ts
+transformIndexHtml() {
+  return [
+    {
+      tag: 'link',
+      attrs: { rel: 'stylesheet', href: 'https://cdn.example.com/font.css' },
+      injectTo: 'head',
+    },
+  ]
+}
+```
 
 ## 6. 修改标签
 
-- todo
+- 修改 HTML 中已有的标签属性：
 
+```ts
+transformIndexHtml(html) {
+  // 修改 title
+  return html.replace(/<title>.*?<\/title>/, '<title>My App</title>')
+}
+```
 
 ## 7. 注入环境变量
 
-- todo
+- HTML 中使用 `%VITE_XXX%` 语法注入环境变量：
+
+```html
+<title>%VITE_APP_TITLE%</title>
+<meta name="description" content="%VITE_APP_DESCRIPTION%" />
+```
+
+- 也可以在 `transformIndexHtml` 中动态注入：
+
+```ts
+transformIndexHtml(html, { command }) {
+  if (command === 'build') {
+    return html.replace('%BUILD_TIME%', new Date().toISOString())
+  }
+  return html
+}
+```

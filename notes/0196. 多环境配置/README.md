@@ -14,32 +14,46 @@
 
 ## 1. 本节内容
 
-- todo
+- 了解 Vite 项目的多环境配置方式
+- 掌握 dev、test、staging、production、preview 各环境的配置
 
 ## 2. 评价
 
-- todo
+- 合理的多环境配置可以让项目在不同环境中正确运行
 
 ## 3. dev
 
-- todo
-
+- 开发环境（`vite` 命令）：
+  - 加载 `.env.development`
+  - 启动 Dev Server（端口 5173）
+  - 启用 HMR、Source Map
+  - API 代理到后端
 
 ## 4. test
 
-- todo
-
+- 测试环境（`vitest` 命令）：
+  - 加载 `.env.test`
+  - 使用 jsdom/happy-dom 环境
+  - Mock 外部依赖
 
 ## 5. staging
 
-- todo
-
+- 预发布环境（`vite build --mode staging`）：
+  - 加载 `.env.staging`
+  - API 地址指向预发布服务器
+  - 可能启用额外的调试工具
 
 ## 6. production
 
-- todo
-
+- 生产环境（`vite build`）：
+  - 加载 `.env.production`
+  - 代码压缩、Tree Shaking
+  - Source Map 为 hidden 模式
+  - API 地址指向生产服务器
 
 ## 7. preview
 
-- todo
+- 预览环境（`vite preview`）：
+  - 加载 `.env.production`
+  - 本地预览构建产物
+  - 端口 4173

@@ -15,37 +15,56 @@
 
 ## 1. 本节内容
 
-- todo
+- 了解 Vite 与传统后端框架的集成方式
+- 掌握 Java、PHP、Python、Ruby 等后端的集成配置
 
 ## 2. 评价
 
-- todo
+- Vite 与传统后端集成的核心是：构建产物作为静态文件，由后端服务器提供
 
 ## 3. Java Spring Boot
 
-- todo
-
+- 将 Vite 构建产物放到 `src/main/resources/static/` 目录
+- 开发时使用代理：Spring Boot 的 `proxy` 配置或 Nginx 反向代理
+- 也可以使用 `vite-plugin-static-copy` 自动复制产物
 
 ## 4. PHP
 
-- todo
-
+- 将 Vite 构建产物放到 PHP 项目的 `public/` 目录
+- 通过 Vite Manifest 文件在 PHP 中引用资源路径
+- Laravel 框架有专门的 Vite 集成（`laravel-vite-plugin`）
 
 ## 5. Laravel
 
-- todo
+- Laravel 内置 Vite 支持：
 
+```php
+@vite('resources/js/app.js')
+```
+
+- 安装：`npm install laravel-vite-plugin`
+- 配置：
+
+```ts
+import laravel from 'laravel-vite-plugin'
+
+export default defineConfig({
+  plugins: [laravel(['resources/js/app.js', 'resources/css/app.css'])],
+})
+```
 
 ## 6. Rails
 
-- todo
-
+- Rails 7+ 内置 Vite 支持（通过 `vite_ruby` gem）
+- 将 Vite 构建产物放到 `public/` 目录
 
 ## 7. Django
 
-- todo
-
+- 使用 `django-vite` 或手动集成
+- 将 Vite 构建产物放到 Django 的静态文件目录
+- 通过 Vite Manifest 在 Django 模板中引用资源
 
 ## 8. ASP.NET
 
-- todo
+- 将 Vite 构建产物放到 `wwwroot/` 目录
+- 开发时使用代理将请求转发到 Vite Dev Server

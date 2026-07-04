@@ -14,32 +14,88 @@
 
 ## 1. 本节内容
 
-- todo
+- 了解 Module Federation 的核心概念
+- 掌握 Host 和 Remote 的配置方式
+- 理解共享依赖和运行时加载的机制
 
 ## 2. 评价
 
-- todo
+- Module Federation 是实现微前端最优雅的方案之一
+- Vite 通过 `@originjs/vite-plugin-federation` 插件支持
 
 ## 3. 远程模块
 
-- todo
-
+- Module Federation 允许一个应用在运行时加载另一个应用的模块
+- 远程模块（Remote Module）：被其他应用消费的模块
+- 本质是运行时的代码共享，而非构建时的打包
 
 ## 4. Host
 
-- todo
+- Host（宿主应用）：消费远程模块的应用
 
+```ts
+// vite.config.ts
+import federation from '@originjs/vite-plugin-federation'
+
+export default defineConfig({
+  plugins: [
+    federation({
+      name: 'host',
+      remotes: {
+        remoteApp: 'http://localhost:3001/assets/remoteEntry.js',
+      },
+    }),
+  ],
+})
+```
+
+```ts
+// 使用远程模块
+const RemoteComponent = React.lazy(() => import('remoteApp/Component'))
+```
 
 ## 5. Remote
 
-- todo
+- Remote（远程应用）：暴露模块给其他应用消费
 
+```ts
+// vite.config.ts
+export default defineConfig({
+  plugins: [
+    federation({
+      name: 'remoteApp',
+      filename: 'remoteEntry.js',
+      exposes: {
+        './Component': './src/components/Component.vue',
+        './utils': './src/utils/index.ts',
+      },
+    }),
+  ],
+})
+```
 
 ## 6. 共享依赖
 
-- todo
+- 配置共享依赖，避免重复加载：
 
+```ts
+federation({
+  shared: {
+    vue: { singleton: true },
+    'vue-router': { singleton: true },
+    pinia: { singleton: true },
+  },
+})
+```
+
+- `singleton: true`：确保整个应用只加载一个版本的共享依赖
+- 共享依赖由 Host 提供，Remote 复用
 
 ## 7. 运行时加载
 
-- todo
+- Module Federation 的模块在运行时通过网络加载
+- 加载流程：
+  1. Host 加载 Remote 的 `remoteEntry.js`（远程入口文件）
+  2. 通过入口文件获取远程模块的映射关系
+  3. 按需加载远程模块的代码
+- 与传统的 npm 包引用不同，Module Federation 不需要构建时安装依赖

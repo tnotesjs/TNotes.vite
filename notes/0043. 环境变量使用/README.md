@@ -15,37 +15,84 @@
 
 ## 1. 本节内容
 
-- todo
+- 了解 `import.meta.env` 对象及其内置属性
+- 掌握各个内置环境变量的含义和用法
+- 理解环境变量在构建时的替换机制
 
 ## 2. 评价
 
-- todo
+- `import.meta.env` 是 Vite 环境变量的统一访问入口，替代了 Webpack 的 `process.env`
+- 内置的 5 个变量覆盖了最常见的场景，自定义变量见下一节
 
 ## 3. `import.meta.env`
 
-- todo
+- Vite 通过 `import.meta.env` 对象暴露环境变量
+- 这是 ES Modules 标准的一部分（`import.meta`），Vite 在构建时将其替换为实际值
+- 访问方式：
 
+```ts
+console.log(import.meta.env.MODE) // 'development'
+console.log(import.meta.env.VITE_API) // 'https://api.example.com'
+```
+
+- 与 Webpack 的区别：Webpack 使用 `process.env.XXX`，Vite 使用 `import.meta.env.XXX`
+- 注意：`import.meta.env` 只能在客户端代码中使用，配置文件中应使用 `process.env` 或 `loadEnv`
 
 ## 4. `import.meta.env.MODE`
 
-- todo
-
+- 当前的运行模式（`'development'`、`'production'` 或自定义值）
+- 对应 CLI 的 `--mode` 参数
+- `vite` 命令默认为 `'development'`，`vite build` 默认为 `'production'`
 
 ## 5. `import.meta.env.BASE_URL`
 
-- todo
+- 对应配置中的 `base` 选项，默认为 `'/'`
+- 在代码中引用静态资源时很有用：
 
+```ts
+// 假设 base 为 '/my-app/'
+const logoUrl = `${import.meta.env.BASE_URL}logo.svg`
+// 结果：'/my-app/logo.svg'
+```
+
+- 确保资源路径与部署路径一致，避免硬编码
 
 ## 6. `import.meta.env.DEV`
 
-- todo
+- 布尔值，开发模式时为 `true`，生产模式时为 `false`
+- 等价于 `import.meta.env.MODE === 'development'`
+- 典型用途：
 
+```ts
+if (import.meta.env.DEV) {
+  // 只在开发环境执行的逻辑（如开启调试面板）
+  console.log('Debug info:', data)
+}
+```
 
 ## 7. `import.meta.env.PROD`
 
-- todo
+- 布尔值，生产模式时为 `true`，开发模式时为 `false`
+- 等价于 `import.meta.env.MODE === 'production'`
+- 典型用途：
 
+```ts
+if (import.meta.env.PROD) {
+  // 只在生产环境执行的逻辑（如初始化监控 SDK）
+  initSentry({ dsn: '...' })
+}
+```
 
 ## 8. `import.meta.env.SSR`
 
-- todo
+- 布尔值，指示当前是否在 SSR（服务端渲染）环境中运行
+- 在客户端渲染的应用中为 `false`
+- 在 SSR 模式下，服务端为 `true`，客户端为 `false`
+- 典型用途：
+
+```ts
+if (!import.meta.env.SSR) {
+  // 只在客户端执行（如访问 window、document、localStorage）
+  const token = localStorage.getItem('token')
+}
+```

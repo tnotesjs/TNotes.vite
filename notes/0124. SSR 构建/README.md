@@ -13,27 +13,70 @@
 
 ## 1. 本节内容
 
-- todo
+- 了解 SSR 的客户端构建和服务端构建流程
+- 掌握 SSR Manifest 的生成和资源注入方式
 
 ## 2. 评价
 
-- todo
+- SSR 构建需要分别构建客户端和服务端产物
+- 资源注入是 SSR 中较复杂的部分，需要正确引用客户端构建的 CSS 和 JS
 
 ## 3. 客户端构建
 
-- todo
+- 客户端构建与普通 SPA 构建类似：
 
+```bash
+vite build --outDir dist/client
+```
+
+- 产物包含 JS、CSS 和静态资源
+- 需要生成 SSR Manifest（`build.ssrManifest: true`）
 
 ## 4. 服务端构建
 
-- todo
+- 服务端构建使用 `--ssr` 参数指定入口：
 
+```bash
+vite build --outDir dist/server --ssr src/entry-server.ts
+```
+
+- 产物是 Node.js 可直接加载的模块
+- 外部依赖（如 Vue）不会被打包，由 Node.js 运行时加载
 
 ## 5. Manifest 生成
 
-- todo
+- SSR Manifest 记录了模块到产物文件的映射关系
+- 通过配置开启：
 
+```ts
+export default defineConfig({
+  build: {
+    ssrManifest: true,
+  },
+})
+```
+
+- 构建后生成 `dist/client/ssr-manifest.json`
+- 用于在服务端渲染时找到对应的 CSS 和 JS 文件
 
 ## 6. 资源注入
 
-- todo
+- 将渲染的 HTML 和客户端资源组合：
+
+```ts
+const template = fs.readFileSync('dist/client/index.html', 'utf-8')
+const manifest = JSON.parse(
+  fs.readFileSync('dist/client/ssr-manifest.json', 'utf-8'),
+)
+
+// 从 manifest 中找到当前页面需要的 CSS 和 JS
+const { render } = await import('./dist/server/entry-server.js')
+const { html, preloadLinks } = await render(url, manifest)
+
+// 注入到 HTML 中
+const finalHtml = template
+  .replace('<!--preload-links-->', preloadLinks)
+  .replace('<!--ssr-outlet-->', html)
+```
+
+- 资源注入确保浏览器加载 HTML 时同时加载对应的 CSS（避免 FOUC）和 JS

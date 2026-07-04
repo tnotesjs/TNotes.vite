@@ -15,32 +15,41 @@
 
 ## 1. 本节内容
 
-- todo
+- Vite 高级能力的速查清单
+- 覆盖 SSR、库模式、Monorepo、微前端、性能优化、源码理解
 
 ## 2. 评价
 
-- todo
+- 高级能力适合需要深入掌握 Vite 的开发者
 
 ## 3. SSR
 
-- todo
+- Vite 内置 SSR 支持，通过 `createServer` + `ssrLoadModule` 实现
+- 推荐使用 Nuxt / Next.js 等框架
 
 ## 4. Library Mode
 
-- todo
+- `build.lib` 配置将项目构建为 npm 库
+- 支持 ESM、CJS、UMD 多格式输出
 
 ## 5. Monorepo
 
-- todo
+- pnpm workspace + Turborepo 管理多包项目
+- `resolve.dedupe` 解决依赖去重
 
 ## 6. 微前端
 
-- todo
+- Module Federation：运行时共享模块
+- qiankun / micro-app：成熟的微前端框架
 
 ## 7. 性能优化
 
-- todo
+- 代码分割、Tree Shaking、资源压缩
+- 预加载、预取、懒加载
+- CDN 部署、缓存策略
 
 ## 8. 源码理解
 
-- todo
+- Dev Server 启动流程、模块图、插件容器
+- HMR 源码：文件监听 → 模块失效 → WebSocket 推送
+- 构建流程：配置解析 → 插件注入 → Rollup 打包

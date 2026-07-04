@@ -13,27 +13,78 @@
 
 ## 1. 本节内容
 
-- todo
+- 了解如何在本地开发中启用 HTTPS
+- 掌握自签名证书的生成和配置方式
+- 了解微信小程序等特殊环境的 HTTPS 调试需求
 
 ## 2. 评价
 
-- todo
+- 大部分项目不需要本地 HTTPS，只有调用 HTTPS-only API 或特定平台要求时才需要
+- `vite --https` 可以快速启用自签名证书，开发调试足够使用
 
 ## 3. 本地证书
 
-- todo
+- 启用 HTTPS 需要 SSL 证书，本地开发可以使用自签名证书
+- 使用 `@vitejs/plugin-basic-ssl` 快速生成自签名证书：
 
+```bash
+npm install -D @vitejs/plugin-basic-ssl
+```
+
+```ts
+import basicSsl from '@vitejs/plugin-basic-ssl'
+
+export default defineConfig({
+  plugins: [basicSsl()],
+})
+```
+
+- 也可以使用 `mkcert` 生成本地可信证书（需要安装 mkcert 工具）：
+
+```bash
+mkcert -install
+mkcert localhost
+```
 
 ## 4. HTTPS 配置
 
-- todo
+- 快速启用（自签名证书）：
 
+```bash
+vite --https
+```
+
+- 使用自定义证书：
+
+```ts
+import fs from 'fs'
+
+export default defineConfig({
+  server: {
+    https: {
+      key: fs.readFileSync('./cert/key.pem'),
+      cert: fs.readFileSync('./cert/cert.pem'),
+    },
+  },
+})
+```
+
+- 使用 `@vitejs/plugin-basic-ssl` 是最简单的方式，无需手动管理证书文件
 
 ## 5. 移动端调试
 
-- todo
-
+- 某些 Web API（如地理位置、摄像头、Service Worker）要求 HTTPS 环境
+- 移动端真机调试时需要：
+  1. 启用 HTTPS：`vite --https --host`
+  2. 手机访问 `https://192.168.x.x:5173`
+  3. 在手机浏览器中接受自签名证书警告
+- 使用 `mkcert` 生成的证书可以避免证书警告（需要先在手机上安装 CA 证书）
 
 ## 6. 微信环境调试
 
-- todo
+- 微信小程序和微信内嵌 H5 要求后端接口必须使用 HTTPS
+- 本地调试方案：
+  1. 使用 `mkcert` 生成本地可信证书
+  2. 配置 Vite HTTPS
+  3. 在微信开发者工具中关闭 "不校验合法域名" 选项进行测试
+- 注意：微信要求的 HTTPS 证书必须是受信任的 CA 签发的，自签名证书在真机上可能不被接受

@@ -13,27 +13,81 @@
 
 ## 1. 本节内容
 
-- todo
+- 了解 Vite 开发服务器的 Node API
+- 掌握创建 Dev Server、中间件模式、自定义服务器的方式
 
 ## 2. 评价
 
-- todo
+- 中间件模式是将 Vite 集成到已有后端框架的关键能力
+- SSR 场景下必须使用 Node API 创建 Dev Server
 
 ## 3. 创建 Dev Server
 
-- todo
+```ts
+import { createServer } from 'vite'
 
+const server = await createServer({
+  configFile: 'vite.config.ts',
+  server: {
+    port: 3000,
+    host: true,
+  },
+})
+
+await server.listen()
+server.printUrls()
+```
 
 ## 4. 中间件模式
 
-- todo
+- 将 Vite Dev Server 作为中间件嵌入 Express/Koa：
 
+```ts
+const vite = await createServer({
+  server: { middlewareMode: true },
+  appType: 'spa', // 或 'custom' 用于 SSR
+})
+
+// Express
+app.use(vite.middlewares)
+```
+
+- `middlewareMode` 不创建独立的 HTTP 服务器
+- `appType: 'spa'` 自动处理 SPA fallback
+- `appType: 'custom'` 不处理 HTML（由开发者自行处理）
 
 ## 5. 自定义服务器
 
-- todo
+- 使用 Vite 的 Node API 完全自定义服务器逻辑：
 
+```ts
+const vite = await createServer({ server: { middlewareMode: true } })
+
+const app = express()
+
+// 自定义 API 路由
+app.get('/api/health', (req, res) => res.json({ status: 'ok' }))
+
+// Vite 中间件（处理前端资源）
+app.use(vite.middlewares)
+
+app.listen(3000)
+```
 
 ## 6. SSR 中使用
 
-- todo
+- SSR 开发模式下使用 Dev Server 的 `ssrLoadModule`：
+
+```ts
+const vite = await createServer({
+  server: { middlewareMode: true },
+  appType: 'custom',
+})
+
+app.use('*', async (req, res) => {
+  const { render } = await vite.ssrLoadModule('/src/entry-server.ts')
+  const html = await render(req.originalUrl)
+  const template = await vite.transformIndexHtml(req.originalUrl, indexHtml)
+  res.end(template.replace('<!--ssr-outlet-->', html))
+})
+```

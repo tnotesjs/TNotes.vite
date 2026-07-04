@@ -1,9 +1,7 @@
 {
   "author": "tnotesjs",
   "repoName": "TNotes.vite",
-  "keywords": [
-    "TNotes.vite"
-  ],
+  "keywords": ["TNotes.vite"],
   "ignore_dirs": [
     ".vscode",
     "0000",
@@ -42,7 +40,7 @@
     "updated_at": 1783142282000,
     "days_since_birth": 9868
   },
-  "port": 9379,
+  "port": 10131,
   "menuItems": [
     {
       "text": "🏠 Home",

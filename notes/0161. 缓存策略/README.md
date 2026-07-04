@@ -14,32 +14,60 @@
 
 ## 1. 本节内容
 
-- todo
+- 了解 Vite 构建产物的缓存策略
+- 掌握 HTML、JS/CSS、静态资源的缓存配置
 
 ## 2. 评价
 
-- todo
+- 正确的缓存策略可以显著提升重复访问的加载速度
+- Vite 的内容哈希机制为长期缓存提供了天然支持
 
 ## 3. HTML 不强缓存
 
-- todo
+- HTML 文件不应设置强缓存（`Cache-Control: max-age`）
+- 原因：HTML 是入口文件，如果被缓存，用户可能访问到旧版本
+- 推荐配置：
 
+```nginx
+location = /index.html {
+  add_header Cache-Control "no-cache";
+}
+```
+
+- `no-cache`：每次使用缓存前都向服务器验证是否过期
 
 ## 4. JS / CSS 强缓存
 
-- todo
+- JS 和 CSS 文件应设置长期强缓存：
 
+```nginx
+location /assets/ {
+  expires 1y;
+  add_header Cache-Control "public, immutable";
+}
+```
+
+- `immutable`：告诉浏览器文件永远不会变，无需验证
+- 安全性：Vite 的内容哈希保证文件内容变化时文件名也变化
 
 ## 5. 文件 Hash
 
-- todo
-
+- Vite 为 JS、CSS、图片等资源生成内容哈希（如 `index-abc123.js`）
+- 文件内容不变 → 哈希不变 → 浏览器使用缓存
+- 文件内容变化 → 哈希变化 → 浏览器获取新文件
+- 这是"长期缓存 + 即时更新"的基础
 
 ## 6. CDN 缓存
 
-- todo
-
+- CDN 缓存策略：
+  - HTML：不缓存或短时间缓存
+  - JS/CSS/图片：长期缓存（CDN 边缘节点缓存一年）
+  - 使用 `Cache-Control: public, max-age=31536000, immutable`
+- CDN 回源策略：HTML 每次回源，其他资源不回源
 
 ## 7. 缓存失效策略
 
-- todo
+- 当需要强制更新缓存时：
+  - 更新 HTML 中引用的资源路径（Vite 自动处理）
+  - 清除 CDN 缓存（大部分 CDN 提供 Purge API）
+  - 使用版本号前缀（如 `/v2/assets/...`）

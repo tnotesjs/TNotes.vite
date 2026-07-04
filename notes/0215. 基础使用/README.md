@@ -15,37 +15,47 @@
 
 ## 1. 本节内容
 
-- todo
+- Vite 基础使用的速查清单
+- 覆盖项目创建、目录结构、常用命令、环境变量、代理和路径别名
 
 ## 2. 评价
 
-- todo
+- 这是一份 Vite 日常开发的速查手册，建议收藏备用
 
 ## 3. 创建项目
 
-- todo
-
+```bash
+npm create vite@latest my-app -- --template vue-ts
+cd my-app && pnpm install
+```
 
 ## 4. 理解目录结构
 
-- todo
-
+- `index.html`：入口 HTML（根目录）
+- `src/`：源码目录
+- `public/`：静态资源（原样复制）
+- `vite.config.ts`：配置文件
 
 ## 5. 掌握常用命令
 
-- todo
-
+- `pnpm dev`：启动开发服务器
+- `pnpm build`：生产构建
+- `pnpm preview`：预览构建产物
 
 ## 6. 使用环境变量
 
-- todo
-
+- `.env`、`.env.development`、`.env.production`
+- 自定义变量以 `VITE_` 开头
+- 代码中通过 `import.meta.env.VITE_XXX` 访问
 
 ## 7. 配置代理
 
-- todo
-
+```ts
+server: { proxy: { '/api': 'http://localhost:8080' } }
+```
 
 ## 8. 配置路径别名
 
-- todo
+```ts
+resolve: { alias: { '@': resolve(__dirname, 'src') } }
+```

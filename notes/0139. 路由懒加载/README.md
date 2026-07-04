@@ -13,27 +13,85 @@
 
 ## 1. 本节内容
 
-- todo
+- 掌握 Vue Router 和 React Router 的懒加载配置
+- 了解 Suspense 和 Loading 状态的处理方式
 
 ## 2. 评价
 
-- todo
+- 路由懒加载是优化首屏加载速度的最有效手段
+- 配合 Loading 状态可以提供更好的用户体验
 
 ## 3. Vue Router 懒加载
 
-- todo
+- 使用动态 `import()` 实现路由懒加载：
 
+```ts
+const routes = [
+  {
+    path: '/',
+    component: () => import('@/views/Home.vue'),
+  },
+  {
+    path: '/about',
+    component: () => import('@/views/About.vue'),
+  },
+]
+```
+
+- 每个路由对应的组件会被打包为独立的 chunk
 
 ## 4. React Router 懒加载
 
-- todo
+- 使用 `React.lazy()` 实现路由懒加载：
 
+```tsx
+import { lazy, Suspense } from 'react'
+
+const Home = lazy(() => import('./pages/Home'))
+const About = lazy(() => import('./pages/About'))
+
+function App() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </Suspense>
+  )
+}
+```
 
 ## 5. Suspense
 
-- todo
+- React 的 `<Suspense>` 组件用于处理异步加载的 Loading 状态
+- Vue 3 也支持 `<Suspense>`：
 
+```vue
+<Suspense>
+  <template #default>
+    <AsyncComponent />
+  </template>
+  <template #fallback>
+    <div>Loading...</div>
+  </template>
+</Suspense>
+```
 
 ## 6. Loading 状态
 
-- todo
+- 除了框架内置的 Suspense，也可以手动管理 Loading 状态：
+
+```ts
+// Vue Router 路由守卫
+router.beforeEach((to, from, next) => {
+  NProgress.start()
+  next()
+})
+
+router.afterEach(() => {
+  NProgress.done()
+})
+```
+
+- 使用 NProgress 等进度条库提供视觉反馈

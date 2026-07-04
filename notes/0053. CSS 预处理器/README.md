@@ -14,32 +14,94 @@
 
 ## 1. 本节内容
 
-- todo
+- 了解 Vite 对 CSS 预处理器的支持方式
+- 掌握 Sass、Less、Stylus 的安装和使用
+- 理解全局变量注入和 `additionalData` 的配置
 
 ## 2. 评价
 
-- todo
+- Vite 对 CSS 预处理器的支持非常简洁：安装对应依赖即可使用，无需额外配置
+- `additionalData` 是最常用的配置项，用于全局注入变量和 mixin
 
 ## 3. Sass / SCSS
 
-- todo
+- 安装：`npm install -D sass`
+- 安装后即可在项目中使用 `.scss` 和 `.sass` 文件：
 
+```ts
+import './styles/main.scss'
+```
+
+- Vite 使用 Dart Sass（`sass` 包），性能优于旧版的 Node Sass
+- 支持 `<style lang="scss">` 在 Vue SFC 中使用
+- 注意：Vite 不支持旧版的 `node-sass`，请使用 `sass`（Dart Sass）
 
 ## 4. Less
 
-- todo
+- 安装：`npm install -D less`
+- 安装后即可使用 `.less` 文件：
 
+```ts
+import './styles/main.less'
+```
+
+- 支持 `<style lang="less">` 在 Vue SFC 中使用
+- 可以通过 `css.preprocessorOptions.less` 传递 Less 选项
 
 ## 5. Stylus
 
-- todo
+- 安装：`npm install -D stylus`
+- 安装后即可使用 `.styl` 和 `.stylus` 文件：
 
+```ts
+import './styles/main.styl'
+```
+
+- Stylus 的使用率在下降，新项目建议优先选择 Sass 或 CSS 原生方案
 
 ## 6. 全局变量注入
 
-- todo
+- 在每个样式文件顶部自动注入变量或 mixin，避免在每个文件中手动 `@import`
+- 常见场景：定义主题色、断点变量、常用 mixin 等
 
+```scss
+// _variables.scss
+$primary-color: #1890ff;
+$border-radius: 4px;
+```
+
+```ts
+// vite.config.ts
+export default defineConfig({
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "@/styles/variables.scss";`,
+      },
+    },
+  },
+})
+```
+
+- 效果：每个 `.scss` 文件编译时会自动在顶部加上这行 import
 
 ## 7. `additionalData`
 
-- todo
+- `additionalData` 是 `css.preprocessorOptions` 下的配置项
+- 接受一个字符串，会被插入到每个样式文件的顶部
+- 支持所有预处理器（Sass、Less、Stylus）
+- 注意事项：
+  - 不要注入过多内容，会影响编译速度
+  - 注入的文件路径需要使用 Vite 能解析的路径（如 `@/` 别名需要配合 `resolve.alias`）
+  - 新版 Sass 推荐使用 `@use` 替代 `@import`，`additionalData` 中应使用 `@use` 语法：
+
+```ts
+css: {
+  preprocessorOptions: {
+    scss: {
+      additionalData: `@use "@/styles/variables" as *;`,
+      api: 'modern-compiler',
+    },
+  },
+}
+```

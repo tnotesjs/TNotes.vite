@@ -15,32 +15,51 @@
 
 ## 1. 本节内容
 
-- todo
+- Vite 必会插件速查
+- 覆盖官方框架插件、自动导入、Mock、PWA、Inspect、自定义插件
 
 ## 2. 评价
 
-- todo
+- 掌握常用插件可以大幅提升开发效率
 
 ## 3. 官方框架插件
 
-- todo
+- Vue：`@vitejs/plugin-vue` + `@vitejs/plugin-vue-jsx`
+- React：`@vitejs/plugin-react-swc`（推荐）
+- Legacy：`@vitejs/plugin-legacy`（旧浏览器兼容）
 
 ## 4. 自动导入插件
 
-- todo
+- `unplugin-auto-import`：API 自动导入（Vue/React Hooks 等）
+- `unplugin-vue-components`：组件自动注册
+- `unplugin-icons`：图标自动导入
 
 ## 5. Mock 插件
 
-- todo
+- `vite-plugin-mock`：基于 Mock.js 的数据 Mock
+- MSW：Service Worker 拦截请求
 
 ## 6. PWA 插件
 
-- todo
+- `vite-plugin-pwa`：自动生成 Service Worker 和 Manifest
 
 ## 7. Inspect 插件
 
-- todo
+- `vite-plugin-inspect`：检查插件转换结果
+- 访问 `http://localhost:5173/__inspect/`
 
 ## 8. 自定义插件基础
 
-- todo
+```ts
+function myPlugin() {
+  return {
+    name: 'my-plugin',
+    transform(code, id) {
+      return code
+    },
+    transformIndexHtml(html) {
+      return html
+    },
+  }
+}
+```

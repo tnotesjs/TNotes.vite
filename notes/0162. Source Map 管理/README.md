@@ -13,27 +13,64 @@
 
 ## 1. 本节内容
 
-- todo
+- 了解生产环境 Source Map 的管理策略
+- 掌握隐藏 Source Map 和上传错误监控平台的方式
 
 ## 2. 评价
 
-- todo
+- Source Map 对错误定位至关重要，但不应暴露给用户
+- 推荐使用 `hidden` 模式 + 上传监控平台
 
 ## 3. 生产环境是否开启 Source Map
 
-- todo
-
+- 开启 Source Map 的优势：
+  - 错误监控平台可以定位到源码的具体行号
+  - 开发者可以快速定位和修复 Bug
+- 不开启的原因：
+  - Source Map 文件会暴露源码
+  - 增加构建产物体积
+- 建议：生产环境开启 `hidden` 模式的 Source Map
 
 ## 4. 隐藏 Source Map
 
-- todo
+- 使用 `build.sourcemap: 'hidden'`：
 
+```ts
+export default defineConfig({
+  build: {
+    sourcemap: 'hidden',
+  },
+})
+```
+
+- `hidden` 模式：
+  - 生成 `.map` 文件
+  - 不在 JS/CSS 文件中添加 `//# sourceMappingURL` 注释
+  - 浏览器不会自动加载 Source Map
+  - 只有知道 `.map` 文件路径的人才能访问
 
 ## 5. 上传错误监控平台
 
-- todo
+- 将 Source Map 上传到 Sentry、Bugsnag 等错误监控平台：
 
+```bash
+# Sentry CLI
+npx sentry-cli releases files VERSION upload-sourcemaps ./dist/assets --url-prefix '~/assets'
+```
+
+- 上传后可以在监控平台看到源码级别的错误堆栈
+- 上传完成后应删除服务器上的 `.map` 文件
 
 ## 6. 防止源码泄露
 
-- todo
+- 保护 Source Map 的措施：
+  - 使用 `hidden` 模式（不暴露路径）
+  - 不将 `.map` 文件部署到公开服务器
+  - 上传到监控平台后删除本地 `.map` 文件
+  - 配置 Nginx 拒绝 `.map` 文件的访问：
+
+```nginx
+location ~* \.map$ {
+  deny all;
+}
+```

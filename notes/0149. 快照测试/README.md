@@ -12,22 +12,52 @@
 
 ## 1. 本节内容
 
-- todo
+- 了解快照测试（Snapshot Testing）的概念
+- 掌握快照测试的适用场景和维护成本
 
 ## 2. 评价
 
-- todo
+- 快照测试适合检测意外的 UI 变化，但不应过度依赖
+- 维护成本较高，需要定期更新快照
 
 ## 3. Snapshot
 
-- todo
+- 快照测试将组件的输出保存为快照文件，后续测试时对比：
 
+```ts
+import { describe, it, expect } from 'vitest'
+import { mount } from '@vue/test-utils'
+import Button from './Button.vue'
+
+describe('Button', () => {
+  it('renders correctly', () => {
+    const wrapper = mount(Button, { props: { type: 'primary' } })
+    expect(wrapper.html()).toMatchSnapshot()
+  })
+})
+```
+
+- 首次运行时生成快照文件（`__snapshots__/` 目录）
+- 后续运行时对比当前输出与快照，不一致则测试失败
+- 更新快照：`npx vitest run --update`
 
 ## 4. 适用场景
 
-- todo
-
+- 适合使用快照测试的场景：
+  - 组件的渲染输出相对稳定
+  - 检测意外的 UI 变化
+  - 配置文件、API 响应格式的验证
+- 不适合的场景：
+  - 频繁变化的 UI（快照会频繁失效）
+  - 包含动态内容（时间戳、随机数）
 
 ## 5. 维护成本
 
-- todo
+- 快照测试的主要问题：
+  - 快照文件会越来越大，难以审查
+  - 开发者倾向于直接更新快照而非修复问题
+  - 快照失效时难以判断是预期变化还是 Bug
+- 建议：
+  - 快照测试作为补充，不应是主要的测试方式
+  - 优先使用具体的断言（`expect(wrapper.text()).toBe('...')`）
+  - 定期清理不再需要的快照
