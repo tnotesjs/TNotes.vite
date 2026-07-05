@@ -9,6 +9,9 @@
 - [5. CSS 转换](#5-css-转换)
 - [6. 静态资源转换](#6-静态资源转换)
 - [7. Vue / React / Svelte 单文件组件转换](#7-vue--react--svelte-单文件组件转换)
+  - [7.1. Vue SFC（`.vue` 文件）](#71-vue-sfcvue-文件)
+  - [7.2. React / JSX](#72-react--jsx)
+  - [7.3. Svelte（`.svelte` 文件）](#73-sveltesvelte-文件)
 
 <!-- endregion:toc -->
 
@@ -25,10 +28,10 @@
 
 ## 3. TypeScript 转换
 
-- Vite 使用 **Esbuild** 转译 TypeScript，而非 `tsc`
-- 速度对比：Esbuild 转译 TS 的速度约为 tsc 的 **20-30 倍**
+- Vite 使用 Esbuild 转译 TypeScript，而非 `tsc`
+- 速度对比：Esbuild 转译 TS 的速度约为 tsc 的 20-30 倍
 - 关键特性：
-  - **只做语法转译，不做类型检查**：Esbuild 将 TS 语法剥离为纯 JS，但不执行类型检查
+  - 只做语法转译，不做类型检查：Esbuild 将 TS 语法剥离为纯 JS，但不执行类型检查
   - 支持 `.ts`、`.tsx`、`.mts`（ESM TypeScript）文件
   - 支持 `tsconfig.json` 中的 `paths` 别名解析
 - 注意事项：
@@ -50,11 +53,11 @@
 ## 5. CSS 转换
 
 - Vite 内置了对多种 CSS 语法的支持：
-  - **原生 CSS**：直接加载，无需任何配置
-  - **CSS Modules**：以 `.module.css` 为后缀的文件自动启用 CSS Modules
-  - **CSS 预处理器**：自动检测 `sass`、`less`、`stylus` 等依赖，安装即可使用，无需额外配置
-  - **PostCSS**：项目根目录有 `postcss.config.js` 时自动启用
-  - **CSS 嵌套**：原生 CSS 嵌套语法自动转换为兼容语法
+  - 原生 CSS：直接加载，无需任何配置
+  - CSS Modules：以 `.module.css` 为后缀的文件自动启用 CSS Modules
+  - CSS 预处理器：自动检测 `sass`、`less`、`stylus` 等依赖，安装即可使用，无需额外配置
+  - PostCSS：项目根目录有 `postcss.config.js` 时自动启用
+  - CSS 嵌套：原生 CSS 嵌套语法自动转换为兼容语法
 - CSS Modules 示例：
 
 ```ts
@@ -68,10 +71,10 @@ document.getElementById('app')!.className = styles.container
 ## 6. 静态资源转换
 
 - Vite 对静态资源有完善的处理机制：
-  - **ESM 导入**：`import imgUrl from './img.png'` 返回资源的 URL（带哈希）
-  - **URL 引用**：CSS 中的 `url()` 和 HTML 中的 `src` 自动处理
-  - **小资源内联**：小于 4KB 的资源会被 Base64 内联，减少 HTTP 请求
-  - **大资源处理**：大于 4KB 的资源被复制到输出目录，返回带哈希的文件名
+  - ESM 导入：`import imgUrl from './img.png'` 返回资源的 URL（带哈希）
+  - URL 引用：CSS 中的 `url()` 和 HTML 中的 `src` 自动处理
+  - 小资源内联：小于 4KB 的资源会被 Base64 内联，减少 HTTP 请求
+  - 大资源处理：大于 4KB 的资源被复制到输出目录，返回带哈希的文件名
 - 支持的资源类型：
   - 图片：`.png`、`.jpg`、`.jpeg`、`.gif`、`.svg`、`.webp`、`.avif`
   - 字体：`.woff`、`.woff2`、`.eot`、`.ttf`、`.otf`
@@ -84,17 +87,16 @@ document.getElementById('app')!.className = styles.container
 
 ## 7. Vue / React / Svelte 单文件组件转换
 
-- **Vue SFC（`.vue` 文件）**：
-  - 由 `@vitejs/plugin-vue` 处理
-  - 编译流程：Vue Compiler 将 `.vue` 文件拆分为 template、script、style 三部分
-  - template 编译为渲染函数，script 转换为 ES 模块，style 提取为 CSS
-  - 支持 `<script setup>`、`<style scoped>`、`<style module>` 等语法
-- **React / JSX**：
-  - JSX 由 Esbuild 内置处理（或通过 SWC 加速）
-  - `@vitejs/plugin-react` 提供 Fast Refresh（类似 HMR 的 React 专用方案）
-  - 支持 `.jsx`、`.tsx` 文件
-- **Svelte（`.svelte` 文件）**：
-  - 由 `@sveltejs/vite-plugin-svelte` 处理
-  - Svelte Compiler 将 `.svelte` 文件编译为高效的原生 JS 操作
-  - 编译时框架，产物体积小
-- 所有框架插件都遵循 Vite 的插件接口，统一了开发和构建的行为
+### 7.1. Vue SFC（`.vue` 文件）
+
+由 `@vitejs/plugin-vue` 处理。编译流程为 Vue Compiler 将 `.vue` 文件拆分为 template、script、style 三部分，template 编译为渲染函数，script 转换为 ES 模块，style 提取为 CSS。支持 `<script setup>`、`<style scoped>`、`<style module>` 等语法。
+
+### 7.2. React / JSX
+
+JSX 由 Esbuild 内置处理（或通过 SWC 加速），`@vitejs/plugin-react` 提供 Fast Refresh（类似 HMR 的 React 专用方案），支持 `.jsx`、`.tsx` 文件。
+
+### 7.3. Svelte（`.svelte` 文件）
+
+由 `@sveltejs/vite-plugin-svelte` 处理。Svelte Compiler 将 `.svelte` 文件编译为高效的原生 JS 操作，属于编译时框架，产物体积小。
+
+所有框架插件都遵循 Vite 的插件接口，统一了开发和构建的行为。

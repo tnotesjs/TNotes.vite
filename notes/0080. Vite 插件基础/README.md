@@ -55,9 +55,9 @@ export default defineConfig({
 
 ## 4. Vite 插件与 Rollup 插件关系
 
-- Vite 的插件系统**基于 Rollup 的插件接口**设计
+- Vite 的插件系统基于 Rollup 的插件接口设计
 - 大部分 Rollup 插件可以直接在 Vite 中使用
-- Vite 在 Rollup 插件接口的基础上扩展了一些**特有的钩子**：
+- Vite 在 Rollup 插件接口的基础上扩展了一些特有的钩子：
   - `transformIndexHtml`：转换 `index.html`
   - `configureServer`：配置 Dev Server
   - `handleHotUpdate`：自定义 HMR 行为
@@ -128,14 +128,14 @@ plugins: [
 ## 6. 插件适用场景
 
 - 常见的插件使用场景：
-  - **框架支持**：`@vitejs/plugin-vue`、`@vitejs/plugin-react`
-  - **SVG 处理**：`vite-plugin-svg-icons`、`vite-svg-loader`
-  - **自动导入**：`unplugin-auto-import`、`unplugin-vue-components`
-  - **压缩优化**：`vite-plugin-compression`、`vite-plugin-imagemin`
-  - **Mock 数据**：`vite-plugin-mock`
-  - **环境检查**：`vite-plugin-checker`
-  - **CDN 引入**：`vite-plugin-cdn-import`
-  - **路径别名**：`vite-tsconfig-paths`
+  - 框架支持：`@vitejs/plugin-vue`、`@vitejs/plugin-react`
+  - SVG 处理：`vite-plugin-svg-icons`、`vite-svg-loader`
+  - 自动导入：`unplugin-auto-import`、`unplugin-vue-components`
+  - 压缩优化：`vite-plugin-compression`、`vite-plugin-imagemin`
+  - Mock 数据：`vite-plugin-mock`
+  - 环境检查：`vite-plugin-checker`
+  - CDN 引入：`vite-plugin-cdn-import`
+  - 路径别名：`vite-tsconfig-paths`
 - 选择插件的原则：
   - 优先选择官方插件（`@vitejs/` 前缀）
   - 查看插件的 GitHub Stars、最近更新时间、Issue 数量

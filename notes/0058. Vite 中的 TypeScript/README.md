@@ -24,7 +24,7 @@
 ## 3. 开箱即用的 TS 转换
 
 - Vite 原生支持 TypeScript，无需安装额外的 loader 或插件
-- 使用 **Esbuild** 转译 TypeScript，速度约为 tsc 的 20-30 倍
+- 使用 Esbuild 转译 TypeScript，速度约为 tsc 的 20-30 倍
 - 支持的 TypeScript 特性：
   - `.ts`、`.tsx`、`.mts`（ESM TypeScript）文件
   - 类型注解、接口、泛型、枚举等语法
@@ -36,8 +36,8 @@
 
 - Vite 使用 Esbuild 转译 TypeScript，Esbuild 只做语法转译，不执行类型检查
 - 这意味着：
-  - 类型错误**不会**阻止开发服务器启动
-  - 类型错误**不会**阻止生产构建（除非单独运行 tsc）
+  - 类型错误不会阻止开发服务器启动
+  - 类型错误不会阻止生产构建（除非单独运行 tsc）
   - 某些需要类型信息的 TypeScript 特性可能有兼容问题
     - `const enum`：在 `isolatedModules: true` 下行为不同
     - 命名空间（namespace）：需要 `isolatedModules: true` 配置
@@ -49,9 +49,9 @@
 ## 5. 类型检查与构建分离
 
 - 推荐的工作流：
-  - **开发时**：IDE（VS Code）提供实时类型检查和错误提示
-  - **构建时**：在 `vite build` 之前单独运行类型检查
-  - **CI 中**：作为流水线的一个独立步骤
+  - 开发时：IDE（VS Code）提供实时类型检查和错误提示
+  - 构建时：在 `vite build` 之前单独运行类型检查
+  - CI 中：作为流水线的一个独立步骤
 - `package.json` 配置：
 
 ```json

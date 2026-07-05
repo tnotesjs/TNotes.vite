@@ -138,10 +138,10 @@ document.documentElement.classList.toggle('dark')
 ## 7. 响应式设计
 
 - Vite 项目中实现响应式设计的常用方案：
-  - **CSS 媒体查询**：最基础的方案
-  - **CSS 容器查询**：现代方案，基于容器而非视口
-  - **Tailwind CSS 断点**：`sm:`、`md:`、`lg:`、`xl:` 前缀
-  - **PostCSS 插件**：如 `postcss-px-to-viewport` 实现移动端适配
+  - CSS 媒体查询：最基础的方案
+  - CSS 容器查询：现代方案，基于容器而非视口
+  - Tailwind CSS 断点：`sm:`、`md:`、`lg:`、`xl:` 前缀
+  - PostCSS 插件：如 `postcss-px-to-viewport` 实现移动端适配
 
 ```css
 /* 媒体查询 */
@@ -162,11 +162,11 @@ document.documentElement.classList.toggle('dark')
 ## 8. 样式隔离
 
 - Vite 项目中实现样式隔离的方案：
-  - **CSS Modules**（推荐）：`.module.css` 后缀自动启用
-  - **Scoped CSS**（Vue）：`<style scoped>` 自动添加作用域
-  - **CSS-in-JS**：运行时或编译时生成唯一类名
-  - **Shadow DOM**：原生的样式隔离方案
-  - **BEM 命名**：约定式的命名规范（如 `.block__element--modifier`）
+  - CSS Modules（推荐）：`.module.css` 后缀自动启用
+  - Scoped CSS（Vue）：`<style scoped>` 自动添加作用域
+  - CSS-in-JS：运行时或编译时生成唯一类名
+  - Shadow DOM：原生的样式隔离方案
+  - BEM 命名：约定式的命名规范（如 `.block__element--modifier`）
 - 选择建议：
   - Vue 项目：Scoped CSS 或 CSS Modules
   - React 项目：CSS Modules 或 CSS-in-JS

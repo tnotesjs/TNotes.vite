@@ -92,7 +92,7 @@ export async function render(url: string) {
   3. Vue 对比服务端 HTML 和客户端虚拟 DOM
   4. 绑定事件监听器，页面变为可交互
 - 常见问题：
-  - **Hydration Mismatch**：服务端和客户端渲染结果不一致，控制台会输出警告
+  - Hydration Mismatch：服务端和客户端渲染结果不一致，控制台会输出警告
   - 原因：使用了 `Date.now()`、`Math.random()`、`localStorage` 等客户端特有的 API
   - 解决：使用 `onMounted` 钩子或 `v-if` 延迟渲染客户端特有的内容
 
@@ -104,6 +104,6 @@ export async function render(url: string) {
   3. 在 Node.js 服务器中加载服务端产物，渲染 HTML 并注入客户端脚本
 
 - 推荐的生产框架：
-  - **Nuxt**：Vue 生态的全栈 SSR 框架，开箱即用
-  - **Vite SSR**：手动搭建，适合需要精细控制的场景
-- 对于大部分项目，**强烈推荐使用 Nuxt**，它处理了 SSR 的大量复杂性（路由、数据预取、部署等）
+  - Nuxt：Vue 生态的全栈 SSR 框架，开箱即用
+  - Vite SSR：手动搭建，适合需要精细控制的场景
+- 对于大部分项目，强烈推荐使用 Nuxt，它处理了 SSR 的大量复杂性（路由、数据预取、部署等）

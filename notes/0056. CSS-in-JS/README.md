@@ -28,11 +28,11 @@
 
 - Vite 的 React 模板开箱即用支持 JSX，CSS-in-JS 库通常不需要额外配置
 - 常用的 CSS-in-JS 方案：
-  - **Emotion**：React 生态最流行的 CSS-in-JS 库
-  - **Styled Components**：另一款主流的 CSS-in-JS 库
-  - **Vanilla Extract**：零运行时的 CSS-in-JS 方案（编译时提取）
+  - Emotion：React 生态最流行的 CSS-in-JS 库
+  - Styled Components：另一款主流的 CSS-in-JS 库
+  - Vanilla Extract：零运行时的 CSS-in-JS 方案（编译时提取）
 - 选择建议：
-  - 新项目推荐 **Vanilla Extract**（零运行时，性能最优）
+  - 新项目推荐 Vanilla Extract（零运行时，性能最优）
   - 已有项目沿用 Emotion 或 Styled Components
 
 ## 4. Emotion

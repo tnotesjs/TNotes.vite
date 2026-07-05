@@ -28,7 +28,7 @@
 
 ## 3. 自动导入插件
 
-- **`unplugin-auto-import`**：自动导入 API，无需手动 `import`
+- `unplugin-auto-import`：自动导入 API，无需手动 `import`
 
 ```ts
 import AutoImport from 'unplugin-auto-import/vite'
@@ -47,7 +47,7 @@ export default defineConfig({
 
 ## 4. 组件自动注册插件
 
-- **`unplugin-vue-components`**：Vue 组件自动导入和注册
+- `unplugin-vue-components`：Vue 组件自动导入和注册
 
 ```ts
 import Components from 'unplugin-vue-components/vite'
@@ -67,14 +67,14 @@ export default defineConfig({
 
 ## 5. SVG 插件
 
-- **`vite-plugin-svg-icons`**：SVG Sprite 图标方案
-- **`vite-svg-loader`**：将 SVG 转为 Vue/React 组件
-- **`unplugin-icons`**：从 Iconify 图标库自动导入图标
+- `vite-plugin-svg-icons`：SVG Sprite 图标方案
+- `vite-svg-loader`：将 SVG 转为 Vue/React 组件
+- `unplugin-icons`：从 Iconify 图标库自动导入图标
 - 详见 0050 节「SVG 处理」
 
 ## 6. Mock 插件
 
-- **`vite-plugin-mock`**：基于 Mock.js 的数据 Mock 方案
+- `vite-plugin-mock`：基于 Mock.js 的数据 Mock 方案
 
 ```ts
 import { viteMockServe } from 'vite-plugin-mock'
@@ -93,7 +93,7 @@ export default defineConfig({
 
 ## 7. PWA 插件
 
-- **`vite-plugin-pwa`**：将项目构建为 PWA（渐进式 Web 应用）
+- `vite-plugin-pwa`：将项目构建为 PWA（渐进式 Web 应用）
 
 ```ts
 import { VitePWA } from 'vite-plugin-pwa'
@@ -115,7 +115,7 @@ export default defineConfig({
 
 ## 8. ESLint 插件
 
-- **`vite-plugin-eslint`**：在开发时实时显示 ESLint 错误
+- `vite-plugin-eslint`：在开发时实时显示 ESLint 错误
 
 ```ts
 import eslint from 'vite-plugin-eslint'
@@ -129,13 +129,13 @@ export default defineConfig({
 
 ## 9. Checker 插件
 
-- **`vite-plugin-checker`**：在浏览器中显示类型检查和 ESLint 错误
+- `vite-plugin-checker`：在浏览器中显示类型检查和 ESLint 错误
 - 支持 TypeScript、Vue TSC、ESLint、Stylelint 等
 - 详见 0060 节「类型检查」
 
 ## 10. Compression 插件
 
-- **`vite-plugin-compression`**：构建时生成 Gzip/Brotli 预压缩文件
+- `vite-plugin-compression`：构建时生成 Gzip/Brotli 预压缩文件
 
 ```ts
 import compression from 'vite-plugin-compression'
@@ -152,6 +152,6 @@ export default defineConfig({
 
 ## 11. Inspect 插件
 
-- **`vite-plugin-inspect`**：检查 Vite 插件的转换结果
+- `vite-plugin-inspect`：检查 Vite 插件的转换结果
 - 提供 Web 界面查看每个模块经过了哪些插件的处理
 - 是调试 Vite 插件的利器，详见 0087 节

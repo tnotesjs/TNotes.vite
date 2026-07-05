@@ -41,13 +41,13 @@
 ## 4. Vite HMR 流程
 
 - 完整的 HMR 流程：
-  1. **文件监听**：Vite Dev Server 通过 `chokidar` 监听项目文件变化
-  2. **模块失效**：文件变化后，Vite 使该模块及其依赖链上的模块缓存失效
-  3. **WebSocket 通知**：通过 WebSocket 连接向浏览器发送 HMR 更新消息
-  4. **客户端处理**：浏览器端的 HMR Runtime 接收消息，向 Dev Server 请求更新后的模块
-  5. **模块替换**：用新模块替换旧模块，触发模块的 `accept` 回调
-  6. **冒泡更新**：如果当前模块没有处理 HMR，更新会冒泡到父模块，直到某个模块处理或触发整页刷新
-- 关键点：更新是**精确到模块级别**的，只有变化的模块和受影响的模块会被更新
+  1. 文件监听：Vite Dev Server 通过 `chokidar` 监听项目文件变化
+  2. 模块失效：文件变化后，Vite 使该模块及其依赖链上的模块缓存失效
+  3. WebSocket 通知：通过 WebSocket 连接向浏览器发送 HMR 更新消息
+  4. 客户端处理：浏览器端的 HMR Runtime 接收消息，向 Dev Server 请求更新后的模块
+  5. 模块替换：用新模块替换旧模块，触发模块的 `accept` 回调
+  6. 冒泡更新：如果当前模块没有处理 HMR，更新会冒泡到父模块，直到某个模块处理或触发整页刷新
+- 关键点：更新是精确到模块级别的，只有变化的模块和受影响的模块会被更新
 
 ## 5. WebSocket 通信
 
@@ -83,19 +83,19 @@
 
 ## 7. CSS HMR
 
-- CSS 的 HMR 是**开箱即用**的，无需任何额外代码
+- CSS 的 HMR 是开箱即用的，无需任何额外代码
 - 原理：
   1. 监听到 `.css` / `.scss` / `.less` 等样式文件变化
   2. Vite 重新编译样式内容
   3. 通过 WebSocket 通知浏览器
   4. 浏览器用新的 `<style>` 标签替换旧的样式
 - CSS Modules 的 HMR 同样自动支持，但需要导入该 CSS Modules 文件的模块也支持 HMR
-- **不丢失任何状态**：CSS HMR 只替换样式，不影响 DOM 结构和 JavaScript 状态
+- 不丢失任何状态：CSS HMR 只替换样式，不影响 DOM 结构和 JavaScript 状态
 - 这是日常开发中最频繁体验到的 HMR 场景
 
 ## 8. Vue HMR
 
-- Vue 的 HMR 由 `@vitejs/plugin-vue` 提供，实现了**组件级热替换**
+- Vue 的 HMR 由 `@vitejs/plugin-vue` 提供，实现了组件级热替换
 - 支持的更新场景：
   - `<template>` 修改：重新渲染组件，保留组件状态
   - `<script>` 修改：重新执行 setup/render 逻辑
@@ -111,12 +111,8 @@
 
 ## 9. React Fast Refresh
 
-- React 的 HMR 方案叫 **Fast Refresh**，由 `@vitejs/plugin-react` 提供
-- Fast Refresh 的能力：
-  - **函数组件 / Hook 变化**：重新执行组件函数，保留状态（如果可以保留的话）
-  - **纯渲染逻辑变化**：即时重渲染，完全保留状态
-  - **有副作用的 Hook 变化**（如 `useEffect`）：组件会被完整重载
-  - **类型 / 类组件变化**：触发整页刷新（降级方案）
+- React 的 HMR 方案叫 Fast Refresh，由 `@vitejs/plugin-react` 提供
+- Fast Refresh 的能力：函数组件 / Hook 变化时重新执行组件函数，保留状态（如果可以保留的话）；纯渲染逻辑变化时即时重渲染，完全保留状态；有副作用的 Hook 变化（如 `useEffect`）时组件会被完整重载；类型 / 类组件变化时触发整页刷新（降级方案）
 - 与 Vue HMR 的对比：
   - Vue 的 HMR 粒度更细（模板编译级），React Fast Refresh 是运行时方案
   - 两者在实际体验上差异不大，都能实现组件级热替换

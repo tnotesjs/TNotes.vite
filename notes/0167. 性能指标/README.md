@@ -27,35 +27,35 @@
 
 ## 3. FCP
 
-- **First Contentful Paint**（首次内容绘制）
+- First Contentful Paint（首次内容绘制）
 - 衡量页面首次渲染任何内容（文本、图片等）的时间
 - 目标：≤ 1.8 秒
 - 优化：减少关键资源加载时间、内联关键 CSS
 
 ## 4. LCP
 
-- **Largest Contentful Paint**（最大内容绘制）
+- Largest Contentful Paint（最大内容绘制）
 - 衡量页面最大内容元素（首屏大图、标题等）的渲染时间
 - 目标：≤ 2.5 秒
 - 优化：预加载关键图片、优化服务器响应时间、使用 CDN
 
 ## 5. CLS
 
-- **Cumulative Layout Shift**（累积布局偏移）
+- Cumulative Layout Shift（累积布局偏移）
 - 衡量页面加载过程中元素意外移动的程度
 - 目标：≤ 0.1
 - 优化：为图片和视频设置尺寸、避免动态注入内容、使用 `font-display: swap`
 
 ## 6. INP
 
-- **Interaction to Next Paint**（交互到下次绘制）
+- Interaction to Next Paint（交互到下次绘制）
 - 衡量页面对用户交互（点击、输入等）的响应速度
 - 目标：≤ 200 毫秒
 - 优化：减少主线程阻塞、拆分长任务、使用 Web Worker
 
 ## 7. TTFB
 
-- **Time to First Byte**（首字节时间）
+- Time to First Byte（首字节时间）
 - 衡量浏览器收到服务器响应第一个字节的时间
 - 目标：≤ 800 毫秒
 - 优化：使用 CDN、优化服务器性能、使用 HTTP/2 或 HTTP/3

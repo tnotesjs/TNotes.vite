@@ -60,18 +60,11 @@
 
 ## 5. 创建 React 项目
 
-- 命令：`npm create vite@latest my-react-app -- --template react`
-- 推荐使用 `react-swc` 模板，SWC 比 Babel 编译速度快 20-70 倍
-- TypeScript 项目使用 `react-swc-ts` 模板
-- 生成的项目使用 JSX 自动转换（无需手动 `import React`）
-- 如需更完整的 React 项目模板（含路由、状态管理方案选择），可考虑 `create-t3-app` 或 Next.js
+创建 React 项目使用命令 `npm create vite@latest my-react-app -- --template react`。推荐使用 `react-swc` 模板，SWC 比 Babel 编译速度快 20-70 倍；TypeScript 项目使用 `react-swc-ts` 模板。生成的项目使用 JSX 自动转换（无需手动 `import React`）。如需更完整的 React 项目模板（含路由、状态管理方案选择），可考虑 `create-t3-app` 或 Next.js。
 
 ## 6. 创建 Svelte 项目
 
-- 命令：`npm create vite@latest my-svelte-app -- --template svelte`
-- Vite 是 Svelte 和 SvelteKit 的默认构建工具
-- 生成的项目使用 `.svelte` 单文件组件格式
-- 如需完整的 Svelte 应用框架（路由、SSR 等），应使用 `npm create svelte@latest`（SvelteKit）
+创建 Svelte 项目使用命令 `npm create vite@latest my-svelte-app -- --template svelte`。Vite 是 Svelte 和 SvelteKit 的默认构建工具，生成的项目使用 `.svelte` 单文件组件格式。如需完整的 Svelte 应用框架（路由、SSR 等），应使用 `npm create svelte@latest`（SvelteKit）。
 
 ## 7. 创建 Vanilla 项目
 
@@ -91,5 +84,5 @@
   - `tsconfig.json`：TypeScript 编译配置
   - `tsconfig.node.json`：Node.js 环境的 TS 配置（用于 `vite.config.ts`）
   - `.d.ts` 声明文件（如 `env.d.ts`，用于声明 Vite 特有的模块类型）
-- Vite 使用 Esbuild 转译 TypeScript，**只做转译不做类型检查**
+- Vite 使用 Esbuild 转译 TypeScript，只做转译不做类型检查
 - 建议在 CI 流水线中加入 `tsc --noEmit` 或框架对应的类型检查命令（如 `vue-tsc --noEmit`）

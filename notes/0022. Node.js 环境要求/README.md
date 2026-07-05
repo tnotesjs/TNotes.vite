@@ -23,28 +23,15 @@
 
 ## 3. Vite v8 对 Node.js 版本的要求
 
-- Vite 8 要求 **Node.js >= 20.0.0**（LTS）
-- Vite 7 要求 Node.js >= 18.0.0
-- 推荐使用 Node.js 22.x LTS，获得最佳兼容性和性能
-- 检查当前版本：`node -v`
-- 版本不满足时的常见报错：
-  - 启动时直接报错 `Vite requires Node.js version X or higher`
-  - 某些依赖安装失败（如 Esbuild 的平台二进制文件不兼容旧版 Node）
-- 版本管理工具推荐：
-  - **nvm**（Node Version Manager）：最流行的 Node 版本管理器，支持多版本切换
-  - **fnm**：用 Rust 编写的 nvm 替代品，启动更快
-  - **volta**：自动根据项目 `package.json` 切换 Node 版本
+Vite 8 要求 Node.js >= 20.0.0（LTS），Vite 7 要求 Node.js >= 18.0.0，推荐使用 Node.js 22.x LTS 获得最佳兼容性和性能。检查当前版本可使用 `node -v`。版本不满足时的常见报错包括启动时直接报错 `Vite requires Node.js version X or higher`，以及某些依赖安装失败（如 Esbuild 的平台二进制文件不兼容旧版 Node）。
+
+版本管理工具推荐：nvm（Node Version Manager）是最流行的 Node 版本管理器，支持多版本切换；fnm 是用 Rust 编写的 nvm 替代品，启动更快；volta 可以自动根据项目 `package.json` 切换 Node 版本。
 
 ## 4. npm、pnpm、yarn、bun 的选择
 
-- **npm**：Node.js 自带，零配置，最广泛的兼容性；缺点是依赖安装速度较慢，早期存在幽灵依赖问题
-- **pnpm**：推荐选择，使用硬链接和内容寻址存储，安装速度快、磁盘占用少，严格隔离依赖避免幽灵依赖
-- **yarn**（v4+）：Yarn Berry 使用 Plug'n'Play（PnP）机制，无需 `node_modules` 目录；学习曲线较陡
-- **bun**：全能运行时（包管理器 + 运行时 + 打包器），安装速度极快；生态兼容性仍在完善中
-- 建议：
-  - 新项目优先选 **pnpm**，兼顾速度和磁盘效率
-  - 团队已有项目跟随现有选择，保持一致性
-  - 追求极致速度可以尝试 **bun**
+npm 是 Node.js 自带的包管理器，零配置，兼容性最广泛，缺点是依赖安装速度较慢且早期存在幽灵依赖问题。pnpm 是推荐选择，使用硬链接和内容寻址存储，安装速度快、磁盘占用少，严格隔离依赖避免幽灵依赖。yarn（v4+）即 Yarn Berry，使用 Plug'n'Play（PnP）机制，无需 `node_modules` 目录，但学习曲线较陡。bun 是全能运行时（包管理器 + 运行时 + 打包器），安装速度极快，但生态兼容性仍在完善中。
+
+选择建议：新项目优先选 pnpm，兼顾速度和磁盘效率；团队已有项目跟随现有选择，保持一致性；追求极致速度可以尝试 bun。
 
 ## 5. 包管理器差异
 

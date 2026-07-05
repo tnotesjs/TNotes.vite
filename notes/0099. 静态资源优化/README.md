@@ -24,8 +24,7 @@
 
 ## 3. 图片压缩
 
-- Vite 不内置图片压缩，需要通过插件实现
-- **`vite-plugin-imagemin`**：
+- Vite 不内置图片压缩，需要通过插件实现（如 `vite-plugin-imagemin`）：
 
 ```bash
 npm install -D vite-plugin-imagemin
@@ -52,8 +51,8 @@ export default defineConfig({
 ## 4. WebP / AVIF
 
 - 现代图片格式的体积比 JPEG/PNG 小 25-50%
-- **WebP**：Chrome、Firefox、Safari 14+ 支持
-- **AVIF**：Chrome 85+、Firefox 93+ 支持，压缩率更高
+- WebP：Chrome、Firefox、Safari 14+ 支持
+- AVIF：Chrome 85+、Firefox 93+ 支持，压缩率更高
 - 使用 `vite-plugin-image-presets` 实现自动格式转换：
 
 ```ts

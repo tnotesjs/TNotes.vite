@@ -34,7 +34,7 @@
   - `vite.config.mjs`（显式 ESM JavaScript）
   - `vite.config.cjs`（CommonJS JavaScript）
 - 如果项目 `package.json` 中没有 `"type": "module"`，`.js` 文件会被当作 CommonJS
-- 配置文件位于**项目根目录**，与 `package.json` 同级
+- 配置文件位于项目根目录，与 `package.json` 同级
 
 ## 4. `vite.config.ts`
 
@@ -61,7 +61,7 @@ export default defineConfig({
 
 ## 5. `defineConfig`
 
-- `defineConfig` 是 Vite 提供的辅助函数，用于为配置对象提供**完整的 TypeScript 类型提示**
+- `defineConfig` 是 Vite 提供的辅助函数，用于为配置对象提供完整的 TypeScript 类型提示
 - 导入方式：`import { defineConfig } from 'vite'`
 - 作用：
   - 接收一个配置对象，原样返回（运行时无任何额外逻辑）
@@ -95,7 +95,7 @@ export default defineConfig({
 
 ## 7. 配置函数形式
 
-- `defineConfig` 支持传入一个**函数**，函数接收 `ConfigEnv` 参数：
+- `defineConfig` 支持传入一个函数，函数接收 `ConfigEnv` 参数：
 
 ```ts
 import { defineConfig } from 'vite'

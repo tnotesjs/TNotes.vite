@@ -11,6 +11,11 @@
 - [7. Chunk 生成](#7-chunk-生成)
 - [8. 静态资源处理](#8-静态资源处理)
 - [9. 压缩与优化](#9-压缩与优化)
+  - [9.1. JavaScript 压缩](#91-javascript-压缩)
+  - [9.2. CSS 压缩](#92-css-压缩)
+  - [9.3. HTML 压缩](#93-html-压缩)
+  - [9.4. 图片优化](#94-图片优化)
+  - [9.5. Gzip / Brotli 预压缩](#95-gzip--brotli-预压缩)
 
 <!-- endregion:toc -->
 
@@ -40,14 +45,8 @@
 
 ## 4. Rollup / Rolldown 与 Vite 的关系
 
-- **Rollup**：当前 Vite 生产构建的默认打包工具
-  - 成熟稳定，广泛用于库打包和应用构建
-  - 原生支持 ESM 输出，Tree Shaking 能力优秀
-  - Vite 的插件系统基于 Rollup 的插件接口设计
-- **Rolldown**：Vite 团队正在开发的 Rust 实现打包器
-  - 目标是完全替代 Rollup，同时保持 API 兼容
-  - 构建速度预计将提升 10-30 倍
-  - 已在 Vite 的 nightly 版本中可用，逐步稳定中
+- Rollup：当前 Vite 生产构建的默认打包工具（Vite 2 ~ 5）。成熟稳定，广泛用于库打包和应用构建，原生支持 ESM 输出，Tree Shaking 能力优秀，Vite 的插件系统基于 Rollup 的插件接口设计
+- Rolldown：Vite 团队开发的 Rust 实现打包器，已在 Vite 6+ 中替代 Rollup 成为默认打包器。构建速度比 Rollup 快 10-30 倍，保持 API 兼容
 - 为什么开发和生产使用不同的工具？
   - Esbuild 擅长快速转译，但产物优化能力（Tree Shaking、Code Splitting）不如 Rollup
   - Rollup 擅长生成高质量的优化产物，但构建速度不如 Esbuild
@@ -68,11 +67,7 @@
 
 ## 6. 代码分割
 
-- 代码分割（Code Splitting）将应用拆分为多个小块（chunk），按需加载
-- Vite 中的代码分割策略：
-  - **动态导入（Dynamic Import）**：`import('./xxx')` 的模块会被自动拆分为独立 chunk
-  - **路由级分割**：配合 Vue Router / React Router 的懒加载，实现路由级代码分割
-  - **共享模块提取**：多个 chunk 共享的模块会被提取为单独的共享 chunk，避免重复加载
+- 代码分割（Code Splitting）将应用拆分为多个小块（chunk），按需加载。Vite 中的代码分割策略包括：动态导入（`import('./xxx')` 的模块会被自动拆分为独立 chunk）、路由级分割（配合 Vue Router / React Router 的懒加载）、共享模块提取（多个 chunk 共享的模块会被提取为单独的共享 chunk，避免重复加载）。
 - 配置示例（手动分割策略）：
 
 ```ts
@@ -92,17 +87,7 @@ export default defineConfig({
 
 ## 7. Chunk 生成
 
-- Rollup 在构建时会根据以下规则生成 chunk：
-  - **入口 chunk（Entry Chunk）**：每个入口文件对应一个 chunk
-  - **动态 chunk（Dynamic Chunk）**：每个动态导入对应一个 chunk
-  - **共享 chunk（Shared Chunk）**：被多个 chunk 引用的公共模块
-- chunk 命名策略：
-  - 默认使用内容哈希：`index-[hash].js`、`vendor-[hash].js`
-  - 可通过 `output.chunkFileNames` 自定义命名规则
-  - 内容哈希确保文件内容变化时文件名变化，利于长期缓存
-- chunk 体积控制：
-  - `build.chunkSizeWarningLimit`：单个 chunk 体积警告阈值（默认 500KB）
-  - 当 chunk 过大时，可以在构建输出中看到警告，需要考虑进一步拆分
+- Rollup 在构建时会根据以下规则生成 chunk：入口 chunk（每个入口文件对应一个 chunk）、动态 chunk（每个动态导入对应一个 chunk）、共享 chunk（被多个 chunk 引用的公共模块）。chunk 命名策略默认使用内容哈希（`index-[hash].js`），可通过 `output.chunkFileNames` 自定义命名规则，内容哈希确保文件内容变化时文件名变化，利于长期缓存。chunk 体积控制通过 `build.chunkSizeWarningLimit`（默认 500KB）设置警告阈值，当 chunk 过大时需要考虑进一步拆分。
 
 ## 8. 静态资源处理
 
@@ -116,19 +101,22 @@ export default defineConfig({
 
 ## 9. 压缩与优化
 
-- **JavaScript 压缩**：
-  - 默认使用 Esbuild 压缩（速度极快）
-  - 可选 terser（压缩率更高但更慢）：`build.minify: 'terser'`
-  - 可关闭压缩：`build.minify: false`（调试时有用）
-- **CSS 压缩**：
-  - 默认使用 Lightning CSS（Rust 实现，速度极快）
-  - 自动合并重复规则、移除空白、缩短颜色值等
-- **HTML 压缩**：
-  - 使用 `@minify-html/node` 插件可压缩 HTML 输出
-  - Vite 默认不压缩 HTML，需要安装插件
-- **图片优化**：
-  - Vite 不内置图片压缩，需要通过插件实现（如 `vite-plugin-imagemin`）
-  - 建议在 CI/CD 流水线中使用独立的图片压缩工具
-- **Gzip / Brotli 预压缩**：
-  - 使用 `vite-plugin-compression` 在构建时生成 `.gz` / `.br` 文件
-  - 配合 Nginx 或 CDN 的 `gzip_static` / `brotli_static` 指令，直接返回预压缩文件
+### 9.1. JavaScript 压缩
+
+默认使用 Esbuild 压缩（速度极快），可选 terser（压缩率更高但更慢：`build.minify: 'terser'`），可关闭压缩：`build.minify: false`（调试时有用）。
+
+### 9.2. CSS 压缩
+
+默认使用 Lightning CSS（Rust 实现，速度极快，Vite 5.1+ 引入），自动合并重复规则、移除空白、缩短颜色值、优化选择器。
+
+### 9.3. HTML 压缩
+
+使用 `@minify-html/node` 插件可压缩 HTML 输出，Vite 默认不压缩 HTML，需要安装插件。
+
+### 9.4. 图片优化
+
+Vite 不内置图片压缩，需要通过插件实现（如 `vite-plugin-imagemin`），建议在 CI/CD 流水线中使用独立的图片压缩工具。
+
+### 9.5. Gzip / Brotli 预压缩
+
+使用 `vite-plugin-compression` 在构建时生成 `.gz` / `.br` 文件，配合 Nginx 或 CDN 的 `gzip_static` / `brotli_static` 指令，直接返回预压缩文件。

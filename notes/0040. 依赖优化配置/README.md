@@ -28,9 +28,9 @@
 - 强制指定需要预构建的依赖包
 - 默认情况下，Vite 只会在启动时扫描源码中的静态导入来发现依赖
 - 以下场景需要手动 `include`：
-  - **动态导入的依赖**：`import('lodash-es')` 这种动态导入无法被静态扫描发现
-  - **间接依赖**：某些包的子模块不是 ESM 格式，需要预构建
-  - **CommonJS 依赖**：某些 CJS 包无法被浏览器直接使用
+  - 动态导入的依赖：`import('lodash-es')` 这种动态导入无法被静态扫描发现
+  - 间接依赖：某些包的子模块不是 ESM 格式，需要预构建
+  - CommonJS 依赖：某些 CJS 包无法被浏览器直接使用
 
 ```ts
 export default defineConfig({
@@ -47,9 +47,9 @@ export default defineConfig({
 
 - 排除指定的依赖包不进行预构建
 - 典型场景：
-  - **Monorepo 中的本地包**：本地包已经是 ESM 格式，不需要预构建
-  - **含有特殊文件类型的包**：某些包包含 Worker、WASM 等非标准文件
-  - **Vite 插件处理的包**：某些包需要由特定插件处理而非 Esbuild
+  - Monorepo 中的本地包：本地包已经是 ESM 格式，不需要预构建
+  - 含有特殊文件类型的包：某些包包含 Worker、WASM 等非标准文件
+  - Vite 插件处理的包：某些包需要由特定插件处理而非 Esbuild
 
 ```ts
 export default defineConfig({
@@ -103,7 +103,7 @@ export default defineConfig({
 ## 7. `optimizeDeps.force`
 
 - 默认为 `false`
-- 设为 `true` 后，每次启动 Dev Server 都会**强制重新预构建**依赖，忽略缓存
+- 设为 `true` 后，每次启动 Dev Server 都会强制重新预构建依赖，忽略缓存
 - CLI 快捷方式：`vite --force`
 - 适用场景：
   - 排查预构建缓存导致的问题

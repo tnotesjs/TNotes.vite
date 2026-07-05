@@ -26,12 +26,12 @@
 ## 3. 浏览器 DevTools
 
 - Chrome DevTools 的常用功能：
-  - **Console**：查看日志和错误
-  - **Elements**：检查 DOM 和 CSS
-  - **Sources**：查看源码和打断点
-  - **Network**：查看网络请求
-  - **Performance**：性能分析
-  - **Lighthouse**：网站质量检测
+  - Console：查看日志和错误
+  - Elements：检查 DOM 和 CSS
+  - Sources：查看源码和打断点
+  - Network：查看网络请求
+  - Performance：性能分析
+  - Lighthouse：网站质量检测
 
 ## 4. Network 面板
 

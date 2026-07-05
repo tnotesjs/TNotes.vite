@@ -24,7 +24,7 @@
 
 ## 3. 开发环境跨域问题
 
-- 跨域的原因：浏览器的**同源策略**限制了不同源（协议、域名、端口）之间的请求
+- 跨域的原因：浏览器的同源策略限制了不同源（协议、域名、端口）之间的请求
 - 开发环境的典型场景：
   - 前端：`http://localhost:5173`
   - 后端：`http://localhost:8080`
@@ -51,7 +51,7 @@ export default defineConfig({
   1. 浏览器请求 `http://localhost:5173/api/users`（同源，不跨域）
   2. Vite Dev Server 代理到 `http://localhost:8080/api/users`（服务器间请求不受同源策略限制）
   3. 返回响应给浏览器
-- 这是开发环境解决跨域的**推荐方式**
+- 这是开发环境解决跨域的推荐方式
 
 ## 5. CORS 配置
 
@@ -102,4 +102,4 @@ app.use(
 )
 ```
 
-- 注意：生产环境通常**不使用** `Access-Control-Allow-Origin: *`，应指定具体的域名
+- 注意：生产环境通常不使用 `Access-Control-Allow-Origin: *`，应指定具体的域名

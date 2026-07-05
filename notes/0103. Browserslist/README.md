@@ -55,7 +55,7 @@
 
 ## 6. 与 Vite 的关系
 
-- Vite 本身**不直接读取** Browserslist 配置
+- Vite 本身不直接读取 Browserslist 配置
 - Vite 使用 `build.target` 来控制 JavaScript 的构建目标
 - 但是 Vite 生态中的工具会读取 Browserslist：
   - `@vitejs/plugin-react`（Babel 模式）

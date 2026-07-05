@@ -80,6 +80,6 @@ const secret = import.meta.env.VITE_SECRET // ❌ 类型错误，未声明
 ```
 
 - 注意事项：
-  - 环境变量在运行时都是**字符串类型**（包括 `'true'`、`'1'`），需要手动转换
+  - 环境变量在运行时都是字符串类型（包括 `'true'`、`'1'`），需要手动转换
   - `declare module '*.vue'` 等声明也可以放在同一个文件中
   - 如果使用了 `?url`、`?raw` 等后缀导入，`vite/client` 已内置其类型声明

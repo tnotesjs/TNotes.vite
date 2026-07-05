@@ -76,9 +76,9 @@ export default defineConfig({
 ## 5. 样式打包
 
 - 组件库的样式处理方式：
-  - **打包到 JS 中**：通过 `import './style.css'` 内联（简单但无法按需）
-  - **单独输出 CSS 文件**：Vite 默认行为，提取为独立的 `style.css`
-  - **按组件输出 CSS**：每个组件单独输出 CSS 文件（按需引入的基础）
+  - 打包到 JS 中：通过 `import './style.css'` 内联（简单但无法按需）
+  - 单独输出 CSS 文件：Vite 默认行为，提取为独立的 `style.css`
+  - 按组件输出 CSS：每个组件单独输出 CSS 文件（按需引入的基础）
 
 ## 6. 按需引入
 

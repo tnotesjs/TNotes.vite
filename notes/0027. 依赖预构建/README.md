@@ -6,6 +6,9 @@
 - [2. 评价](#2-评价)
 - [3. 什么是依赖预构建](#3-什么是依赖预构建)
 - [4. 为什么需要预构建](#4-为什么需要预构建)
+  - [4.1. CommonJS 模块无法在浏览器中直接使用](#41-commonjs-模块无法在浏览器中直接使用)
+  - [4.2. 模块请求爆炸（Request Waterfall）](#42-模块请求爆炸request-waterfall)
+  - [4.3. 裸模块导入的路径解析](#43-裸模块导入的路径解析)
 - [5. CommonJS 转 ESM](#5-commonjs-转-esm)
 - [6. 依赖缓存](#6-依赖缓存)
 - [7. `node_modules/.vite`](#7-node_modulesvite)
@@ -27,7 +30,7 @@
 ## 3. 什么是依赖预构建
 
 - 依赖预构建（Dependency Pre-Bundling）是 Vite 在首次启动时对 `node_modules` 中的依赖进行的预处理
-- 由 **Esbuild** 执行，速度极快（比 JavaScript 打包器快 10-100 倍）
+- 由 Esbuild 执行，速度极快（比 JavaScript 打包器快 10-100 倍）
 - 预构建的目的：
   1. 将 CommonJS / UMD 格式的依赖转换为 ESM 格式
   2. 将大量零散的小模块合并为单个模块，减少浏览器请求数量
@@ -35,17 +38,19 @@
 
 ## 4. 为什么需要预构建
 
-- **问题一：CommonJS 模块无法在浏览器中直接使用**
-  - 大量 npm 包（如 lodash、axios）仍然使用 CommonJS 格式发布
-  - 浏览器原生只支持 ESM（`import`/`export`），不支持 `require()`/`module.exports`
-  - 预构建将 CJS 转换为 ESM，让浏览器可以正确加载
-- **问题二：模块请求爆炸（Request Waterfall）**
-  - 一个 npm 包可能由数百个小模块组成（如 `lodash` 有 600+ 个模块）
-  - 如果不预构建，浏览器需要发起数百个 HTTP 请求，导致严重的瀑布流问题
-  - 预构建将这些小模块合并为一个或少数几个文件，大幅减少请求数
-- **问题三：裸模块导入的路径解析**
-  - `import _ from 'lodash'` 这种裸模块导入在浏览器中无法工作
-  - Vite 需要将其重写为实际的文件路径，预构建阶段会完成这个映射
+预构建解决了三个核心问题。
+
+### 4.1. CommonJS 模块无法在浏览器中直接使用
+
+大量 npm 包（如 lodash、axios）仍然使用 CommonJS 格式发布，浏览器原生只支持 ESM（`import`/`export`），不支持 `require()`/`module.exports`。预构建将 CJS 转换为 ESM，让浏览器可以正确加载。
+
+### 4.2. 模块请求爆炸（Request Waterfall）
+
+一个 npm 包可能由数百个小模块组成（如 `lodash` 有 600+ 个模块），如果不预构建，浏览器需要发起数百个 HTTP 请求，导致严重的瀑布流问题。预构建将这些小模块合并为一个或少数几个文件，大幅减少请求数。
+
+### 4.3. 裸模块导入的路径解析
+
+`import _ from 'lodash'` 这种裸模块导入在浏览器中无法工作，Vite 需要将其重写为实际的文件路径，预构建阶段会完成这个映射。
 
 ## 5. CommonJS 转 ESM
 
@@ -79,7 +84,7 @@ node_modules/.vite/
 └── package.json    # 使 deps 目录可被正确导入
 ```
 
-- **不应手动修改此目录**，修改会被 Vite 在下次启动时覆盖
+- 不应手动修改此目录，修改会被 Vite 在下次启动时覆盖
 - 排查问题时可以删除此目录强制重新预构建
 - 在 `.gitignore` 中应包含 `node_modules/.vite`
 

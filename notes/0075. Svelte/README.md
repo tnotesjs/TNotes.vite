@@ -34,14 +34,14 @@ npm create vite@latest my-svelte-app -- --template svelte-ts
 
 - Svelte 在 Vite 中的工作方式：
   - `@sveltejs/vite-plugin-svelte` 插件处理 `.svelte` 文件的编译
-  - Svelte 是**编译时框架**：组件在构建时被编译为高效的原生 JS 操作
+  - Svelte 是编译时框架：组件在构建时被编译为高效的原生 JS 操作
   - 运行时开销极小，产物体积小
-- Vite 是 Svelte 和 SvelteKit 的**官方推荐构建工具**
+- Vite 是 Svelte 和 SvelteKit 的官方推荐构建工具
 
 ## 4. SvelteKit 关系
 
-- **Svelte** 是 UI 框架（类似 Vue/React），只负责组件渲染
-- **SvelteKit** 是基于 Svelte 的全栈应用框架（类似 Next.js/Nuxt）
+- Svelte 是 UI 框架（类似 Vue/React），只负责组件渲染
+- SvelteKit 是基于 Svelte 的全栈应用框架（类似 Next.js/Nuxt）
 - SvelteKit 提供：
   - 文件系统路由
   - SSR / SSG

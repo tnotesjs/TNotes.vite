@@ -41,9 +41,9 @@ import './styles/main.css'
 
 ## 4. CSS HMR
 
-- CSS 的 HMR 是**开箱即用**的，无需任何额外代码
+- CSS 的 HMR 是开箱即用的，无需任何额外代码
 - 修改 CSS 文件后，Vite 通过 WebSocket 通知浏览器，用新的 `<style>` 标签替换旧的
-- **不丢失任何状态**：只替换样式，不影响 DOM 结构和 JavaScript 状态
+- 不丢失任何状态：只替换样式，不影响 DOM 结构和 JavaScript 状态
 - 这是日常开发中最频繁体验到的 HMR 场景
 - CSS Modules 和 CSS 预处理器（Sass/Less）同样支持 HMR
 
@@ -59,7 +59,7 @@ import './styles/main.css'
 ## 6. CSS 压缩
 
 - 生产构建时 Vite 自动压缩 CSS：
-  - 默认使用 **Lightning CSS**（Rust 实现，速度极快）
+  - 默认使用 Lightning CSS（Rust 实现，速度极快）
   - 也可以使用 PostCSS + cssnano
 - 压缩操作包括：
   - 移除空白和注释

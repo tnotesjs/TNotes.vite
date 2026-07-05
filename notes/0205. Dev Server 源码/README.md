@@ -44,7 +44,7 @@
 
 ## 5. 模块图 Module Graph
 
-- Vite 维护了一个**模块图（Module Graph）**，记录所有已加载模块的依赖关系
+- Vite 维护了一个模块图（Module Graph），记录所有已加载模块的依赖关系
 - 模块图的数据结构：
   - 每个文件对应一个 `ModuleNode`
   - 记录模块的 importers（谁导入了它）和 imported（它导入了谁）

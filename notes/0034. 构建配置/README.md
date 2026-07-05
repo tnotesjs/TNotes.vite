@@ -59,7 +59,7 @@ export default defineConfig({
 
 ## 5. `build.assetsInlineLimit`
 
-- 静态资源内联为 Base64 的体积阈值，默认为 **4096（4KB）**
+- 静态资源内联为 Base64 的体积阈值，默认为 4096（4KB）
 - 小于此值的资源会被内联为 Base64 URI，减少 HTTP 请求
 - 大于此值的资源作为独立文件输出
 
@@ -160,7 +160,7 @@ export default defineConfig({
 
 ## 12. `build.chunkSizeWarningLimit`
 
-- 单个 chunk 的体积警告阈值，默认为 **500（KB）**
+- 单个 chunk 的体积警告阈值，默认为 500（KB）
 - 当某个 chunk 超过此值时，构建会在终端输出警告
 - 不影响构建结果，仅用于提示开发者关注体积过大的 chunk
 

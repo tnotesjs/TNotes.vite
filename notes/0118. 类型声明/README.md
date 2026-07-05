@@ -88,4 +88,4 @@ dist/
 }
 ```
 
-- `types` 字段应放在 `exports` 的每个条件的**最前面**（TypeScript 的解析规则）
+- `types` 字段应放在 `exports` 的每个条件的最前面（TypeScript 的解析规则）

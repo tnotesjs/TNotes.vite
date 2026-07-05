@@ -60,7 +60,7 @@ export default defineConfig(({ command }) => ({
 ## 5. `publicDir`
 
 - 静态资源目录的路径，默认为 `'public'`
-- 该目录中的文件会被**原样复制**到构建产物的根目录，不做任何处理
+- 该目录中的文件会被原样复制到构建产物的根目录，不做任何处理
 - 设置为 `false` 可以禁用此功能
 - 典型用途：
   - `favicon.ico`、`robots.txt`、`sitemap.xml`
@@ -101,7 +101,7 @@ export default defineConfig({
   - `production` → `.env.production`
   - `staging` → `.env.staging`
 - 通过 CLI 指定：`vite build --mode staging`
-- 注意：`mode` 与 `NODE_ENV` 是两个不同的概念，Vite 不会自动设置 `NODE_ENV`
+- 注意：`mode` 与 `NODE_ENV` 是两个不同的概念。`vite` 命令会自动将 `NODE_ENV` 设为 `'development'`，`vite build` 会设为 `'production'`；但自定义 mode（如 `--mode staging`）不会自动改变 `NODE_ENV`，需要在 `.env.[mode]` 中手动设置
 
 ## 8. `logLevel`
 

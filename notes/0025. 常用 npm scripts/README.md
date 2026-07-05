@@ -55,7 +55,7 @@
 
 - 本地预览构建产物：`vite preview` 或 `npm run preview`
 - 本质是一个轻量级静态文件服务器，服务于 `dist/` 目录
-- **必须先执行 `vite build` 后才能使用**，否则 `dist/` 目录不存在会报错
+- 必须先执行 `vite build` 后才能使用，否则 `dist/` 目录不存在会报错
 - 默认端口 4173（避免与 dev server 的 5173 冲突）
 - 典型工作流：`npm run build && npm run preview`
 - 适用场景：
@@ -76,15 +76,7 @@
 
 ## 7. `test`
 
-- 单元测试脚本，常用的测试框架选择：
-  - **Vitest**：推荐，由 Vite 团队开发，与 Vite 深度集成，共享相同的配置和插件系统
-  - Jest：生态最成熟，但在 Vite 项目中需要额外配置
-- Vitest 典型配置：`"test": "vitest"`（watch 模式）或 `"test:run": "vitest run"`（单次运行）
-- Vitest 的优势：
-  - 与 Vite 共享相同的模块解析和转换逻辑，无需额外配置
-  - 原生支持 TypeScript、JSX、CSS Modules
-  - 支持浏览器模式测试 DOM 相关代码
-  - 兼容 Jest API，迁移成本低
+单元测试脚本，常用的测试框架选择包括 Vitest（推荐，由 Vite 团队开发，与 Vite 深度集成，共享相同的配置和插件系统）和 Jest（生态最成熟，但在 Vite 项目中需要额外配置）。Vitest 典型配置为 `"test": "vitest"`（watch 模式）或 `"test:run": "vitest run"`（单次运行）。Vitest 的优势在于与 Vite 共享相同的模块解析和转换逻辑（无需额外配置）、原生支持 TypeScript、JSX、CSS Modules、支持浏览器模式测试 DOM 相关代码、兼容 Jest API（迁移成本低）。
 
 ## 8. `type-check`
 
@@ -96,4 +88,4 @@
   - CI/CD 流水线中单独做类型检查
   - 开发时快速验证类型是否正确（不需要完整构建）
   - 与 `build` 脚本分离，类型检查失败不影响其他步骤
-- 注意：`vite build` **不做类型检查**，类型安全需要通过此脚本或 IDE 保障
+- 注意：`vite build` 不做类型检查，类型安全需要通过此脚本或 IDE 保障

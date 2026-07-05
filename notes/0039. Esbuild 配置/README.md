@@ -83,7 +83,7 @@ export default defineConfig({
 
 ## 6. `drop`
 
-- 在转译阶段**移除**指定的语法结构
+- 在转译阶段移除指定的语法结构
 - 可选值：`['console', 'debugger']`
 
 ```ts

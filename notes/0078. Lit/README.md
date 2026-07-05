@@ -24,9 +24,9 @@
 ## 3. Web Components
 
 - 浏览器原生的组件标准，包含三个核心技术：
-  - **Custom Elements**：自定义 HTML 元素
-  - **Shadow DOM**：封装组件内部的 DOM 和样式
-  - **HTML Templates**：可复用的 HTML 模板
+  - Custom Elements：自定义 HTML 元素
+  - Shadow DOM：封装组件内部的 DOM 和样式
+  - HTML Templates：可复用的 HTML 模板
 - 优势：
   - 框架无关：可以在 Vue、React、Angular 等任何框架中使用
   - 浏览器原生：无需运行时框架，体积小

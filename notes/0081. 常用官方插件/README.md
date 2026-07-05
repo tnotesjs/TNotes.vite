@@ -23,19 +23,19 @@
 
 ## 3. Vue 插件
 
-- **`@vitejs/plugin-vue`**：Vue 3 SFC 编译和 HMR 支持（必备）
-- **`@vitejs/plugin-vue-jsx`**：Vue 项目中的 JSX/TSX 支持（可选）
+- `@vitejs/plugin-vue`：Vue 3 SFC 编译和 HMR 支持（必备）
+- `@vitejs/plugin-vue-jsx`：Vue 项目中的 JSX/TSX 支持（可选）
 - 详见 0064 节「Vue 插件」
 
 ## 4. React 插件
 
-- **`@vitejs/plugin-react`**：基于 Babel 的 React JSX 编译和 Fast Refresh
-- **`@vitejs/plugin-react-swc`**：基于 SWC 的 React 插件，编译速度更快（推荐）
+- `@vitejs/plugin-react`：基于 Babel 的 React JSX 编译和 Fast Refresh
+- `@vitejs/plugin-react-swc`：基于 SWC 的 React 插件，编译速度更快（推荐）
 - 详见 0070 节「React 插件」
 
 ## 5. Legacy 插件
 
-- **`@vitejs/plugin-legacy`**：为旧版浏览器提供兼容性支持
+- `@vitejs/plugin-legacy`：为旧版浏览器提供兼容性支持
 - 功能：
   - 自动生成对应的 Legacy chunk（ES5 语法）
   - 自动注入 Polyfill（core-js）

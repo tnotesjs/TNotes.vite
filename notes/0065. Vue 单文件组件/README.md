@@ -114,7 +114,7 @@ const increment = () => count.value++
 
 ## 7. HMR
 
-- Vue SFC 的 HMR 由 `@vitejs/plugin-vue` 提供，实现了**组件级热替换**
+- Vue SFC 的 HMR 由 `@vitejs/plugin-vue` 提供，实现了组件级热替换
 - 不同部分的 HMR 行为：
   - `<template>` 修改：重新渲染组件，保留组件状态
   - `<script setup>` 修改：重新执行 setup，组件状态重置

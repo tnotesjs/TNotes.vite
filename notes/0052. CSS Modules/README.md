@@ -37,7 +37,7 @@ document.getElementById('app')!.className = styles.container
 
 ## 4. 局部作用域
 
-- CSS Modules 中的类名默认是**局部的**，不会污染全局
+- CSS Modules 中的类名默认是局部的，不会污染全局
 
 ```css
 /* App.module.css */

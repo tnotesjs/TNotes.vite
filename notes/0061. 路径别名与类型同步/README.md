@@ -23,7 +23,7 @@
 
 ## 3. Vite `resolve.alias`
 
-- 在 `vite.config.ts` 中配置，负责**运行时**的模块路径解析：
+- 在 `vite.config.ts` 中配置，负责运行时的模块路径解析：
 
 ```ts
 import { resolve } from 'path'
@@ -42,7 +42,7 @@ export default defineConfig({
 
 ## 4. TS `paths`
 
-- 在 `tsconfig.json` 中配置，负责**类型检查**时的路径解析：
+- 在 `tsconfig.json` 中配置，负责类型检查时的路径解析：
 
 ```json
 {
@@ -58,7 +58,7 @@ export default defineConfig({
 - 作用：告诉 TypeScript `@/` 别名对应 `src/` 目录，消除 IDE 中的红色波浪线
 - 如果只配了这里，IDE 不报红但运行时路径解析会失败
 
-- **两处配置缺一不可**：
+- 两处配置缺一不可：
   - 只有 `resolve.alias`：运行正常，IDE 报红
   - 只有 `tsconfig.json` paths：IDE 正常，运行时失败
   - 两处都配：IDE 和运行时都正常 ✅
@@ -84,7 +84,7 @@ export default defineConfig({
 - 效果：自动读取 `tsconfig.json` 的 `paths` 配置，同步到 Vite 的 `resolve.alias`
 - 只需在 `tsconfig.json` 中维护一处配置即可
 
-- **方案二：读取 tsconfig.json 手动解析**
+- 方案二：读取 tsconfig.json 手动解析
 
 ```ts
 import { readFileSync } from 'fs'

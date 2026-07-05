@@ -85,16 +85,6 @@ hydrateRoot(document.getElementById('root'), <App />)
 ## 6. 框架选择
 
 - 手动搭建 React SSR 非常复杂，强烈建议使用框架：
-- **Next.js**（推荐）
-  - React 生态最成熟的 SSR/SSG 框架
-  - App Router（基于 React Server Components）
-  - 内置路由、图片优化、字体优化等
-  - Vercel 维护，社区活跃
-- **Remix**
-  - 全栈 React 框架，专注于 Web 标准
-  - 基于嵌套路由的数据加载
-  - 与 React Router 深度集成
-- **Vite SSR**（手动搭建）
-  - 适合需要精细控制的场景
-  - 复杂度高，维护成本大
-  - 推荐在理解 SSR 原理后，仍优先选择 Next.js
+- Next.js（推荐）：React 生态最成熟的 SSR/SSG 框架，App Router（基于 React Server Components），内置路由、图片优化、字体优化等，Vercel 维护，社区活跃
+- Remix：全栈 React 框架，专注于 Web 标准，基于嵌套路由的数据加载，与 React Router 深度集成
+- Vite SSR（手动搭建）：适合需要精细控制的场景，复杂度高，维护成本大，推荐在理解 SSR 原理后仍优先选择 Next.js

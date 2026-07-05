@@ -30,9 +30,9 @@
   - 通过 `postMessage` / `onmessage` 与主线程通信
   - 可以使用 `fetch`、`WebSocket`、`IndexedDB` 等 Web API
 - 类型：
-  - **Dedicated Worker**：专属于创建它的页面
-  - **Shared Worker**：可以被多个页面共享
-  - **Service Worker**：用于离线缓存和推送通知
+  - Dedicated Worker：专属于创建它的页面
+  - Shared Worker：可以被多个页面共享
+  - Service Worker：用于离线缓存和推送通知
 
 ## 4. 主线程与 Worker 通信
 
@@ -58,7 +58,7 @@ self.onmessage = (e) => {
 }
 ```
 
-- 数据通过**结构化克隆**传递（支持大部分 JS 对象，不支持函数）
+- 数据通过结构化克隆传递（支持大部分 JS 对象，不支持函数）
 
 ## 5. 使用场景
 

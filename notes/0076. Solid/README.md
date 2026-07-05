@@ -46,11 +46,7 @@ export default defineConfig({
 })
 ```
 
-- SolidJS 的特点：
-  - **无虚拟 DOM**：编译时将 JSX 转换为真实的 DOM 操作
-  - **细粒度响应式**：只有依赖变化的部分会更新
-  - **极小的运行时**：产物体积小，运行时开销低
-  - **类 React JSX 语法**：使用 JSX 但语义不同
+- SolidJS 的特点：无虚拟 DOM（编译时将 JSX 转换为真实的 DOM 操作）、细粒度响应式（只有依赖变化的部分会更新）、极小的运行时（产物体积小，运行时开销低）、类 React JSX 语法（使用 JSX 但语义不同）
 
 ## 4. JSX 编译
 
@@ -59,7 +55,7 @@ export default defineConfig({
   - SolidJS JSX 编译为真实的 DOM 创建和更新操作
 - SolidJS 的 JSX 需要专用的编译器（`babel-preset-solid`），不能使用 Esbuild 的 JSX 转换
 - 关键差异：
-  - SolidJS 中组件函数**只执行一次**（不像 React 每次渲染都执行）
+  - SolidJS 中组件函数只执行一次（不像 React 每次渲染都执行）
   - 响应式通过 Signal（`createSignal`）实现，而非 `useState`
   - 事件处理使用 `onclick`（小写），而非 `onClick`
 

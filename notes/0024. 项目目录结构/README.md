@@ -27,7 +27,7 @@
 
 ## 3. `index.html`
 
-- **位于项目根目录**，这是 Vite 与 Webpack 最显著的结构差异之一
+- 位于项目根目录，这是 Vite 与 Webpack 最显著的结构差异之一
 - Webpack 中 `index.html` 通常放在 `public/` 目录，由 `html-webpack-plugin` 生成
 - Vite 中 `index.html` 是应用的入口，Dev Server 直接服务于这个文件
 - 可以使用 EJS 模板语法或直接引用源码中的模块
@@ -52,7 +52,7 @@
 
 ## 4. `src`
 
-- 存放项目的**源代码**，是最核心的目录
+- 存放项目的源代码，是最核心的目录
 - 典型结构：
 
 ```
@@ -75,8 +75,8 @@ src/
 
 ## 5. `public`
 
-- 存放**不需要被构建工具处理**的静态资源
-- 该目录中的文件会被**原样复制**到构建产物的根目录
+- 存放不需要被构建工具处理的静态资源
+- 该目录中的文件会被原样复制到构建产物的根目录
 - 适用场景：
   - `favicon.ico`、`robots.txt` 等必须位于根路径的文件
   - 第三方脚本（如统计 SDK、广告代码）
@@ -106,7 +106,7 @@ export default defineConfig({
 })
 ```
 
-- 与 Webpack 的 `webpack.config.js` 相比，Vite 的配置文件通常**简短得多**，因为大部分功能开箱即用
+- 与 Webpack 的 `webpack.config.js` 相比，Vite 的配置文件通常简短得多，因为大部分功能开箱即用
 
 ## 7. `package.json`
 

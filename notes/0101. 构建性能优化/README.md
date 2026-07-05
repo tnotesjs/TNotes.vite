@@ -74,9 +74,9 @@
 ## 8. 使用更快的编译器
 
 - Vite 生态中的编译器速度对比：
-  - **Esbuild**（Go）：最快，用于依赖预构建和代码压缩
-  - **SWC**（Rust）：很快，用于 React JSX 转换
-  - **Babel**（JS）：最慢，但插件生态最丰富
-  - **Lightning CSS**（Rust）：CSS 压缩最快
+  - Esbuild（Go）：最快，用于依赖预构建和代码压缩
+  - SWC（Rust）：很快，用于 React JSX 转换
+  - Babel（JS）：最慢，但插件生态最丰富
+  - Lightning CSS（Rust）：CSS 压缩最快
 - 尽量使用 Esbuild 和 SWC 替代 Babel
 - 使用 Lightning CSS 替代 PostCSS + cssnano 进行 CSS 压缩

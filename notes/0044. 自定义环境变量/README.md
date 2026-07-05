@@ -49,7 +49,7 @@ console.log(import.meta.env.SECRET_KEY) // undefined（未暴露）
 
 - 只有以 `VITE_` 开头的变量会被 `import.meta.env` 暴露
 - Vite 内置的 5 个变量不受此规则限制（`MODE`、`BASE_URL`、`DEV`、`PROD`、`SSR`）
-- 暴露发生在**构建时**：Vite 使用字符串替换将 `import.meta.env.VITE_XXX` 替换为实际值
+- 暴露发生在构建时：Vite 使用字符串替换将 `import.meta.env.VITE_XXX` 替换为实际值
 - 非 `VITE_` 前缀的变量在 `import.meta.env` 中为 `undefined`
 - 但非前缀变量仍然可以在 `vite.config.ts` 中通过 `loadEnv` 读取（见下一节）
 
@@ -72,11 +72,11 @@ export default defineConfig({
 ```
 
 - 注意：修改前缀后，原有的 `VITE_` 变量将不再暴露（除非也加入前缀列表）
-- 设为 `''` 可以暴露所有环境变量（**不推荐**，有安全风险）
+- 设为 `''` 可以暴露所有环境变量（不推荐，有安全风险）
 
 ## 6. 安全注意事项
 
-- **环境变量会打包到客户端代码中**：任何以 `VITE_` 开头的变量都会出现在构建产物的 JS 文件中
+- 环境变量会打包到客户端代码中：任何以 `VITE_` 开头的变量都会出现在构建产物的 JS 文件中
 - 不要在环境变量中存放敏感信息：
   - ❌ `VITE_API_SECRET=sk-xxxxx`（会暴露到浏览器）
   - ✅ API Key 应通过后端代理转发，不暴露给前端

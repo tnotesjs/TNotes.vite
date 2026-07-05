@@ -56,7 +56,7 @@
 ## 4. `paths`
 
 - 配置 TypeScript 的路径别名，与 `vite.config.ts` 中的 `resolve.alias` 对应
-- 两者需要**同步配置**，否则会出现 IDE 不报红但运行时失败的问题
+- 两者需要同步配置，否则会出现 IDE 不报红但运行时失败的问题
 
 ```json
 {

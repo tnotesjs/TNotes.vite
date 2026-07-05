@@ -90,7 +90,7 @@ export default {
 
 ## 6. 按需生成样式
 
-- Tailwind CSS 只会生成项目中**实际使用到**的样式类
+- Tailwind CSS 只会生成项目中实际使用到的样式类
 - 工作原理：
   1. 扫描 `content` 配置中指定的所有文件
   2. 提取所有 Tailwind 类名（如 `bg-blue-500`、`text-white`）

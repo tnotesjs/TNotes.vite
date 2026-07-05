@@ -94,7 +94,7 @@ export default defineConfig({
 
 ## 7. 路径别名配置
 
-- **完整配置路径别名**需要同时修改 `vite.config.ts` 和 `tsconfig.json`：
+- 完整配置路径别名需要同时修改 `vite.config.ts` 和 `tsconfig.json`：
 - `vite.config.ts`：配置运行时的路径解析
 
 ```ts
@@ -122,7 +122,7 @@ export default defineConfig({
 }
 ```
 
-- **两个配置缺一不可**：
+- 两个配置缺一不可：
   - 只配 `vite.config.ts`：运行正常但 IDE 会报红（类型检查找不到模块）
   - 只配 `tsconfig.json`：IDE 不报红但运行时路径解析失败
 - 常见的别名风格：

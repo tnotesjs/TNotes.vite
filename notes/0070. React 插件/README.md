@@ -22,7 +22,7 @@
 
 ## 3. `@vitejs/plugin-react`
 
-- React 的 Vite 官方插件，基于 **Babel** 实现
+- React 的 Vite 官方插件，基于 Babel 实现
 - 负责：
   - JSX/TSX 语法转译
   - React Fast Refresh（热更新）
@@ -58,7 +58,7 @@ react({
 
 ## 4. `@vitejs/plugin-react-swc`
 
-- 基于 **SWC**（Rust 实现）的 React 插件，功能与 `@vitejs/plugin-react` 等价
+- 基于 SWC（Rust 实现）的 React 插件，功能与 `@vitejs/plugin-react` 等价
 - 优势：编译速度比 Babel 快 20-70 倍
 
 ```bash
@@ -92,7 +92,7 @@ react({
 | JSX Transform | ✅                      | ✅                        |
 | Babel 插件    | ✅ 支持                 | ❌ 不支持                 |
 | 装饰器        | 需要 Babel 插件         | 内置支持                  |
-| 推荐度        | 需要 Babel 生态时使用   | **默认推荐**              |
+| 推荐度        | 需要 Babel 生态时使用   | 默认推荐                  |
 
 - Fast Refresh 原理：
   1. 监听组件文件变化

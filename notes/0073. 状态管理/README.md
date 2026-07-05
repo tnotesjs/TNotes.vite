@@ -117,7 +117,7 @@ function Counter() {
 
 ## 7. TanStack Query
 
-- 专注**服务端状态**管理的库（原 React Query），与客户端状态管理互补
+- 专注服务端状态管理的库（原 React Query），与客户端状态管理互补
 - 安装：`npm install @tanstack/react-query`
 
 ```tsx
@@ -146,4 +146,4 @@ function Users() {
   - 请求去重
   - 乐观更新
   - 分页和无限滚动
-- 推荐组合：**TanStack Query（服务端状态）+ Zustand/Jotai（客户端状态）**
+- 推荐组合：TanStack Query（服务端状态）+ Zustand/Jotai（客户端状态）
