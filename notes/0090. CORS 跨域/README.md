@@ -55,7 +55,7 @@ export default defineConfig({
 
 ## 5. CORS 配置
 
-- Vite Dev Server 默认启用 CORS（`server.cors: true`）
+- Vite Dev Server 默认仅允许 localhost、`127.0.0.1` 和 `::1` 的跨域请求，设为 `true` 可允许所有来源（有安全风险）
 - 可以通过配置细粒度控制 CORS 策略：
 
 ```ts

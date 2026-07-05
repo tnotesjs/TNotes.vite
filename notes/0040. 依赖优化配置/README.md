@@ -7,7 +7,7 @@
 - [3. `optimizeDeps.include`](#3-optimizedepsinclude)
 - [4. `optimizeDeps.exclude`](#4-optimizedepsexclude)
 - [5. `optimizeDeps.entries`](#5-optimizedepsentries)
-- [6. `optimizeDeps.esbuildOptions`](#6-optimizedepsesbuildoptions)
+- [6. `optimizeDeps.rolldownOptions`](#6-optimizedepsrolldownoptions)
 - [7. `optimizeDeps.force`](#7-optimizedepsforce)
 
 <!-- endregion:toc -->
@@ -49,7 +49,7 @@ export default defineConfig({
 - 典型场景：
   - Monorepo 中的本地包：本地包已经是 ESM 格式，不需要预构建
   - 含有特殊文件类型的包：某些包包含 Worker、WASM 等非标准文件
-  - Vite 插件处理的包：某些包需要由特定插件处理而非 Esbuild
+  - Vite 插件处理的包：某些包需要由特定插件处理而非 Rolldown
 
 ```ts
 export default defineConfig({
@@ -75,21 +75,21 @@ export default defineConfig({
 - 支持 glob 模式：`entries: ['src/**/*.ts']`
 - 通常不需要配置，Vite 会自动从 `index.html` 和配置的入口推导
 
-## 6. `optimizeDeps.esbuildOptions`
+## 6. `optimizeDeps.rolldownOptions`
 
-- 传递给 Esbuild 的预构建选项
+- 传递给 Rolldown 的预构建选项（`optimizeDeps.esbuildOptions` 已弃用）
 - 常用配置：
 
 ```ts
 export default defineConfig({
   optimizeDeps: {
-    esbuildOptions: {
+    rolldownOptions: {
       target: 'esnext', // 预构建的目标语法
       define: {
         // 全局变量替换
         global: 'globalThis',
       },
-      plugins: [], // Esbuild 插件
+      plugins: [], // Rolldown 插件
       resolveExtensions: ['.ts', '.js'], // 解析的扩展名
     },
   },
@@ -98,7 +98,7 @@ export default defineConfig({
 
 - 典型场景：
   - 某些 CJS 包使用 `global` 变量，需要替换为 `globalThis`
-  - 需要调整 Esbuild 的解析行为（如忽略某些扩展名）
+  - 需要调整 Rolldown 的解析行为（如忽略某些扩展名）
 
 ## 7. `optimizeDeps.force`
 

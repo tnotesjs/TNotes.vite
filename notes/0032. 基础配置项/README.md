@@ -28,7 +28,7 @@
 ## 3. `root`
 
 - 项目根目录（`index.html` 所在的目录），默认为 `process.cwd()`
-- 绝对路径，可以指定为文件系统中的任意目录
+- 可以是一个绝对路径，或者一个相对于该配置文件本身的相对路径
 - 典型场景：Monorepo 中将子包目录设为 Vite 的 root
 
 ```ts
@@ -41,7 +41,7 @@ export default defineConfig({
 
 ## 4. `base`
 
-- 公共基础路径，默认为 `'/''`
+- 公共基础路径，默认为 `'/'`
 - 影响所有静态资源的引用路径（JS、CSS、图片等）
 - 常见场景：
   - 部署到域名根路径：`base: '/'`（默认）
@@ -55,7 +55,7 @@ export default defineConfig(({ command }) => ({
 }))
 ```
 
-- 注意：`base` 必须以 `/` 开头和结尾（CDN 地址除外）
+- 注意：`base` 通常以 `/` 开头（CDN 地址除外）
 
 ## 5. `publicDir`
 

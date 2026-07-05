@@ -66,12 +66,12 @@ import './styles/main.css'
   - 合并重复的规则
   - 缩短颜色值（如 `#ffffff` → `#fff`）
   - 优化选择器
-- 可通过 `css.transformer` 配置选择压缩工具：
+- 可通过 `css.transformer`（实验性）配置选择 CSS 处理引擎（默认为 `'postcss'`）：
 
 ```ts
 export default defineConfig({
   css: {
-    transformer: 'lightningcss', // 或 'postcss'
+    transformer: 'lightningcss', // 或 'postcss'（默认）
   },
 })
 ```

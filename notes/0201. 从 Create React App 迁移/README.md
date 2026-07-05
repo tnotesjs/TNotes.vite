@@ -26,7 +26,7 @@
 
 | CRA                 | Vite                            |
 | ------------------- | ------------------------------- |
-| 基于 Webpack        | 原生 ESM + Rollup               |
+| 基于 Webpack        | 原生 ESM + Rolldown             |
 | `react-scripts`     | `vite` + `@vitejs/plugin-react` |
 | `REACT_APP_` 前缀   | `VITE_` 前缀                    |
 | `public/index.html` | `index.html`（根目录）          |

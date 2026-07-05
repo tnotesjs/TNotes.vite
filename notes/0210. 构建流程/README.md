@@ -50,7 +50,7 @@
   - CSS 文件
   - 静态资源
 - Vite 对产物进行后处理：
-  - 代码压缩（Esbuild/Terser）
+  - 代码压缩（Oxc）
   - CSS 压缩（Lightning CSS/PostCSS）
   - 资源哈希命名
 

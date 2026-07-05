@@ -30,7 +30,7 @@
 ## 3. 什么是依赖预构建
 
 - 依赖预构建（Dependency Pre-Bundling）是 Vite 在首次启动时对 `node_modules` 中的依赖进行的预处理
-- 由 Esbuild 执行，速度极快（比 JavaScript 打包器快 10-100 倍）
+- 由 Rolldown 执行，速度极快
 - 预构建的目的：
   1. 将 CommonJS / UMD 格式的依赖转换为 ESM 格式
   2. 将大量零散的小模块合并为单个模块，减少浏览器请求数量
@@ -54,12 +54,12 @@
 
 ## 5. CommonJS 转 ESM
 
-- 预构建使用 Esbuild 将 CommonJS 模块转换为 ESM 格式
+- 预构建使用 Rolldown 将 CommonJS 模块转换为 ESM 格式
 - 转换过程处理了常见的 CJS 模式：
   - `module.exports = ...` → `export default ...`
   - `exports.foo = ...` → `export const foo = ...`
   - `require('xxx')` → `import xxx from 'xxx'`
-- 某些复杂的 CJS 模式可能无法被 Esbuild 正确转换，此时需要手动配置 `optimizeDeps.include` 或 `optimizeDeps.esbuildOptions`
+- 某些复杂的 CJS 模式可能无法被 Rolldown 正确转换，此时需要手动配置 `optimizeDeps.include` 或 `optimizeDeps.rolldownOptions`
 - 转换后的模块存储在 `node_modules/.vite/deps` 目录中
 
 ## 6. 依赖缓存
@@ -102,8 +102,8 @@ export default defineConfig({
     // 排除某些依赖不进行预构建（如已经在 ESM 格式的本地包）
     exclude: ['my-local-package'],
 
-    // 传递给 Esbuild 的选项
-    esbuildOptions: {
+    // 传递给 Rolldown 的选项
+    rolldownOptions: {
       target: 'esnext',
     },
   },
@@ -113,4 +113,4 @@ export default defineConfig({
 - 典型使用场景：
   - `include`：某些依赖是动态导入的，Vite 无法在启动时发现，需要手动指定
   - `exclude`：Monorepo 中的本地包已经是 ESM 格式，不需要预构建
-  - `esbuildOptions`：调整 Esbuild 的编译目标或特殊选项
+  - `rolldownOptions`：调整 Rolldown 的编译目标或特殊选项

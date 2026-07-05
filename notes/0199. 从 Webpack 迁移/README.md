@@ -35,7 +35,7 @@
 ## 4. Loader 到 Plugin 的迁移
 
 - Webpack Loader 的对应关系：
-  - `babel-loader` → `@vitejs/plugin-react`（Vite 内置 Esbuild）
+  - `babel-loader` → `@vitejs/plugin-react`（Vite 内置 Oxc 转换器）
   - `ts-loader` → Vite 内置支持
   - `css-loader` → Vite 内置支持
   - `sass-loader` → 安装 `sass` 即可

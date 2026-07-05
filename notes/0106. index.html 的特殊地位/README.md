@@ -61,7 +61,7 @@
 <meta name="description" content="%VITE_APP_DESCRIPTION%" />
 ```
 
-- 只有以 `VITE_` 开头的环境变量可以在 HTML 中使用
+- `import.meta.env` 中的任何属性都可以通过 `%CONST_NAME%` 语法在 HTML 中使用，包括内置常量如 `%MODE%`、`%BASE_URL%`、`%DEV%`、`%PROD%`、`%SSR%`
 - 也可以使用 `%BASE_URL%` 获取基础路径
 
 ```html

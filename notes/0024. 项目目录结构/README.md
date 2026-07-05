@@ -153,4 +153,4 @@ export default defineConfig({
 ```
 
 - `moduleResolution: "bundler"` 是 Vite 项目推荐的模块解析策略，兼容 ESM 和 bundler 行为
-- `isolatedModules: true` 确保每个文件可以被单独转译（Esbuild 的要求）
+- `isolatedModules: true` 确保每个文件可以被单独转译（Oxc 转换器的要求）

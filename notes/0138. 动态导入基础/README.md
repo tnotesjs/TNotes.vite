@@ -64,10 +64,4 @@ const { foo, bar } = await import('./utils')
 
 - 动态导入生成的 chunk 称为异步 chunk
 - 文件名通常为 `assets/js/[name]-[hash].js`
-- 可以通过注释指定 chunk 名称：
-
-```ts
-const mod = await import(/* webpackChunkName: "utils" */ './utils')
-```
-
-- Vite 使用 Rollup 的 `output.chunkFileNames` 控制命名
+- Vite 使用 Rolldown 的 `output.chunkFileNames` 控制命名

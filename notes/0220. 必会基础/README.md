@@ -65,5 +65,5 @@
 
 ## 11. TypeScript 配置
 
-- Vite 使用 Esbuild 转译 TS，只转译不检查
+- Vite 使用 Oxc 转换器转译 TS，只转译不检查
 - 类型检查交给 IDE 和 `tsc --noEmit`

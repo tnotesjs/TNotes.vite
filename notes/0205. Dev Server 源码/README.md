@@ -27,7 +27,7 @@
 - Dev Server 的启动流程：
   1. 解析 Vite 配置（`resolveConfig`）
   2. 创建 HTTP 服务器（基于 Connect 中间件框架）
-  3. 执行依赖预构建（Esbuild）
+  3. 执行依赖预构建（Rolldown）
   4. 注册内置中间件（静态文件、模块转换、HMR 等）
   5. 执行 `configureServer` 插件钩子
   6. 监听端口，开始服务
@@ -53,7 +53,7 @@
 
 ## 6. 依赖扫描
 
-- 启动时使用 Esbuild 扫描源码中的 `import` 语句
+- 启动时使用 Rolldown 扫描源码中的 `import` 语句
 - 发现 `node_modules` 中的依赖，进行预构建
 - 预构建结果缓存在 `node_modules/.vite` 目录
 

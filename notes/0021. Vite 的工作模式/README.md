@@ -50,7 +50,7 @@
 - `--outDir <dir>`：指定输出目录
 - `--watch`：监听文件变化并重新构建（类似 Webpack 的 watch 模式）
 - `--sourcemap`：生成 source map
-- `--minify [type]`：压缩方式（默认 `esbuild`，可选 `terser` 或 `false`）
+- `--minify [type]`：压缩方式（默认 `oxc`，可选 `terser` 或 `false`）
 
 构建产物可以直接部署到任意静态服务器（Nginx、Vercel、Netlify 等）。
 
@@ -60,7 +60,7 @@
 
 ## 6. SSR 模式
 
-Vite 内置了对 SSR（Server-Side Rendering，服务端渲染）的支持，使用方式为 `vite build --ssr` 或通过 API `createViteServer({ ssr: true })`。SSR 模式下，同一份源码既可以在服务端运行也可以在客户端运行，服务端直接使用 ESM 导入无需额外打包步骤，Vite 提供 `ssrLoadModule()` API 在服务端加载模块。适用场景包括 SEO 友好的首屏渲染、需要服务端数据获取的场景，Nuxt（Vue）和 SvelteKit 等框架底层依赖此能力。纯前端 SPA 项目不需要关心 SSR 模式。
+Vite 内置了对 SSR（Server-Side Rendering，服务端渲染）的支持，使用方式为 `vite build --ssr` 或通过 API `createServer({ server: { middlewareMode: true }, appType: 'custom' })`。SSR 模式下，同一份源码既可以在服务端运行也可以在客户端运行，服务端直接使用 ESM 导入无需额外打包步骤，Vite 提供 `ssrLoadModule()` API 在服务端加载模块。适用场景包括 SEO 友好的首屏渲染、需要服务端数据获取的场景，Nuxt（Vue）和 SvelteKit 等框架底层依赖此能力。纯前端 SPA 项目不需要关心 SSR 模式。
 
 ## 7. Library Mode 库模式
 
@@ -76,7 +76,7 @@ export default defineConfig({
       formats: ['es', 'umd'],
       fileName: (format) => `my-lib.${format}.js`,
     },
-    rollupOptions: {
+    rolldownOptions: {
       external: ['vue'], // 将 peer dependencies 排除
       output: {
         globals: { vue: 'Vue' },

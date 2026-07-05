@@ -39,7 +39,7 @@
 
 ## 5. Node 版本要求
 
-- Vite 8 要求 Node.js >= 20.0.0
+- Vite 8 要求 Node.js >= 20.19 或 >= 22.12
 - 升级前确认 Node.js 版本满足要求
 - 使用 `nvm` 管理多个 Node 版本
 

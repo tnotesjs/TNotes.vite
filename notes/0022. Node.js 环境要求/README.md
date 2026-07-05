@@ -23,7 +23,7 @@
 
 ## 3. Vite v8 对 Node.js 版本的要求
 
-Vite 8 要求 Node.js >= 20.0.0（LTS），Vite 7 要求 Node.js >= 18.0.0，推荐使用 Node.js 22.x LTS 获得最佳兼容性和性能。检查当前版本可使用 `node -v`。版本不满足时的常见报错包括启动时直接报错 `Vite requires Node.js version X or higher`，以及某些依赖安装失败（如 Esbuild 的平台二进制文件不兼容旧版 Node）。
+Vite 8 要求 Node.js >= 20.19+ 或 22.12+，Vite 7 要求 Node.js >= 18.0.0，推荐使用 Node.js 22.x LTS 获得最佳兼容性和性能。检查当前版本可使用 `node -v`。版本不满足时的常见报错包括启动时直接报错 `Vite requires Node.js version X or higher`，以及某些依赖安装失败（如 Esbuild 的平台二进制文件不兼容旧版 Node）。
 
 版本管理工具推荐：nvm（Node Version Manager）是最流行的 Node 版本管理器，支持多版本切换；fnm 是用 Rust 编写的 nvm 替代品，启动更快；volta 可以自动根据项目 `package.json` 切换 Node 版本。
 
@@ -40,6 +40,6 @@ npm 是 Node.js 自带的包管理器，零配置，兼容性最广泛，缺点�
 | 安装速度 | 一般 | 快 | 较快 | 极快 |
 | 磁盘占用 | 高（重复安装） | 低（硬链接共享） | 较低 | 较低 |
 | 依赖隔离 | 松散（有幽灵依赖） | 严格（node_modules 扁平化受限） | PnP（无 node_modules） | 类似 npm |
-| Lock 文件 | `package-lock.json` | `pnpm-lock.yaml` | `yarn.lock` | `bun.lockb`（二进制） |
+| Lock 文件 | `package-lock.json` | `pnpm-lock.yaml` | `yarn.lock` | `bun.lock` |
 | workspace 支持 | 原生支持 | 原生支持 | 原生支持 | 原生支持 |
 | 兼容性 | 最好 | 好 | 一般（PnP 可能有兼容问题） | 在完善中 |

@@ -50,7 +50,7 @@
   - `target`：编译目标语法版本
   - `module`：输出模块格式
   - `strict`：启用严格类型检查（推荐开启）
-  - `isolatedModules`：确保每个文件可被单独转译（Esbuild 的要求）
+  - `isolatedModules`：确保每个文件可被单独转译（Oxc 转换器的要求）
   - `noEmit`：不输出编译产物（由 Vite/Ebuild 处理）
 
 ## 4. `paths`
@@ -127,7 +127,7 @@ export default defineConfig({
 - 配置 JSX 的转换方式
 - 常用值：
   - `"react-jsx"`：React 17+ 的自动导入模式（推荐）
-  - `"preserve"`：保留 JSX 语法（交给 Vite/Esbuild 处理）
+  - `"preserve"`：保留 JSX 语法（交给 Vite/Oxc 处理）
   - `"react"`：经典模式，需要手动 `import React`
   - `"react-jsxdev"`：React 开发模式的 JSX 转换
 - Vue 项目通常设置为 `"preserve"`

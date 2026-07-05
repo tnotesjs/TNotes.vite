@@ -24,14 +24,14 @@
 ## 2. 评价
 
 - 源码转换是 Vite 作为"中间层"的核心能力，理解它有助于排查编译报错
-- Vite 借助 Esbuild 处理大部分转译工作，速度远快于传统工具链
+- Vite 借助 Oxc 转换器处理大部分转译工作，速度远快于传统工具链
 
 ## 3. TypeScript 转换
 
-- Vite 使用 Esbuild 转译 TypeScript，而非 `tsc`
-- 速度对比：Esbuild 转译 TS 的速度约为 tsc 的 20-30 倍
+- Vite 使用 Oxc 转换器转译 TypeScript，而非 `tsc`
+- 速度对比：Oxc 转换器转译 TS 的速度极快
 - 关键特性：
-  - 只做语法转译，不做类型检查：Esbuild 将 TS 语法剥离为纯 JS，但不执行类型检查
+  - 只做语法转译，不做类型检查：Oxc 转换器将 TS 语法剥离为纯 JS，但不执行类型检查
   - 支持 `.ts`、`.tsx`、`.mts`（ESM TypeScript）文件
   - 支持 `tsconfig.json` 中的 `paths` 别名解析
 - 注意事项：
@@ -41,7 +41,7 @@
 
 ## 4. JSX / TSX 转换
 
-- Vite 内置了 JSX 转换支持，由 Esbuild 执行
+- Vite 内置了 JSX 转换支持，由 Oxc 转换器执行
 - Vue 项目中 JSX 由 `@vitejs/plugin-vue` 的 JSX 插件处理
 - React 项目中 JSX 使用 React 17+ 的自动导入模式（`react/jsx-runtime`），无需手动 `import React`
 - 转换配置在 `tsconfig.json` / `jsx` 选项中指定：
@@ -93,7 +93,7 @@ document.getElementById('app')!.className = styles.container
 
 ### 7.2. React / JSX
 
-JSX 由 Esbuild 内置处理（或通过 SWC 加速），`@vitejs/plugin-react` 提供 Fast Refresh（类似 HMR 的 React 专用方案），支持 `.jsx`、`.tsx` 文件。
+JSX 由 Oxc 转换器内置处理（或通过 SWC 加速），`@vitejs/plugin-react` 提供 Fast Refresh（类似 HMR 的 React 专用方案），支持 `.jsx`、`.tsx` 文件。
 
 ### 7.3. Svelte（`.svelte` 文件）
 

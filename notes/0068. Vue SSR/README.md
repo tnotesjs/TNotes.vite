@@ -30,7 +30,7 @@
 - 优势：
   - 更快的首屏加载（浏览器直接显示 HTML，无需等待 JS 下载执行）
   - 更好的 SEO（搜索引擎可以直接抓取 HTML 内容）
-- Vite 内置 SSR 支持，通过 `createViteServer({ ssr: true })` 启用
+- Vite 内置 SSR 支持，通过 `createServer` API 启用
 
 ```ts
 // server.js

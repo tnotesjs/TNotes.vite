@@ -42,7 +42,7 @@ import data from './data.json'
 
 ## 4. `json.stringify`
 
-- 默认为 `false`
+- 默认为 `'auto'`（当数据大于 10kB 时才会进行字符串化处理）
 - 设为 `true` 后，Vite 会将 JSON 文件作为字符串而非对象内联
 - 典型用途：
   - 大型 JSON 文件：避免被内联为 JavaScript 对象，减少 AST 解析开销

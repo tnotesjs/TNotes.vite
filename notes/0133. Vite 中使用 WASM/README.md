@@ -26,7 +26,7 @@
 - Vite 支持直接导入 `.wasm` 文件：
 
 ```ts
-import init from './module.wasm'
+import init from './module.wasm?init'
 
 const { exports } = await init()
 const result = exports.add(1, 2)

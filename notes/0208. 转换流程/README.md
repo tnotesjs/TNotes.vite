@@ -5,7 +5,7 @@
 - [1. 本节内容](#1-本节内容)
 - [2. 评价](#2-评价)
 - [3. Transform Pipeline](#3-transform-pipeline)
-- [4. Esbuild 转换](#4-esbuild-转换)
+- [4. Oxc 转换](#4-oxc-转换)
 - [5. 框架插件转换](#5-框架插件转换)
 - [6. Sourcemap 合并](#6-sourcemap-合并)
 
@@ -25,14 +25,14 @@
 - 模块转换的流水线：
   1. `load` 钩子：加载模块原始内容
   2. `transform` 钩子：按顺序执行各插件的转换
-  3. Esbuild 转换：TypeScript → JavaScript
+  3. Oxc 转换：TypeScript → JavaScript
   4. 框架插件转换：Vue SFC → JS + CSS
   5. Source Map 合并
 
-## 4. Esbuild 转换
+## 4. Oxc 转换
 
-- Esbuild 负责 TypeScript 和 JSX 的转译
-- 速度极快（比 Babel 快 20-30 倍）
+- Oxc 转换器负责 TypeScript 和 JSX 的转译
+- 速度极快（基于 Rust 实现）
 - 只做语法转译，不做类型检查
 
 ## 5. 框架插件转换

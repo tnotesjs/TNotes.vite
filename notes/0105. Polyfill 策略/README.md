@@ -66,9 +66,9 @@ legacy({
 
 ## 7. 语法降级
 
-- 语法降级将新语法转换为旧语法（由 Babel/SWC/Esbuild 处理）
+- 语法降级将新语法转换为旧语法（由 Babel/SWC/Oxc 处理）
 - 与 API Polyfill 的区别：
   - 语法降级：`const` → `var`，箭头函数 → `function`，`?.` → 条件判断
   - API Polyfill：添加 `Promise`、`Symbol`、`Array.prototype.includes` 等全局 API
-- Vite 使用 Esbuild 进行语法降级（通过 `build.target` 配置）
+- Vite 使用 Oxc 转换器进行语法降级（通过 `build.target` 配置）
 - `@vitejs/plugin-legacy` 同时处理语法降级和 API Polyfill

@@ -4,7 +4,7 @@
 
 - [1. 本节内容](#1-本节内容)
 - [2. 评价](#2-评价)
-- [3. `esbuild`](#3-esbuild)
+- [3. `esbuild`（已弃用）](#3-esbuild已弃用)
 - [4. JSX 转换](#4-jsx-转换)
 - [5. TS 转换](#5-ts-转换)
 - [6. `drop`](#6-drop)
@@ -25,10 +25,11 @@
 - 大部分项目不需要修改 Esbuild 配置，除非有特殊的 JSX 需求或需要移除调试代码
 - `esbuild.drop` 是生产环境中移除 `console.log` 和 `debugger` 的推荐方式
 
-## 3. `esbuild`
+## 3. `esbuild`（已弃用）
+
+> **注意**：`esbuild` 顶层配置项已被标记为已弃用，Vite 官方建议使用 `oxc` 选项代替。`esbuild` 选项在内部被转换为 `oxc` 选项。
 
 - 顶层 `esbuild` 配置项，传递给 Esbuild 的转译选项
-- 与 Rollup 构建的 `build.rollupOptions` 不同，`esbuild` 配置主要影响开发阶段
 - 也会在生产构建中生效（Esbuild 负责代码压缩时）
 
 ```ts
@@ -42,7 +43,7 @@ export default defineConfig({
 
 ## 4. JSX 转换
 
-- Vite 默认支持 JSX，由 Esbuild 处理
+- Vite 默认支持 JSX，由 Oxc 转换器处理（`esbuild` 配置已弃用，建议使用 `oxc` 选项）
 - 配置 JSX 的转换方式：
 
 ```ts
@@ -61,7 +62,7 @@ export default defineConfig({
 
 ## 5. TS 转换
 
-- Esbuild 转译 TypeScript 的配置选项：
+- Oxc 转换器转译 TypeScript 的配置选项（`esbuild` 配置已弃用）：
 
 ```ts
 export default defineConfig({
@@ -76,7 +77,7 @@ export default defineConfig({
 })
 ```
 
-- `tsconfigRaw`：直接传递 TypeScript 编译选项给 Esbuild（无需依赖 tsconfig.json）
+- `tsconfigRaw`：直接传递 TypeScript 编译选项给 Oxc 转换器（无需依赖 tsconfig.json）
 - 常用场景：
   - 启用 Decorator 语法：`experimentalDecorators: true`
   - 控制 class fields 的行为：`useDefineForClassFields`

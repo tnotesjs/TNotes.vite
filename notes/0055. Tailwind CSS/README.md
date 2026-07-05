@@ -20,7 +20,7 @@
 ## 2. 评价
 
 - Tailwind CSS 是目前最流行的原子化 CSS 框架，与 Vite 集成良好
-- Vite 官方模板提供了 `react-ts` 等模板中可直接选择 Tailwind CSS
+- Vite 官方 `create-vite` 脚手架不包含 Tailwind CSS 选项，Tailwind CSS 选项存在于 `create-vue`（Vue 专用脚手架）中
 - Tailwind CSS v4 大幅简化了配置，与 Vite 的集成更加紧密
 
 ## 3. 安装 Tailwind CSS

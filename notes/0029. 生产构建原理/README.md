@@ -35,8 +35,8 @@
 | 维度 | 开发环境 | 生产环境 |
 | --- | --- | --- |
 | 模块加载 | 原生 ESM，浏览器逐个请求 | Rollup 打包为 bundle，减少请求数 |
-| 编译工具 | Esbuild（极速转译） | Rollup / Rolldown（高质量打包） |
-| 代码压缩 | 不压缩（便于调试） | 自动压缩（esbuild 或 terser） |
+| 编译工具 | Oxc 转换器（极速转译） | Rolldown（高质量打包） |
+| 代码压缩 | 不压缩（便于调试） | 自动压缩（oxc 或 terser） |
 | Source Map | 默认开启（快速重编译） | 需手动开启（`build.sourcemap: true`） |
 | CSS 处理 | `<style>` 标签注入（便于 HMR） | 提取为独立 CSS 文件 |
 | 优化策略 | 无（追求启动速度） | Tree Shaking、Code Splitting、压缩等 |
@@ -48,9 +48,9 @@
 - Rollup：当前 Vite 生产构建的默认打包工具（Vite 2 ~ 5）。成熟稳定，广泛用于库打包和应用构建，原生支持 ESM 输出，Tree Shaking 能力优秀，Vite 的插件系统基于 Rollup 的插件接口设计
 - Rolldown：Vite 团队开发的 Rust 实现打包器，已在 Vite 6+ 中替代 Rollup 成为默认打包器。构建速度比 Rollup 快 10-30 倍，保持 API 兼容
 - 为什么开发和生产使用不同的工具？
-  - Esbuild 擅长快速转译，但产物优化能力（Tree Shaking、Code Splitting）不如 Rollup
-  - Rollup 擅长生成高质量的优化产物，但构建速度不如 Esbuild
-  - Vite 结合了两者的优势：开发用 Esbuild 获得速度，生产用 Rollup 获得质量
+  - Oxc 转换器擅长快速转译，但产物优化能力（Tree Shaking、Code Splitting）不如 Rolldown
+  - Rolldown 擅长生成高质量的优化产物，同时保持较快的构建速度
+  - Vite 结合了两者的优势：开发用 Oxc 转换器获得速度，生产用 Rolldown 获得质量
 
 ## 5. Tree Shaking
 
@@ -103,7 +103,7 @@ export default defineConfig({
 
 ### 9.1. JavaScript 压缩
 
-默认使用 Esbuild 压缩（速度极快），可选 terser（压缩率更高但更慢：`build.minify: 'terser'`），可关闭压缩：`build.minify: false`（调试时有用）。
+默认使用 Oxc 压缩（速度极快），可选 terser（压缩率更高但更慢：`build.minify: 'terser'`），可关闭压缩：`build.minify: false`（调试时有用）。
 
 ### 9.2. CSS 压缩
 

@@ -7,7 +7,7 @@
 - [3. `vite build`](#3-vite-build)
 - [4. `build.outDir`](#4-buildoutdir)
 - [5. `build.sourcemap`](#5-buildsourcemap)
-- [6. `build.rollupOptions`](#6-buildrollupoptions)
+- [6. `build.rolldownOptions`](#6-buildrolldownoptions)
 - [7. `manualChunks`](#7-manualchunks)
 - [8. `base`](#8-base)
 - [9. 代码分割](#9-代码分割)
@@ -37,9 +37,9 @@
 
 - Source Map 生成策略：`true`、`false`、`'hidden'`
 
-## 6. `build.rollupOptions`
+## 6. `build.rolldownOptions`
 
-- 传递给 Rollup 的高级配置（多入口、外部依赖等）
+- 传递给 Rolldown 的高级配置（多入口、外部依赖等）
 
 ## 7. `manualChunks`
 

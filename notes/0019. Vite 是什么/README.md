@@ -33,7 +33,7 @@
 
 ## 3. Vite 的定位
 
-Vite 是一个下一代前端开发与构建工具，由 Vue 作者尤雨溪创建。名字源自法语 "vite"（意为 "快速"），发音 `/vit/`（类似 "veet"）。Vite 的定位是开箱即用的现代前端工具链，同时覆盖开发体验和生产构建。官方口号为 _Next Generation Frontend Tooling_（下一代前端开发工具），核心价值主张可以概括为极速的冷启动、即时的热更新、优化的生产构建。
+Vite 是一个下一代前端开发与构建工具，由 Vue 作者尤雨溪创建。名字源自法语 "vite"（意为 "快速"），发音 `/viːt/`（类似 "veet"）。Vite 的定位是开箱即用的现代前端工具链，同时覆盖开发体验和生产构建。官方口号为 _Next Generation Frontend Tooling_（下一代前端工具链），核心价值主张可以概括为极速的冷启动、即时的热更新、优化的生产构建。
 
 ## 4. Vite 解决了什么问题
 
@@ -65,7 +65,7 @@ Vite 利用浏览器原生 ES Modules，开发时不需要打包，直接由浏�
 
 ### 5.2. 依赖预构建
 
-对于 `node_modules` 中的依赖，Vite 使用 Esbuild（Go 编写，比 JS 打包器快 10-100 倍）进行预构建，将 CommonJS / UMD 模块转换为 ESM 格式。
+对于 `node_modules` 中的依赖，Vite 使用 Rolldown（Rust 编写）进行预构建，将 CommonJS / UMD 模块转换为 ESM 格式。
 
 ### 5.3. 生产构建
 

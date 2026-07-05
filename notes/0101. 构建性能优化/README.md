@@ -20,7 +20,7 @@
 
 ## 2. 评价
 
-- Vite 的构建速度已经很快（Esbuild + Rollup），大部分项目不需要额外优化
+- Vite 的构建速度已经很快（Oxc + Rolldown），大部分项目不需要额外优化
 - 当项目规模增大、构建时间明显变长时，可以参考以下优化手段
 
 ## 3. 缓存
@@ -41,7 +41,7 @@
 
 ## 4. 并行处理
 
-- Vite 使用 Esbuild 进行依赖预构建和代码压缩，Esbuild 本身是多线程的
+- Vite 使用 Rolldown 进行依赖预构建，Oxc 进行代码压缩
 - 对于大型项目，可以考虑：
   - 使用 `vite build --mode` 分环境构建，避免一次性构建所有环境
   - 在 CI 中并行运行类型检查和构建
@@ -74,9 +74,10 @@
 ## 8. 使用更快的编译器
 
 - Vite 生态中的编译器速度对比：
-  - Esbuild（Go）：最快，用于依赖预构建和代码压缩
+  - Oxc（Rust）：最快，用于代码压缩和 TS/JSX 转译
+  - Rolldown（Rust）：用于依赖预构建和生产构建
   - SWC（Rust）：很快，用于 React JSX 转换
   - Babel（JS）：最慢，但插件生态最丰富
   - Lightning CSS（Rust）：CSS 压缩最快
-- 尽量使用 Esbuild 和 SWC 替代 Babel
+- 尽量使用 Oxc 和 SWC 替代 Babel
 - 使用 Lightning CSS 替代 PostCSS + cssnano 进行 CSS 压缩

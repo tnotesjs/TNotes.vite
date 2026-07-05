@@ -76,7 +76,7 @@ const modules = import.meta.glob('./modules/*.ts', { eager: true })
 import.meta.glob(['./dir1/**/*.ts', './dir2/**/*.ts'])
 
 // 排除某些文件
-import.meta.glob('./modules/*.ts', { ignore: ['./modules/ignore.ts'] })
+import.meta.glob(['./modules/*.ts', '!./modules/ignore.ts'])
 
 // 匹配所有 .vue 和 .ts 文件
 import.meta.glob('./src/**/*.{vue,ts}')

@@ -65,9 +65,8 @@ const routes = [
   },
   {
     path: '/dashboard',
-    // 命名 chunk：打包时生成独立的 chunk 文件
-    component: () =>
-      import(/* webpackChunkName: "dashboard" */ '@/views/Dashboard.vue'),
+    // 懒加载：访问该路由时才加载组件代码
+    component: () => import('@/views/Dashboard.vue'),
   },
 ]
 ```

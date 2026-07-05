@@ -19,7 +19,7 @@
 
 ## 2. 评价
 
-- Vite 的构建速度已经很快（Esbuild + Rollup），大部分项目不需要额外优化
+- Vite 的构建速度已经很快（Oxc + Rolldown），大部分项目不需要额外优化
 - 大型项目可以通过以下手段进一步提升构建速度
 
 ## 3. 构建缓存
@@ -31,10 +31,10 @@
 
 ## 4. 减少 Babel
 
-- Babel 是最慢的编译器，尽量使用 Esbuild 或 SWC 替代：
+- Babel 是最慢的编译器，尽量使用 Oxc 或 SWC 替代：
   - React 项目：使用 `@vitejs/plugin-react-swc` 替代 `@vitejs/plugin-react`
   - 移除不必要的 Babel 插件
-  - 使用 Esbuild 的 `target` 配置替代 Babel 的语法降级
+  - 使用 Oxc 的 `target` 配置替代 Babel 的语法降级
 
 ## 5. 合理拆分 Chunk
 
@@ -53,7 +53,7 @@
 
 ## 7. 并行压缩
 
-- Vite 默认使用 Esbuild 压缩（已支持多线程）
+- Vite 默认使用 Oxc 压缩（已支持多线程）
 - 如果使用 Terser，可以启用并行压缩：
 
 ```ts

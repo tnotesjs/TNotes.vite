@@ -32,14 +32,14 @@
 
 ## 4. CSS 压缩
 
-- Vite 默认使用 Lightning CSS（Rust 实现）压缩 CSS
+- Vite 默认使用 Lightning CSS（Rust 实现）压缩 CSS（`build.cssMinify` 默认为 `'lightningcss'`）
 - 压缩操作：移除空白、合并规则、缩短颜色值、优化选择器
-- 可切换压缩器：
+- 可切换 CSS 处理引擎（`css.transformer`，实验性，默认为 `'postcss'`）：
 
 ```ts
 export default defineConfig({
   css: {
-    transformer: 'lightningcss', // 默认
+    transformer: 'lightningcss', // 或 'postcss'（默认）
   },
 })
 ```

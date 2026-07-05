@@ -48,7 +48,7 @@
 
 - 与普通 preload 的区别：modulepreload 会预解析和预编译模块
 - Vite 自动为入口 chunk 的依赖添加 modulepreload
-- 浏览器支持：Chrome 66+、Edge 79+（Safari 和 Firefox 不支持，会降级为普通 preload）
+- 浏览器支持：Chrome 66+、Edge 79+、Safari 16.4+（Vite 默认启用 modulepreload polyfill 为不支持的浏览器提供兼容）
 
 ## 5. favicon
 

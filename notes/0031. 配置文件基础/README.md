@@ -33,7 +33,7 @@
   - `vite.config.js`（ESM JavaScript）
   - `vite.config.mjs`（显式 ESM JavaScript）
   - `vite.config.cjs`（CommonJS JavaScript）
-- 如果项目 `package.json` 中没有 `"type": "module"`，`.js` 文件会被当作 CommonJS
+- 即使项目 `package.json` 中没有 `"type": "module"`，Vite 也支持在配置文件中使用 ESM 语法，配置文件会在被加载前自动进行预处理
 - 配置文件位于项目根目录，与 `package.json` 同级
 
 ## 4. `vite.config.ts`
@@ -57,7 +57,7 @@ export default defineConfig({
 })
 ```
 
-- Vite 使用 Esbuild 来加载 `.ts` 配置文件，因此不会执行完整的类型检查
+- 默认情况下，Vite 使用 Rolldown 将配置文件打包到临时文件中并加载它，因此不会执行完整的类型检查
 
 ## 5. `defineConfig`
 

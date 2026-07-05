@@ -79,12 +79,12 @@ export default defineConfig({
 - 简写形式（不修改路径）：`'/api': 'http://localhost:8080'`
 - 支持 WebSocket 代理：`'/socket': { target: 'ws://localhost:8080', ws: true }`
 - 可以配置多个代理规则，按顺序匹配
-- 底层使用 `http-proxy`，支持其所有配置选项
+- 底层使用 `http-proxy-3`，支持其所有配置选项
 
 ## 8. `server.cors`
 
 - 配置 Dev Server 的 CORS（跨域资源共享）策略
-- 默认为 `true`，即允许所有来源的跨域请求
+- 默认仅允许 localhost、`127.0.0.1` 和 `::1` 的跨域请求，设为 `true` 可允许所有来源（有安全风险）
 - 可以传入 CORS 配置对象进行细粒度控制：
 
 ```ts
@@ -103,7 +103,7 @@ export default defineConfig({
 ## 9. `server.https`
 
 - 启用 HTTPS 开发服务器
-- `server.https: true`：自动生成并缓存自签名证书
+- `server.https` 需要一个合法可用的证书，建议使用 `@vitejs/plugin-basic-ssl` 插件来创建自签名证书
 - 自定义证书：
 
 ```ts

@@ -11,7 +11,7 @@
 - [7. `build.minify`](#7-buildminify)
 - [8. `build.target`](#8-buildtarget)
 - [9. `build.cssTarget`](#9-buildcsstarget)
-- [10. `build.rollupOptions`](#10-buildrollupoptions)
+- [10. `build.rolldownOptions`](#10-buildrolldownoptions)
 - [11. `build.emptyOutDir`](#11-buildemptyoutdir)
 - [12. `build.chunkSizeWarningLimit`](#12-buildchunksizewarninglimit)
 
@@ -86,13 +86,14 @@ export default defineConfig({
 
 ## 7. `build.minify`
 
-- 代码压缩方式，默认为 `'esbuild'`（极快）
+- 代码压缩方式，默认为 `'oxc'`（极快）
 - 可选值：
-  - `'esbuild'`：使用 Esbuild 压缩，速度极快，压缩率略低于 terser
+  - `'oxc'`：使用 Oxc 压缩，速度极快
   - `'terser'`：使用 terser 压缩，压缩率更高但速度较慢
+  - `'esbuild'`：使用 Esbuild 压缩（已弃用）
   - `false`：关闭压缩（调试时有用）
 - 选择建议：
-  - 绝大多数项目使用默认的 `'esbuild'` 即可
+  - 绝大多数项目使用默认的 `'oxc'` 即可
   - 对产物体积有极致要求时才考虑 `'terser'`
 
 ## 8. `build.target`
@@ -103,7 +104,7 @@ export default defineConfig({
   - `'es2015'`：兼容到 ES6
   - `'es2020'`：兼容到 ES2020（支持可选链、空值合并等）
   - `'esnext'`：不降级，使用最新语法
-  - `'modules'`：根据浏览器对 ESM 的支持来决定
+  - `'baseline-widely-available'`：默认值，针对广泛可用的浏览器
 - CLI 快捷方式：`vite build --target es2018`
 
 ```ts
@@ -120,15 +121,15 @@ export default defineConfig({
 - 用法与 `build.target` 类似，但只影响 CSS 压缩
 - 典型场景：需要单独控制 CSS 的浏览器兼容性
 
-## 10. `build.rollupOptions`
+## 10. `build.rolldownOptions`
 
-- 传递给 Rollup 的高级配置选项
+- 传递给 Rolldown 的高级配置选项
 - 典型用法：
 
 ```ts
 export default defineConfig({
   build: {
-    rollupOptions: {
+    rolldownOptions: {
       // 多入口配置
       input: {
         main: 'index.html',
@@ -154,7 +155,7 @@ export default defineConfig({
 
 ## 11. `build.emptyOutDir`
 
-- 默认为 `true`，构建前自动清空输出目录
+- 若 `outDir` 在 `root` 目录下，则默认为 `true`，构建前自动清空输出目录
 - 设为 `false` 可以保留输出目录中的已有文件
 - 安全机制：当输出目录在项目根目录之外时，Vite 不会自动清空（需要手动设置为 `true`）
 

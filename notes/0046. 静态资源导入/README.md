@@ -129,7 +129,7 @@ worker.postMessage('hello')
 - Vite 支持直接导入 WebAssembly 模块：
 
 ```ts
-import init from './module.wasm'
+import init from './module.wasm?init'
 
 const { exports } = await init()
 ```

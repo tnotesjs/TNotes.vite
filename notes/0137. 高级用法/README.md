@@ -54,15 +54,17 @@ const urls = import.meta.glob('./assets/*', { query: '?url' })
 
 ## 5. 排除匹配
 
-- 使用 `ignore` 排除特定文件：
+- 使用 `!` 前缀排除特定文件：
 
 ```ts
-const modules = import.meta.glob('./modules/*.ts', {
-  ignore: ['./modules/internal.ts', './modules/test.ts'],
-})
+const modules = import.meta.glob([
+  './modules/*.ts',
+  '!./modules/internal.ts',
+  '!./modules/test.ts',
+])
 ```
 
-- 支持 glob 模式：`ignore: ['./modules/**/*.test.ts']`
+- 支持 glob 模式：`'!./modules/**/*.test.ts'`
 
 ## 6. 自定义文件处理
 

@@ -52,7 +52,7 @@ export default defineConfig({
 ```ts
 export default defineConfig({
   build: {
-    rollupOptions: {
+    rolldownOptions: {
       output: {
         // JS 文件
         entryFileNames: 'assets/js/[name]-[hash].js',
@@ -78,7 +78,7 @@ export default defineConfig({
 })
 ```
 
-- 也可以在 `rollupOptions.output.assetFileNames` 中为不同类型的资源指定不同子目录
+- 也可以在 `rolldownOptions.output.assetFileNames` 中为不同类型的资源指定不同子目录
 
 ## 6. CDN 路径
 

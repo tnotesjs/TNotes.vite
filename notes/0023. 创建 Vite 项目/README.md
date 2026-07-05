@@ -84,5 +84,5 @@
   - `tsconfig.json`：TypeScript 编译配置
   - `tsconfig.node.json`：Node.js 环境的 TS 配置（用于 `vite.config.ts`）
   - `.d.ts` 声明文件（如 `env.d.ts`，用于声明 Vite 特有的模块类型）
-- Vite 使用 Esbuild 转译 TypeScript，只做转译不做类型检查
+- Vite 使用 Oxc 转换器转译 TypeScript，只做转译不做类型检查
 - 建议在 CI 流水线中加入 `tsc --noEmit` 或框架对应的类型检查命令（如 `vue-tsc --noEmit`）

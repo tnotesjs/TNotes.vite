@@ -62,6 +62,6 @@ export default defineConfig({
 - Vite 的 SSR 支持主要通过内置 API 实现，而非独立插件
 - 相关能力：
   - `vite build --ssr`：构建 SSR 产物
-  - `createViteServer({ ssr: true })`：创建 SSR 开发服务器
+  - `createServer`：创建 SSR 开发服务器
   - `ssrLoadModule()`：在服务端加载模块
 - 推荐使用 Nuxt（Vue）或 Next.js（React）等框架处理 SSR 复杂性

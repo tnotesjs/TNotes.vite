@@ -24,7 +24,7 @@
 ## 3. 生产构建
 
 - `pnpm build`：输出到 `dist/` 目录
-- 默认使用 Esbuild 压缩、Rollup 打包
+- 默认使用 Oxc 压缩、Rolldown 打包
 
 ## 4. 代码分割
 

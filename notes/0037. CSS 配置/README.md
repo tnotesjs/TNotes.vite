@@ -125,12 +125,12 @@ export default defineConfig({
 
 ## 7. `css.transformer`
 
-- 指定 CSS 的压缩工具，默认为 `'postcss'`
+- 用于选择 CSS 处理的引擎，默认为 `'postcss'`（实验性）
 - 可选值：
   - `'postcss'`：使用 PostCSS 进行 CSS 转换和压缩（默认）
   - `'lightningcss'`：使用 Lightning CSS（Rust 实现，速度极快）
 - Lightning CSS 的优势：
-  - 压缩速度比 PostCSS + cssnano 快 10-100 倍
+  - 压缩速度比 terser 快 30~90 倍，压缩率仅差 0.5~2%
   - 支持 CSS 嵌套语法、CSS Layers 等现代特性
   - 自动添加浏览器前缀
 

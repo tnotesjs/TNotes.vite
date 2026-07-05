@@ -28,7 +28,7 @@
 ```ts
 export default defineConfig({
   build: {
-    rollupOptions: {
+    rolldownOptions: {
       output: {
         // 入口 chunk
         entryFileNames: 'assets/js/[name]-[hash].js',

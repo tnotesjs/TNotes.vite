@@ -24,7 +24,7 @@
 ## 3. 开箱即用的 TS 转换
 
 - Vite 原生支持 TypeScript，无需安装额外的 loader 或插件
-- 使用 Esbuild 转译 TypeScript，速度约为 tsc 的 20-30 倍
+- 使用 Oxc 转换器转译 TypeScript，速度比原生 tsc 更快
 - 支持的 TypeScript 特性：
   - `.ts`、`.tsx`、`.mts`（ESM TypeScript）文件
   - 类型注解、接口、泛型、枚举等语法
@@ -34,7 +34,7 @@
 
 ## 4. Vite 不做完整类型检查
 
-- Vite 使用 Esbuild 转译 TypeScript，Esbuild 只做语法转译，不执行类型检查
+- Vite 使用 Oxc 转换器转译 TypeScript，只做语法转译，不执行类型检查
 - 这意味着：
   - 类型错误不会阻止开发服务器启动
   - 类型错误不会阻止生产构建（除非单独运行 tsc）

@@ -74,10 +74,10 @@
 - 使用 `web-vitals` 库在真实用户环境中采集性能指标：
 
 ```ts
-import { onLCP, onFID, onCLS } from 'web-vitals'
+import { onLCP, onINP, onCLS } from 'web-vitals'
 
 onLCP(console.log)
-onFID(console.log)
+onINP(console.log)
 onCLS(console.log)
 ```
 

@@ -60,7 +60,7 @@ const logoUrl = `${import.meta.env.BASE_URL}logo.svg`
 ## 6. `import.meta.env.DEV`
 
 - 布尔值，开发模式时为 `true`，生产模式时为 `false`
-- 等价于 `import.meta.env.MODE === 'development'`
+- 取决于 `NODE_ENV` 而非 `MODE`（`NODE_ENV=production` 时为 `false`）
 - 典型用途：
 
 ```ts
@@ -73,7 +73,7 @@ if (import.meta.env.DEV) {
 ## 7. `import.meta.env.PROD`
 
 - 布尔值，生产模式时为 `true`，开发模式时为 `false`
-- 等价于 `import.meta.env.MODE === 'production'`
+- 取决于 `NODE_ENV` 而非 `MODE`（`NODE_ENV=development` 时为 `false`）
 - 典型用途：
 
 ```ts

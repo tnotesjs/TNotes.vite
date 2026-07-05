@@ -4,7 +4,7 @@
 
 - [1. 本节内容](#1-本节内容)
 - [2. 评价](#2-评价)
-- [3. Esbuild 压缩](#3-esbuild-压缩)
+- [3. Oxc 压缩](#3-oxc-压缩)
 - [4. Terser 压缩](#4-terser-压缩)
 - [5. 删除 console](#5-删除-console)
 - [6. 删除 debugger](#6-删除-debugger)
@@ -20,24 +20,24 @@
 
 ## 2. 评价
 
-- Esbuild 压缩是默认选择，速度极快且压缩率足够好
+- Oxc 压缩是默认选择，速度极快且压缩率足够好
 - 只有在对产物体积有极致要求时才考虑 Terser
 
-## 3. Esbuild 压缩
+## 3. Oxc 压缩
 
-- Vite 默认使用 Esbuild 进行 JavaScript 压缩
+- Vite 默认使用 Oxc 进行 JavaScript 压缩
 - 速度比 Terser 快 20-100 倍
 - 配置：
 
 ```ts
 export default defineConfig({
   build: {
-    minify: 'esbuild', // 默认值
+    minify: 'oxc', // 默认值
   },
 })
 ```
 
-- Esbuild 压缩的特点：
+- Oxc 压缩的特点：
   - 速度极快
   - 压缩率略低于 Terser（通常差距在 1-3%）
   - 不支持某些高级压缩优化（如变量名混淆的精细控制）
@@ -65,7 +65,7 @@ export default defineConfig({
 ```
 
 - 需要安装：`npm install -D terser`
-- 选择建议：大部分项目使用 Esbuild 即可，Terser 仅在需要更小产物时使用
+- 选择建议：大部分项目使用 Oxc 即可，Terser 仅在需要更小产物时使用
 
 ## 5. 删除 console
 

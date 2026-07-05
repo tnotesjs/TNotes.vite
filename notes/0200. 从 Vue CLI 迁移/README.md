@@ -26,7 +26,7 @@
 
 | Vue CLI             | Vite                          |
 | ------------------- | ----------------------------- |
-| 基于 Webpack        | 原生 ESM + Rollup             |
+| 基于 Webpack        | 原生 ESM + Rolldown           |
 | `vue.config.js`     | `vite.config.ts`              |
 | `@vue/cli-service`  | `vite` + `@vitejs/plugin-vue` |
 | `VUE_APP_` 前缀     | `VITE_` 前缀                  |

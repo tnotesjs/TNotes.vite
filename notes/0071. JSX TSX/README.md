@@ -24,7 +24,7 @@
 
 ## 3. JSX 转换
 
-- Vite 使用 Esbuild 内置支持 JSX 语法
+- Vite 使用 Oxc 转换器内置支持 JSX 语法
 - 默认的 JSX 转换行为：
   - `.jsx` 文件自动使用 JSX 转换
   - `.tsx` 文件自动使用 TSX 转换

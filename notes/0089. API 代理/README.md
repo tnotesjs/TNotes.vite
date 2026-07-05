@@ -41,7 +41,7 @@ export default defineConfig({
 })
 ```
 
-- 底层使用 `http-proxy`，支持其所有配置选项
+- 底层使用 `http-proxy-3`（一个 fork），支持其所有配置选项
 
 ## 4. 代理到后端服务
 

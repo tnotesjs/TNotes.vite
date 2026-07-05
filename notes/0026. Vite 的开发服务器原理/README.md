@@ -40,7 +40,7 @@
 - 工作流程：
   1. 浏览器请求 `index.html`，Vite 返回根 HTML 文件
   2. HTML 中的 `<script type="module" src="/src/main.ts">` 触发模块请求
-  3. Vite Dev Server 接收到 `/src/main.ts` 的请求，使用 Esbuild 将 TypeScript 转为 JavaScript，返回给浏览器
+  3. Vite Dev Server 接收到 `/src/main.ts` 的请求，使用 Oxc 转换器将 TypeScript 转为 JavaScript，返回给浏览器
   4. 浏览器解析返回的 JS，发现 `import './App.vue'` 等语句，继续发起新的模块请求
   5. 每个新请求都会触发 Vite 的即时转换，逐个返回
 - 这种"链式请求"的方式意味着：只有用户访问到的页面/路由对应的模块才会被编译
@@ -51,7 +51,7 @@
 - Vite Dev Server 本质上是一个即时编译的中间层
 - 当浏览器请求某个模块时，Vite 执行以下转换流程：
   1. 路径解析：将裸模块导入（如 `import vue from 'vue'`）重写为 `/node_modules/.vite/vue.js?v=xxx`
-  2. 内容转换：根据文件类型调用对应的转换器（Esbuild 转 TS、Vue Compiler 转 SFC 等）
+  2. 内容转换：根据文件类型调用对应的转换器（Oxc 转换器转 TS、Vue Compiler 转 SFC 等）
   3. 依赖处理：对 `node_modules` 中的模块，直接返回预构建后的产物
 - 转换结果会被缓存，同一模块的后续请求直接返回缓存
 - 这种按需转换带来了两个关键优势：

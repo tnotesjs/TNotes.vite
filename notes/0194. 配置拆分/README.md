@@ -64,7 +64,7 @@ import base from './base'
 export default mergeConfig(base, {
   build: {
     sourcemap: 'hidden',
-    minify: 'esbuild',
+    minify: 'oxc',
   },
 })
 ```

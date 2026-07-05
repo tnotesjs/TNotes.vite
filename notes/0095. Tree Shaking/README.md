@@ -32,7 +32,7 @@
 - ESM 的优势：
   - `import`/`export` 是静态声明，编译时即可确定依赖关系
   - 模块的导出是只读的，不会在运行时变化
-- Rollup 的 Tree Shaking 能力在所有打包器中最为出色
+- Rolldown 的 Tree Shaking 能力在所有打包器中最为出色
 
 ## 4. 副作用标记
 
