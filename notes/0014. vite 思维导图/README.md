@@ -13,6 +13,6 @@
 
 ## 2. 思维导图
 
-```markmap 2
+```mindmap 2
 <<< ./assets/markmap.md
 ```
